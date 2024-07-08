@@ -19,13 +19,21 @@
 	<description>help4devs-aws</description>
 
 	<properties>
-		<java.version>1.8</java.version>
+		<!--JAVA-->
+		<!--<java.version>1.8</java.version>-->
 		<!--<java.version>11</java.version>-->
-		<!--<java.version>17</java.version>-->
+		<java.version>17</java.version>
 		<!--<java.version>21</java.version>-->
+
+		<!--SETTINGS-->
+		<lombok.version.java>1.18.24</lombok.version.java>
 		<spring-cloud.version>Finchley.RC1</spring-cloud.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<!--MAVEN-->
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
 	</properties>
 
 	<dependencies>
@@ -34,6 +42,18 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-aws</artifactId>
+		</dependency>
+
+		<!--AWS LAMBDA-->
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-lambda-java-core</artifactId>
+			<version>1.2.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-lambda-java-events</artifactId>
+			<version>3.11.3</version>
 		</dependency>
 
 		<!--SPRING BOOT WEB-->
@@ -52,6 +72,7 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
+			<version>${lombok.version.java}</version>
 			<optional>true</optional>
 		</dependency>
 
@@ -114,7 +135,19 @@
 		</dependencies>
 	</dependencyManagement>
 
-	<build>
+	<repositories>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<!--NOT FOR LAMBDA-->
+	<!--<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -129,17 +162,52 @@
 				</executions>
 			</plugin>
 		</plugins>
-	</build>
+	</build>-->
 
-	<repositories>
-		<repository>
-			<id>spring-milestones</id>
-			<name>Spring Milestones</name>
-			<url>https://repo.spring.io/milestone</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
+	<!--FOR LAMBDA FUNCTIONS-->
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.2.2</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>3.5.1</version>
+				<configuration>
+					<createDependencyReducedPom>false</createDependencyReducedPom>
+					<filters>
+						<filter>
+							<artifact>*:*</artifact>
+							<excludes>
+								<exclude>module-info.class</exclude>
+								<exclude>META-INF/*</exclude>
+								<exclude>META-INF/versions/**</exclude>
+								<exclude>META-INF/services/**</exclude>
+							</excludes>
+						</filter>
+					</filters>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.11.0</version>
+				<configuration>
+					<source>${maven.compiler.source}</source>
+					<target>${maven.compiler.target}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>
