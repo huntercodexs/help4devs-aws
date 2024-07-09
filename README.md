@@ -8,7 +8,7 @@ A simple repository to serve various functions and methods made in Java
 The content that you will find out in this project are:
 
 - <a href="#s3">S3</a>
-- <a href="#currency">Lambda</a>
+- <a href="#lambda">Lambda</a>
 
 <br /><br />
 
