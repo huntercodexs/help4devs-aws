@@ -58,7 +58,7 @@ public class Help4DevsAwsS3Service {
         help4DevsAwsS3ResponseDto.setFilename(fileName);
         help4DevsAwsS3ResponseDto.setMessage("Upload successfully");
 
-        if (file.delete()) {
+        if (file.exists() && file.delete()) {
             log.error("File not deleted: {}", file.getAbsolutePath());
         }
 
