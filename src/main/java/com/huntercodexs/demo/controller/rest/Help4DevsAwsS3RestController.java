@@ -1,5 +1,6 @@
 package com.huntercodexs.demo.controller.rest;
 
+import com.huntercodexs.demo.dto.Help4DevsAwsS3ResponseDto;
 import com.huntercodexs.demo.services.Help4DevsAwsS3Service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,17 +15,19 @@ import org.springframework.web.multipart.MultipartFile;
 public class Help4DevsAwsS3RestController {
 
     @Autowired
-    private Help4DevsAwsS3Service help4DevsAwsS3Service;
+    Help4DevsAwsS3Service help4DevsAwsS3Service;
 
     @PostMapping("/api/s3/upload")
-    public ResponseEntity<String> uploadFile(@RequestParam(value = "file") MultipartFile file) {
+    public ResponseEntity<Help4DevsAwsS3ResponseDto> upload(@RequestParam(value = "file") MultipartFile file) {
         return new ResponseEntity<>(help4DevsAwsS3Service.uploadFile(file), HttpStatus.OK);
     }
 
     @GetMapping("/api/s3/download/{fileName}")
-    public ResponseEntity<ByteArrayResource> downloadFile(@PathVariable String fileName) {
+    public ResponseEntity<ByteArrayResource> download(@PathVariable String fileName) {
+
         byte[] data = help4DevsAwsS3Service.downloadFile(fileName);
         ByteArrayResource resource = new ByteArrayResource(data);
+
         return ResponseEntity
                 .ok()
                 .contentLength(data.length)
@@ -34,7 +37,8 @@ public class Help4DevsAwsS3RestController {
     }
 
     @DeleteMapping("/api/s3/delete/{fileName}")
-    public ResponseEntity<String> deleteFile(@PathVariable String fileName) {
+    public ResponseEntity<Help4DevsAwsS3ResponseDto> delete(@PathVariable String fileName) {
         return new ResponseEntity<>(help4DevsAwsS3Service.deleteFile(fileName), HttpStatus.OK);
     }
+
 }

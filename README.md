@@ -3,7 +3,7 @@
 ### Pre Requisites
 
 - Java 8 / JDK 1.8
-- Spring Boot 2.0.1_RELEASE
+- Spring Boot 2.3.7.RELEASE
 - spring-cloud-starter-aws
 - Properties Details
 - Bucket created in the AWS S3
@@ -92,13 +92,16 @@ src/test/java/codexstester/test/unitary/Help4DevsAwsUnitaryTests.java
 REQUEST
 
 <pre>
-POST http://localhost:35800/service/api/s3/add {"data": "{CONTENT-FILE-BASE64}", "filename": "filename.ext"}
+POST http://localhost:38500/api/s3/upload {form-data=["file": "{FILE}"]}
+GET http://localhost:38500/api/s3/download/{filename}
+DELETE http://localhost:38500/api/s3/delete/{filename}
 </pre>
 
 RESPONSE
 
 <pre>
-202 ACCEPTED {}
+200 OK "File uploaded : 1720721606686_filename.pdf"
+200 OK "File removed : 1720721606686_filename.pdf"
 </pre>
 
 

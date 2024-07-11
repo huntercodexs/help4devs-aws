@@ -1,5 +1,6 @@
 package com.huntercodexs.demo.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
 @Data
@@ -10,5 +11,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Help4DevsAwsS3ResponseDto {
-    String file;
+    String filename;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    String message;
 }
