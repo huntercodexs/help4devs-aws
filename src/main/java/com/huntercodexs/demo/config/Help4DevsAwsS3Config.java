@@ -14,28 +14,13 @@ public class Help4DevsAwsS3Config {
     @Value("${cloud.aws.region.static}")
     String region;
 
-    @Value("${cloud.aws.endpoint.uri:}")
-    String endpointUri;
-
     @Bean
     public AmazonS3 s3Client() {
 
-        /*if (endpointUri == null || endpointUri.isEmpty()) {
-            endpointUri = "s3.amazonaws.com";
-        }
-
-        AwsClientBuilder.EndpointConfiguration endpointConfig = new AwsClientBuilder.EndpointConfiguration(
-                endpointUri,
-                region
-        );*/
-
         AWSCredentialsProvider credentialsProvider = new ProfileCredentialsProvider();
-        //AWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey);
 
         return AmazonS3ClientBuilder.standard()
                 .withCredentials(credentialsProvider)
-                //.withCredentials(new AWSStaticCredentialsProvider(credentials))
-                //.withEndpointConfiguration(endpointConfig)
                 .withRegion(region)
                 .build();
 
