@@ -1,78 +1,66 @@
 package com.huntercodexs.demo.services;
 
-import com.huntercodexs.demo.dto.Help4DevsAwsS3RequestDto;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.model.PutObjectRequest;
+import com.amazonaws.services.s3.model.S3Object;
+import com.amazonaws.services.s3.model.S3ObjectInputStream;
+import com.amazonaws.util.IOUtils;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.ResourceLoader;
-import org.springframework.core.io.WritableResource;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
-import java.util.UUID;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 @Slf4j
 @Service
 public class Help4DevsAwsS3Service {
 
-    @Value("${bucket.name}")
+    @Value("${aws.s3.bucket.name}")
     String bucketName;
 
     @Autowired
-    ResourceLoader resourceLoader;
+    private AmazonS3 s3Client;
 
-    public String saveToS3(Help4DevsAwsS3RequestDto help4DevsAwsS3RequestDto) {
-
-        if (help4DevsAwsS3RequestDto.getFilename() == null || help4DevsAwsS3RequestDto.getFilename().isEmpty()) {
-            help4DevsAwsS3RequestDto.setFilename(UUID.randomUUID().toString()+".jpg");
-        }
-
-        log.info("Starting save in S3");
-
-        String path = "s3://"+bucketName+"/"+ help4DevsAwsS3RequestDto.getFilename();
-
-        log.info("S3 path: {}", path);
-
-        Resource resource = resourceLoader.getResource(path);
-
-        WritableResource writableResource = (WritableResource) resource;
-
-        try (OutputStream outputStream = writableResource.getOutputStream()) {
-
-            outputStream.write(help4DevsAwsS3RequestDto.getData());
-
-            log.info("Image saved successfully in the S3");
-            return help4DevsAwsS3RequestDto.getFilename().split("\\.")[0];
-
-        } catch (Exception e) {
-            log.error(e.getMessage());
-            return null;
-        }
-
+    public String uploadFile(MultipartFile file) {
+        File fileObj = convertMultiPartFileToFile(file);
+        String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
+        s3Client.putObject(new PutObjectRequest(bucketName, fileName, fileObj));
+        fileObj.delete();
+        return "File uploaded : " + fileName;
     }
 
-    public String readFromS3(String guid) {
 
-        String path = "s3://"+bucketName+"/"+guid+".jpg";
-
-        log.info("Reading image from S3: {}", path);
-
-        Resource resource = resourceLoader.getResource(path);
-
+    public byte[] downloadFile(String fileName) {
+        S3Object s3Object = s3Client.getObject(bucketName, fileName);
+        S3ObjectInputStream inputStream = s3Object.getObjectContent();
         try {
-
-            InputStream inputStream = resource.getInputStream();
-            return new String(Base64.getEncoder().encode(IOUtils.toByteArray(inputStream)), StandardCharsets.UTF_8);
-
-        } catch (Exception e) {
-            return null;
+            byte[] content = IOUtils.toByteArray(inputStream);
+            return content;
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+        return null;
+    }
 
+
+    public String deleteFile(String fileName) {
+        s3Client.deleteObject(bucketName, fileName);
+        return fileName + " removed ...";
+    }
+
+
+    private File convertMultiPartFileToFile(MultipartFile file) {
+        File convertedFile = new File(file.getOriginalFilename());
+        try (FileOutputStream fos = new FileOutputStream(convertedFile)) {
+            fos.write(file.getBytes());
+        } catch (IOException e) {
+            log.error("Error converting multipartFile to file", e);
+        }
+        return convertedFile;
     }
 
 }

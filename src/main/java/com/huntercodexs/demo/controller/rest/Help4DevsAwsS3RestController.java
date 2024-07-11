@@ -1,35 +1,40 @@
 package com.huntercodexs.demo.controller.rest;
 
-import com.huntercodexs.demo.dto.Help4DevsAwsS3RequestDto;
-import com.huntercodexs.demo.dto.Help4DevsAwsS3ResponseDto;
 import com.huntercodexs.demo.services.Help4DevsAwsS3Service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @Slf4j
 @RestController
 public class Help4DevsAwsS3RestController {
 
-	@Autowired
-	Help4DevsAwsS3Service help4DevsAwsS3Service;
+    @Autowired
+    private Help4DevsAwsS3Service help4DevsAwsS3Service;
 
-	@PostMapping(path = "${api.endpoint-add:/service/api/s3/add}")
-	@ResponseBody
-	public ResponseEntity<String> add(@RequestBody Help4DevsAwsS3RequestDto help4DevsAwsS3RequestDto) {
-		log.info("Request received to add image");
-		return new ResponseEntity<>(help4DevsAwsS3Service.saveToS3(help4DevsAwsS3RequestDto), HttpStatus.ACCEPTED);
-	}
+    @PostMapping("/api/s3/upload")
+    public ResponseEntity<String> uploadFile(@RequestParam(value = "file") MultipartFile file) {
+        return new ResponseEntity<>(help4DevsAwsS3Service.uploadFile(file), HttpStatus.OK);
+    }
 
-	@GetMapping(path = "${api.endpoint-read:/service/api/s3/read}/{guid}")
-	@ResponseBody
-	public ResponseEntity<Help4DevsAwsS3ResponseDto> read(@PathVariable String guid) {
-		log.info("Request received to read image: {}", guid);
-		Help4DevsAwsS3ResponseDto help4DevsAwsS3ResponseDto = new Help4DevsAwsS3ResponseDto();
-		help4DevsAwsS3ResponseDto.setFile(help4DevsAwsS3Service.readFromS3(guid));
-		return new ResponseEntity<>(help4DevsAwsS3ResponseDto, HttpStatus.OK);
-	}
+    @GetMapping("/api/s3/download/{fileName}")
+    public ResponseEntity<ByteArrayResource> downloadFile(@PathVariable String fileName) {
+        byte[] data = help4DevsAwsS3Service.downloadFile(fileName);
+        ByteArrayResource resource = new ByteArrayResource(data);
+        return ResponseEntity
+                .ok()
+                .contentLength(data.length)
+                .header("Content-type", "application/octet-stream")
+                .header("Content-disposition", "attachment; filename=\"" + fileName + "\"")
+                .body(resource);
+    }
 
+    @DeleteMapping("/api/s3/delete/{fileName}")
+    public ResponseEntity<String> deleteFile(@PathVariable String fileName) {
+        return new ResponseEntity<>(help4DevsAwsS3Service.deleteFile(fileName), HttpStatus.OK);
+    }
 }
