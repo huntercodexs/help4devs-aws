@@ -1,6 +1,6 @@
 package com.huntercodexs.demo.services;
 
-import com.huntercodexs.demo.dto.AwsS3RequestDto;
+import com.huntercodexs.demo.dto.Help4DevsAwsS3RequestDto;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,15 +26,15 @@ public class Help4DevsAwsS3Service {
     @Autowired
     ResourceLoader resourceLoader;
 
-    public String saveToS3(AwsS3RequestDto awsS3RequestDto) {
+    public String saveToS3(Help4DevsAwsS3RequestDto help4DevsAwsS3RequestDto) {
 
-        if (awsS3RequestDto.getFilename() == null || awsS3RequestDto.getFilename().isEmpty()) {
-            awsS3RequestDto.setFilename(UUID.randomUUID().toString()+".jpg");
+        if (help4DevsAwsS3RequestDto.getFilename() == null || help4DevsAwsS3RequestDto.getFilename().isEmpty()) {
+            help4DevsAwsS3RequestDto.setFilename(UUID.randomUUID().toString()+".jpg");
         }
 
         log.info("Starting save in S3");
 
-        String path = "s3://"+bucketName+"/"+ awsS3RequestDto.getFilename();
+        String path = "s3://"+bucketName+"/"+ help4DevsAwsS3RequestDto.getFilename();
 
         log.info("S3 path: {}", path);
 
@@ -44,10 +44,10 @@ public class Help4DevsAwsS3Service {
 
         try (OutputStream outputStream = writableResource.getOutputStream()) {
 
-            outputStream.write(awsS3RequestDto.getData());
+            outputStream.write(help4DevsAwsS3RequestDto.getData());
 
             log.info("Image saved successfully in the S3");
-            return awsS3RequestDto.getFilename().split("\\.")[0];
+            return help4DevsAwsS3RequestDto.getFilename().split("\\.")[0];
 
         } catch (Exception e) {
             log.error(e.getMessage());

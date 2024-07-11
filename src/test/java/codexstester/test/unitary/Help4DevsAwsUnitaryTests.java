@@ -1,7 +1,7 @@
 package codexstester.test.unitary;
 
 import codexstester.setup.bridge.Help4DevsBridgeTests;
-import com.huntercodexs.demo.dto.AwsS3RequestDto;
+import com.huntercodexs.demo.dto.Help4DevsAwsS3RequestDto;
 import com.huntercodexs.demo.services.Help4DevsAwsS3Service;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +21,10 @@ public class Help4DevsAwsUnitaryTests extends Help4DevsBridgeTests {
 
     @Test
     public void sendToS3Test() throws IOException {
-        AwsS3RequestDto awsS3RequestDto = new AwsS3RequestDto();
-        awsS3RequestDto.setFilename("");
-        awsS3RequestDto.setData(ioFile(path+"/selfie.txt").getBytes(StandardCharsets.UTF_8));
-        System.out.println(help4DevsAwsS3Service.saveToS3(awsS3RequestDto));
+        Help4DevsAwsS3RequestDto help4DevsAwsS3RequestDto = new Help4DevsAwsS3RequestDto();
+        help4DevsAwsS3RequestDto.setFilename("");
+        help4DevsAwsS3RequestDto.setData(ioFile(path+"/selfie.txt").getBytes(StandardCharsets.UTF_8));
+        System.out.println(help4DevsAwsS3Service.saveToS3(help4DevsAwsS3RequestDto));
     }
 
     @Test

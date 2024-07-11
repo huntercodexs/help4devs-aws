@@ -9,6 +9,6 @@ import lombok.*;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class AwsS3ResponseDto {
+public class Help4DevsAwsS3ResponseDto {
     String file;
 }
