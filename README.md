@@ -1,23 +1,6 @@
-# HELP4DEVS AWS JAVA
-A simple repository to serve various functions and methods made in Java
+# HELP4DEVS AWS JAVA LAMBDA
 
-<br /><br />
-
-# Summary
-
-The content that you will find out in this project are:
-
-- <a href="#s3">S3</a>
-- <a href="#lambda">Lambda</a>
-
-<br /><br />
-
-# S3
-
-
-<br /><br />
-
-# LAMBDA
+# How to use
 
 > NOTE: Check the pom.xml before generate the jar file to deploy in the AWS Lambda functions
 

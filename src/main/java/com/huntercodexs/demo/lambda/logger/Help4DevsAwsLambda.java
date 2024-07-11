@@ -1,4 +1,4 @@
-package com.huntercodexs.lambda;
+package com.huntercodexs.demo.lambda.logger;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.LambdaLogger;
@@ -7,8 +7,9 @@ import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
 import org.springframework.http.HttpStatus;
 
-public class Help4DevsAwsLambda implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
-
+public class Help4DevsAwsLambda implements
+        RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent>
+{
     LambdaLogger lambdaLogger;
 
     @Override
