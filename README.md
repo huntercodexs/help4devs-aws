@@ -10,6 +10,7 @@
 
 ### How to use
 
+- Create the bucket in the AWS S3 Service
 - Download and set up the env to run the JDK/JRE 1.8
 - Create one project from https://start.spring.io/
 - Import the dependencies in the pom.xml
@@ -33,7 +34,8 @@ cloud.aws.credentials.accessKey={ACCESS-KEY}
 cloud.aws.credentials.secretKey={SECRET-KEY}
 </pre>
 
-- Create the bucket in the AWS S3 Service
+### Tests
+
 - Run the Unit Tests
 
 <pre>
@@ -43,18 +45,13 @@ src/test/java/codexstester/test/unitary/Help4DevsAwsUnitaryTests.java
 <code>
 
     package codexstester.test.unitary;
-    
+
     import codexstester.setup.bridge.Help4DevsBridgeTests;
-    import com.huntercodexs.demo.dto.Help4DevsAwsS3RequestDto;
     import com.huntercodexs.demo.services.Help4DevsAwsS3Service;
     import org.junit.Test;
     import org.springframework.beans.factory.annotation.Autowired;
     
     import java.io.IOException;
-    import java.nio.charset.StandardCharsets;
-    import java.util.Base64;
-    
-    import static codexstester.setup.datasource.MediaTests.ioFile;
     
     public class Help4DevsAwsUnitaryTests extends Help4DevsBridgeTests {
     
@@ -65,22 +62,14 @@ src/test/java/codexstester/test/unitary/Help4DevsAwsUnitaryTests.java
     
         @Test
         public void sendToS3Test() throws IOException {
-            AwsS3RequestDto help4DevsAwsS3RequestDto = new AwsS3RequestDto();
-            help4DevsAwsS3RequestDto.setFilename("");
-            help4DevsAwsS3RequestDto.setData(ioFile(path+"/selfie.txt").getBytes(StandardCharsets.UTF_8));
-            System.out.println(help4DevsAwsS3Service.saveToS3(help4DevsAwsS3RequestDto));
         }
     
         @Test
         public void readFromS3Test() {
-            String guid = "f4899c1a-5879-42bf-b1d5-0087a2d7aa28";
-            byte[] bytes = Base64.getDecoder().decode(help4DevsAwsS3Service.readFromS3(guid));
+        }
     
-            System.out.println("/*BASE 64*/");
-            System.out.println(new String(bytes, StandardCharsets.UTF_8));
-    
-            System.out.println("/*BINARY*/");
-            System.out.println(new String(Base64.getDecoder().decode(bytes), StandardCharsets.UTF_8));
+        @Test
+        public void deleteFromS3Test() {
         }
     
     }
@@ -89,19 +78,46 @@ src/test/java/codexstester/test/unitary/Help4DevsAwsUnitaryTests.java
 
 - Run the Request REST tests
 
-REQUEST
+UPLOAD REQUEST
 
 <pre>
 POST http://localhost:38500/api/s3/upload {form-data=["file": "{FILE}"]}
+</pre>
+
+DOWNLOAD REQUEST
+
+<pre>
 GET http://localhost:38500/api/s3/download/{filename}
+</pre>
+
+DELETE REQUEST
+
+<pre>
 DELETE http://localhost:38500/api/s3/delete/{filename}
 </pre>
 
-RESPONSE
+UPLOAD RESPONSE
 
 <pre>
-200 OK "File uploaded : 1720721606686_filename.pdf"
-200 OK "File removed : 1720721606686_filename.pdf"
+200 OK {
+    "filename": "c19944b0-2210-4dde-b0bc-e87586558c2a.pdf",
+    "message": "Upload successfully"
+}
+</pre>
+
+DOWNLOAD RESPONSE
+
+<pre>
+200 OK 
+[ BINARY FILE CONTENT ]
+</pre>
+
+DELETE RESPONSE
+<pre>
+200 OK {
+    "filename": "c19944b0-2210-4dde-b0bc-e87586558c2a.pdf",
+    "message": "File removed successfully"
+}
 </pre>
 
 

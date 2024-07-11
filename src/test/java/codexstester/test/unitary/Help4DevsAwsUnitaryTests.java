@@ -16,14 +16,17 @@ public class Help4DevsAwsUnitaryTests extends Help4DevsBridgeTests {
 
     @Test
     public void sendToS3Test() throws IOException {
+
     }
 
     @Test
     public void readFromS3Test() {
+
     }
 
     @Test
     public void deleteFromS3Test() {
+
     }
 
 }
