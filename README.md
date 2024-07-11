@@ -2,7 +2,7 @@
 
 ### Pre Requisites
 
-- Java 8
+- Java 8 / JDK 1.8
 - Spring Boot 2.0.1_RELEASE
 - spring-cloud-starter-aws
 - Properties Details
