@@ -29,7 +29,7 @@ public class Help4DevsAwsUnitaryTests extends Help4DevsBridgeTests {
 
     @Test
     public void readFromS3Test() {
-        String guid = "f4899c1a-5879-42bf-b1d5-0087a2d7aa28";
+        String guid = "3df0fb4e-3947-49b0-ba99-2df25c0b9feb";
         byte[] bytes = Base64.getDecoder().decode(help4DevsAwsS3Service.readFromS3(guid));
 
         System.out.println("/*BASE 64*/");
