@@ -103,5 +103,3 @@ RESPONSE
 200 OK "File uploaded : 1720721606686_filename.pdf"
 200 OK "File removed : 1720721606686_filename.pdf"
 </pre>
-
-
