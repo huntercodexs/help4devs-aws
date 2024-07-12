@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.1.RELEASE</version>
+		<version>3.0.6</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
@@ -19,17 +19,10 @@
 	<description>help4devs-aws</description>
 
 	<properties>
-		<!--JAVA-->
 		<java.version>17</java.version>
-
-		<!--SETTINGS-->
 		<lombok.version.java>1.18.24</lombok.version.java>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-		<!--MAVEN-->
-		<maven.compiler.source>${java.version}</maven.compiler.source>
-		<maven.compiler.target>${java.version}</maven.compiler.target>
 	</properties>
 
 	<dependencies>
@@ -40,16 +33,11 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		<!--AWS LAMBDA-->
+		<!--AWS SDK S3-->
 		<dependency>
 			<groupId>com.amazonaws</groupId>
-			<artifactId>aws-lambda-java-core</artifactId>
-			<version>1.2.3</version>
-		</dependency>
-		<dependency>
-			<groupId>com.amazonaws</groupId>
-			<artifactId>aws-lambda-java-events</artifactId>
-			<version>3.11.3</version>
+			<artifactId>aws-java-sdk-s3</artifactId>
+			<version>1.11.163</version>
 		</dependency>
 
 		<!--LOMBOK-->
