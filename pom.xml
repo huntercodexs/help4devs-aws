@@ -45,6 +45,18 @@
 			<optional>true</optional>
 		</dependency>
 
+		<!--TOOLS-->
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.6</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.5</version>
+		</dependency>
+
 		<!--TESTS: CODEXSTESTER-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

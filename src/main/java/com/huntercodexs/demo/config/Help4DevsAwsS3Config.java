@@ -31,13 +31,10 @@ public class Help4DevsAwsS3Config {
         );
 
         AWSCredentialsProvider credentialsProvider = new ProfileCredentialsProvider();
-        //AWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey);
 
         return AmazonS3ClientBuilder.standard()
                 .withCredentials(credentialsProvider)
-                //.withCredentials(new AWSStaticCredentialsProvider(credentials))
-                //.withEndpointConfiguration(endpointConfig)
-                .withRegion(region)
+                .withEndpointConfiguration(endpointConfig)
                 .build();
 
     }
