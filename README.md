@@ -10,6 +10,8 @@
 
 ### How to use
 
+> NOTE: This S3 implementation convert a binary file to base64 string before save in the bucket
+
 - Create the bucket in the AWS S3 Service
 - Download and set up the env to run the JDK/JRE 1.8
 - Create one project from https://start.spring.io/

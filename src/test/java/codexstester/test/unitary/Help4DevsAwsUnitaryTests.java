@@ -15,7 +15,7 @@ import static codexstester.setup.datasource.MediaTests.ioFile;
 
 public class Help4DevsAwsUnitaryTests extends Help4DevsBridgeTests {
 
-    String filenameS3 = "777c7ebd-04f9-4f6c-9c1a-949f444386ef.txt";
+    String filenameS3 = "5091310c-d833-4368-b3fa-47d976929b62.txt";
     String filepath = "src/test/java/codexstester/setup/datasource";
 
     @Autowired
