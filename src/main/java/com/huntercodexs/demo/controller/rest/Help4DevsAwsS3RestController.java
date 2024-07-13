@@ -19,16 +19,16 @@ public class Help4DevsAwsS3RestController {
 	@PostMapping(path = "${api.endpoint-add:/service/api/s3/add}")
 	@ResponseBody
 	public ResponseEntity<String> add(@RequestBody Help4DevsAwsS3RequestDto help4DevsAwsS3RequestDto) {
-		log.info("Request received to add image");
+		log.info("Request received to add file");
 		return new ResponseEntity<>(help4DevsAwsS3Service.saveToS3(help4DevsAwsS3RequestDto), HttpStatus.ACCEPTED);
 	}
 
 	@GetMapping(path = "${api.endpoint-read:/service/api/s3/read}/{guid}")
 	@ResponseBody
-	public ResponseEntity<Help4DevsAwsS3ResponseDto> read(@PathVariable String guid) {
-		log.info("Request received to read image: {}", guid);
+	public ResponseEntity<Help4DevsAwsS3ResponseDto> read(@PathVariable String filename) {
+		log.info("Request received to read file: {}", filename);
 		Help4DevsAwsS3ResponseDto help4DevsAwsS3ResponseDto = new Help4DevsAwsS3ResponseDto();
-		help4DevsAwsS3ResponseDto.setFile(help4DevsAwsS3Service.readFromS3(guid));
+		help4DevsAwsS3ResponseDto.setFile(help4DevsAwsS3Service.readFromS3(filename));
 		return new ResponseEntity<>(help4DevsAwsS3ResponseDto, HttpStatus.OK);
 	}
 
