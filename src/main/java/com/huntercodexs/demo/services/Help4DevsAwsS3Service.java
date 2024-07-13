@@ -27,23 +27,23 @@ public class Help4DevsAwsS3Service {
     @Autowired
     AmazonS3 s3Client;
 
-    private File convertMultiPartFileToFile(MultipartFile file) {
+    private File convertMultiPartFileToFile(MultipartFile multipartFile) {
 
-        if (file == null || file.getOriginalFilename() == null) {
-            log.error("It is impossible to convert file: {}", file);
-            throw new RuntimeException("It is impossible to convert file: " + file);
+        if (multipartFile == null || multipartFile.getOriginalFilename() == null) {
+            log.error("It is impossible to convert file: {}", multipartFile);
+            throw new RuntimeException("It is impossible to convert file: " + multipartFile);
         }
 
-        File convertedFile = new File(file.getOriginalFilename());
+        File file = new File(multipartFile.getOriginalFilename());
 
-        try (FileOutputStream fos = new FileOutputStream(convertedFile)) {
-            fos.write(file.getBytes());
+        try (FileOutputStream fos = new FileOutputStream(file)) {
+            fos.write(multipartFile.getBytes());
         } catch (IOException e) {
             log.error("Error converting multipartFile to file: {}", e.getMessage());
             throw new RuntimeException("Error converting multipartFile to file " + e.getMessage());
         }
 
-        return convertedFile;
+        return file;
     }
 
     public Help4DevsAwsS3ResponseDto uploadFile(MultipartFile multipartFile) {
