@@ -20,6 +20,7 @@ The content that you will find out in this project are:
 ##### S3
 
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-s3-java17-spring-boot-3.1.0">S3 (Java17 + Spring Boot 3.1.0) - DEPRECATED</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-s3-java17-spring-boot-3.0.6">S3 SDK (Java17 + Spring Boot 3.0.6)</a>
 
 ##### LAMBDA
 
