@@ -1,6 +1,6 @@
 package com.huntercodexs.demo.controller.rest;
 
-import com.huntercodexs.demo.dto.Help4DevsAwsS3ResponseDto;
+import com.huntercodexs.demo.dto.Help4DevsAwsSdkS3ResponseDto;
 import com.huntercodexs.demo.services.Help4DevsAwsSdkS3Service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ public class Help4DevsAwsSdkS3RestController {
     Help4DevsAwsSdkS3Service help4DevsAwsSdkS3Service;
 
     @PostMapping("/api/s3/beta/upload")
-    public ResponseEntity<Help4DevsAwsS3ResponseDto> upload(
+    public ResponseEntity<Help4DevsAwsSdkS3ResponseDto> upload(
             @RequestParam(value = "file") MultipartFile multipartFile
     ) {
         return new ResponseEntity<>(help4DevsAwsSdkS3Service.
@@ -40,7 +40,7 @@ public class Help4DevsAwsSdkS3RestController {
     }
 
     @DeleteMapping("/api/s3/beta/delete/{fileName}")
-    public ResponseEntity<Help4DevsAwsS3ResponseDto> delete(@PathVariable String fileName) {
+    public ResponseEntity<Help4DevsAwsSdkS3ResponseDto> delete(@PathVariable String fileName) {
         return new ResponseEntity<>(help4DevsAwsSdkS3Service.deleteFile(fileName), HttpStatus.OK);
     }
 
