@@ -1,18 +1,14 @@
 package com.huntercodexs.demo.controller.rest;
 
-import com.amazonaws.HttpMethod;
-import com.huntercodexs.demo.dto.Help4DevsAwsS3RequestDto;
 import com.huntercodexs.demo.dto.Help4DevsAwsS3ResponseDto;
 import com.huntercodexs.demo.services.Help4DevsAwsSdkS3Service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.util.UUID;
 
 @Slf4j
 @RestController
@@ -21,52 +17,31 @@ public class Help4DevsAwsSdkS3RestController {
     @Autowired
     Help4DevsAwsSdkS3Service help4DevsAwsSdkS3Service;
 
-    @PostMapping("/api/s3/v1/generator")
-    public ResponseEntity<Help4DevsAwsS3ResponseDto> generator(
-            @RequestParam(value = "fileExtension") String fileExtension,
-            @RequestParam(value = "operation") String operation,
-            @RequestParam(value = "filename") String filenameOverwrite
-    ) {
-        String filename = UUID.randomUUID()+"." + fileExtension;
-
-        if (filenameOverwrite != null && !filenameOverwrite.isEmpty()) {
-            filename = filenameOverwrite;
-        }
-
-        HttpMethod httpMethod = switch (operation) {
-            case "download" -> HttpMethod.GET;
-            case "upload" -> HttpMethod.PUT;
-            case "delete" -> HttpMethod.DELETE;
-            default -> throw new RuntimeException("Invalid HTTP Method");
-        };
-
-        return new ResponseEntity<>(help4DevsAwsSdkS3Service
-                .urlRequestGenerator(filename, httpMethod), HttpStatus.OK);
-    }
-
-    @PostMapping(value = "/api/s3/v1/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping("/api/s3/beta/upload")
     public ResponseEntity<Help4DevsAwsS3ResponseDto> upload(
-            @RequestParam(value = "file") MultipartFile multipartFile,
-            @RequestParam(value = "url") String url
+            @RequestParam(value = "file") MultipartFile multipartFile
     ) {
-        return new ResponseEntity<>(help4DevsAwsSdkS3Service
-                .uploadS3File(multipartFile, url), HttpStatus.OK);
+        return new ResponseEntity<>(help4DevsAwsSdkS3Service.
+                uploadFile(multipartFile), HttpStatus.OK);
     }
 
-    @PostMapping("/api/s3/v1/download")
-    public ResponseEntity<String> download(
-            @RequestBody Help4DevsAwsS3RequestDto help4DevsAwsS3RequestDto
-    ) {
-        return new ResponseEntity<>(help4DevsAwsSdkS3Service
-                .downloadS3File(help4DevsAwsS3RequestDto.getS3url()), HttpStatus.OK);
+    @GetMapping("/api/s3/beta/download/{fileName}")
+    public ResponseEntity<ByteArrayResource> download(@PathVariable String fileName) {
+
+        byte[] data = help4DevsAwsSdkS3Service.downloadFile(fileName);
+        ByteArrayResource resource = new ByteArrayResource(data);
+
+        return ResponseEntity
+                .ok()
+                .contentLength(data.length)
+                .header("Content-type", "application/octet-stream")
+                .header("Content-disposition", "attachment; filename=\"" + fileName + "\"")
+                .body(resource);
     }
 
-    @PostMapping("/api/s3/v1/delete")
-    public ResponseEntity<Help4DevsAwsS3ResponseDto> delete(
-            @RequestBody Help4DevsAwsS3RequestDto help4DevsAwsS3RequestDto
-    ) {
-        return new ResponseEntity<>(help4DevsAwsSdkS3Service
-                .deleteS3File(help4DevsAwsS3RequestDto.getS3url()), HttpStatus.OK);
+    @DeleteMapping("/api/s3/beta/delete/{fileName}")
+    public ResponseEntity<Help4DevsAwsS3ResponseDto> delete(@PathVariable String fileName) {
+        return new ResponseEntity<>(help4DevsAwsSdkS3Service.deleteFile(fileName), HttpStatus.OK);
     }
 
 }
