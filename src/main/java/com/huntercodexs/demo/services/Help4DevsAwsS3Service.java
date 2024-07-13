@@ -19,7 +19,7 @@ import java.util.UUID;
 
 @Slf4j
 @Service
-public class Help4DevsAwsSdkS3Service {
+public class Help4DevsAwsS3Service {
 
     @Value("${aws.s3.bucket.name}")
     String s3BucketName;

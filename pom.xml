@@ -21,7 +21,7 @@
 	<properties>
 		<java.version>17</java.version>
 		<lombok.version.java>1.18.24</lombok.version.java>
-		<!--<spring-cloud.version>Hoxton.SR9</spring-cloud.version>-->
+		<spring-cloud.version>Hoxton.SR9</spring-cloud.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
@@ -35,10 +35,10 @@
 		</dependency>
 
 		<!--SPRING CLOUD/AWS CORE-->
-		<!--<dependency>
+		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-aws</artifactId>
-		</dependency>-->
+		</dependency>
 
 		<!--JAVAXB-->
 		<!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
@@ -54,13 +54,6 @@
 			<artifactId>spring-cloud-starter-aws-s3</artifactId>
 		</dependency>-->
 
-		<!--AWS SDK S3-->
-		<dependency>
-			<groupId>com.amazonaws</groupId>
-			<artifactId>aws-java-sdk-s3</artifactId>
-			<version>1.11.163</version>
-		</dependency>
-
 		<!--LOMBOK-->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -71,7 +64,7 @@
 
 	</dependencies>
 
-	<!--<dependencyManagement>
+	<dependencyManagement>
 		<dependencies>
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
@@ -81,7 +74,7 @@
 				<scope>import</scope>
 			</dependency>
 		</dependencies>
-	</dependencyManagement>-->
+	</dependencyManagement>
 
 	<build>
 		<plugins>
