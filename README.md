@@ -27,4 +27,6 @@ The content that you will find out in this project are:
 
 ### Java 21
 
+##### SQS
+
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sqs-java21-spring-boot-3.2.1">SQS (Java21 + Spring Boot 3.2.1)</a>
