@@ -42,7 +42,8 @@ cloud.aws.credentials.secretKey={KEY}
 </pre>
 
 - Create the bucket in the AWS S3 Service
-- Run the Unit Tests
+
+### Run the Unit Tests
 
 <pre>
 src/test/java/codexstester/test/unitary/Help4DevsAwsUnitaryTests.java
@@ -52,23 +53,23 @@ src/test/java/codexstester/test/unitary/Help4DevsAwsUnitaryTests.java
 
 </code>
 
-- Run the Request REST tests
+### Run the Request REST tests
 
-###### UPLOAD
+#### UPLOAD
 
-REQUEST GENERATOR
+###### REQUEST GENERATOR
 
 <pre>
 POST http://localhost:38500/api/s3/v1/generator?fileExtension=doc&operation=upload&filename=
 </pre>
 
-REQUEST
+###### REQUEST
 
 <pre>
 POST http://localhost:38500/api/s3/v1/upload {"file": {MULTI-PART-FILE}, "url": "aHR0cHM6Ly9zMy1oZWxwNGR..."}
 </pre>
 
-RESPONSE
+###### RESPONSE
 
 <pre>
 200 OK {
@@ -78,41 +79,41 @@ RESPONSE
 }
 </pre>
 
-###### DOWNLOAD
+#### DOWNLOAD
 
-REQUEST GENERATOR
+###### REQUEST GENERATOR
 
 <pre>
 POST http://localhost:38500/api/s3/v1/generator?fileExtension=doc&operation=download&filename=e764523d-de94-4297-b522-c466a68c98ba.doc
 </pre>
 
-REQUEST
+###### REQUEST
 
 <pre>
 POST http://localhost:38500/api/s3/v1/download {"url": "aHR0cHM6Ly9zMy1oZWxwNGR..."}
 </pre>
 
-RESPONSE
+###### RESPONSE
 
 <pre>
 200 OK {BINARY-FILE}
 </pre>
 
-###### DELETE
+#### DELETE
 
-REQUEST GENERATOR
+###### REQUEST GENERATOR
 
 <pre>
 POST http://localhost:38500/api/s3/v1/generator?fileExtension=doc&operation=delete&filename=e764523d-de94-4297-b522-c466a68c98ba.doc
 </pre>
 
-REQUEST
+###### REQUEST
 
 <pre>
 POST http://localhost:38500/api/s3/v1/delete {"url": "aHR0cHM6Ly9zMy1oZWxwNGR..."}
 </pre>
 
-RESPONSE
+###### RESPONSE
 
 <pre>
 200 OK {
