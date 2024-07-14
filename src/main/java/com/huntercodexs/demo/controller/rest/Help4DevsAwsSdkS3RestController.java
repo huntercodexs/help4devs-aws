@@ -21,7 +21,7 @@ public class Help4DevsAwsSdkS3RestController {
     @Autowired
     Help4DevsAwsSdkS3Service help4DevsAwsSdkS3Service;
 
-    @PostMapping("/api/s3/v1/generator")
+    @PostMapping("/api/s3/v21/generator")
     public ResponseEntity<Help4DevsAwsS3ResponseDto> generator(
             @RequestParam(value = "fileExtension") String fileExtension,
             @RequestParam(value = "operation") String operation,
@@ -44,7 +44,7 @@ public class Help4DevsAwsSdkS3RestController {
                 .urlRequestGenerator(filename, httpMethod), HttpStatus.OK);
     }
 
-    @PostMapping(value = "/api/s3/v1/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value = "/api/s3/v21/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<Help4DevsAwsS3ResponseDto> upload(
             @RequestParam(value = "file") MultipartFile multipartFile,
             @RequestParam(value = "url") String url
@@ -53,7 +53,7 @@ public class Help4DevsAwsSdkS3RestController {
                 .uploadS3File(multipartFile, url), HttpStatus.OK);
     }
 
-    @PostMapping("/api/s3/v1/download")
+    @PostMapping("/api/s3/v21/download")
     public ResponseEntity<String> download(
             @RequestBody Help4DevsAwsS3RequestDto help4DevsAwsS3RequestDto
     ) {
@@ -61,7 +61,7 @@ public class Help4DevsAwsSdkS3RestController {
                 .downloadS3File(help4DevsAwsS3RequestDto.getS3url()), HttpStatus.OK);
     }
 
-    @PostMapping("/api/s3/v1/delete")
+    @PostMapping("/api/s3/v21/delete")
     public ResponseEntity<Help4DevsAwsS3ResponseDto> delete(
             @RequestBody Help4DevsAwsS3RequestDto help4DevsAwsS3RequestDto
     ) {

@@ -3,8 +3,8 @@ Legacy
 
 ### Pre Requisites
 
-- Java 17 / JDK17
-- Spring Boot 3.0.6
+- Java 21 / JDK21
+- Spring Boot 3.2.1
 - aws-java-sdk-s3
 - Properties Details
 - Bucket created in the AWS S3
@@ -18,7 +18,7 @@ you must use the HTTP METHOD DELETE, and so on.
 Also in the generator process URL its required to inform the type of the file that wil be sent in the future 
 HTTP request, for example: jpg, gif, png, pdf, doc, etc...
 
-- Download and set up the env to run the JDK/JRE 17
+- Download and set up the env to run the JDK/JRE 21
 - Create one project from https://start.spring.io/
 - Import the dependencies in the pom.xml
 
@@ -27,7 +27,7 @@ HTTP request, for example: jpg, gif, png, pdf, doc, etc...
     <dependency>
         <groupId>com.amazonaws</groupId>
         <artifactId>aws-java-sdk-s3</artifactId>
-        <version>1.11.163</version>
+        <version>1.11.792</version>
     </dependency>
 
 </code>
@@ -61,13 +61,13 @@ src/test/java/codexstester/test/unitary/Help4DevsAwsUnitaryTests.java
 ###### REQUEST GENERATOR
 
 <pre>
-POST http://localhost:38500/api/s3/v1/generator?fileExtension=doc&operation=upload&filename=
+POST http://localhost:38500/api/s3/v21/generator?fileExtension=doc&operation=upload&filename=
 </pre>
 
 ###### REQUEST
 
 <pre>
-POST http://localhost:38500/api/s3/v1/upload {"file": {MULTI-PART-FILE}, "url": "aHR0cHM6Ly9zMy1oZWxwNGR..."}
+POST http://localhost:38500/api/s3/v21/upload {"file": {MULTI-PART-FILE}, "url": "aHR0cHM6Ly9zMy1oZWxwNGR..."}
 </pre>
 
 ###### RESPONSE
@@ -85,13 +85,13 @@ POST http://localhost:38500/api/s3/v1/upload {"file": {MULTI-PART-FILE}, "url": 
 ###### REQUEST GENERATOR
 
 <pre>
-POST http://localhost:38500/api/s3/v1/generator?fileExtension=doc&operation=download&filename=e764523d-de94-4297-b522-c466a68c98ba.doc
+POST http://localhost:38500/api/s3/v21/generator?fileExtension=doc&operation=download&filename=e764523d-de94-4297-b522-c466a68c98ba.doc
 </pre>
 
 ###### REQUEST
 
 <pre>
-POST http://localhost:38500/api/s3/v1/download {"url": "aHR0cHM6Ly9zMy1oZWxwNGR..."}
+POST http://localhost:38500/api/s3/v21/download {"url": "aHR0cHM6Ly9zMy1oZWxwNGR..."}
 </pre>
 
 ###### RESPONSE
@@ -105,13 +105,13 @@ POST http://localhost:38500/api/s3/v1/download {"url": "aHR0cHM6Ly9zMy1oZWxwNGR.
 ###### REQUEST GENERATOR
 
 <pre>
-POST http://localhost:38500/api/s3/v1/generator?fileExtension=doc&operation=delete&filename=e764523d-de94-4297-b522-c466a68c98ba.doc
+POST http://localhost:38500/api/s3/v21/generator?fileExtension=doc&operation=delete&filename=e764523d-de94-4297-b522-c466a68c98ba.doc
 </pre>
 
 ###### REQUEST
 
 <pre>
-POST http://localhost:38500/api/s3/v1/delete {"url": "aHR0cHM6Ly9zMy1oZWxwNGR..."}
+POST http://localhost:38500/api/s3/v21/delete {"url": "aHR0cHM6Ly9zMy1oZWxwNGR..."}
 </pre>
 
 ###### RESPONSE
