@@ -38,15 +38,18 @@
 bucket.name=s3-help4devs-files
 cloud.aws.stack.auto=false
 cloud.aws.region.static=us-east-1
+cloud.aws.endpoint.uri=http://s3.localhost.localstack.cloud:4566/
 </pre>
 
 - Create aws credentials file
 
 <pre>
 [default]
-aws_access_key_id = {KEY}
-aws_secret_access_key = {SECRET}
+aws_access_key_id = test
+aws_secret_access_key = test
 </pre>
+
+> NOTE: The access_key and secret_access_key should be configured as test if the endpoint is pointing to localstack
 
 - Create the bucket in the AWS S3 Service
 
