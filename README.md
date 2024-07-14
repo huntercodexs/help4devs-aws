@@ -3,15 +3,15 @@ Using AWS Credentials
 
 ### Pre Requisites
 
-- Java 17 / JDK17
-- Spring Boot 3.0.6
+- Java 21 / JDK21
+- Spring Boot 3.2.1
 - aws-java-sdk-s3
 - Properties Details
 - Bucket created in the AWS S3
 
 ### How to use
 
-- Download and set up the env to run the JDK/JRE 17
+- Download and set up the env to run the JDK/JRE 21
 - Create one project from https://start.spring.io/
 - Import the dependencies in the pom.xml
 
@@ -62,7 +62,7 @@ src/test/java/codexstester/test/unitary/Help4DevsAwsUnitaryTests.java
 ###### REQUEST
 
 <pre>
-POST http://localhost:38500/api/s3/v2/upload {"file": [MULTI-PART-FILE]}
+POST http://localhost:38500/api/s3/v21/upload {"file": [MULTI-PART-FILE]}
 </pre>
 
 ###### RESPONSE
@@ -79,7 +79,7 @@ POST http://localhost:38500/api/s3/v2/upload {"file": [MULTI-PART-FILE]}
 ###### REQUEST
 
 <pre>
-GET http://localhost:38500/api/s3/v2/download/d6ea14b3-d840-4939-b923-dd60ea43a151.png
+GET http://localhost:38500/api/s3/v21/download/d6ea14b3-d840-4939-b923-dd60ea43a151.png
 </pre>
 
 ###### RESPONSE
@@ -93,7 +93,7 @@ GET http://localhost:38500/api/s3/v2/download/d6ea14b3-d840-4939-b923-dd60ea43a1
 ###### REQUEST
 
 <pre>
-DELETE http://localhost:38500/api/s3/v2/delete/d6ea14b3-d840-4939-b923-dd60ea43a151.png
+DELETE http://localhost:38500/api/s3/v21/delete/d6ea14b3-d840-4939-b923-dd60ea43a151.png
 </pre>
 
 ###### RESPONSE

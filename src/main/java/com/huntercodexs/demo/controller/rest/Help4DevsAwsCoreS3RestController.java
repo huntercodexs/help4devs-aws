@@ -17,7 +17,7 @@ public class Help4DevsAwsCoreS3RestController {
     @Autowired
     Help4DevsAwsCoreS3Service help4DevsAwsCoreS3Service;
 
-    @PostMapping("/api/s3/v2/upload")
+    @PostMapping("/api/s3/v21/upload")
     public ResponseEntity<Help4DevsAwsCoreS3ResponseDto> upload(
             @RequestParam(value = "file") MultipartFile multipartFile
     ) {
@@ -25,7 +25,7 @@ public class Help4DevsAwsCoreS3RestController {
                 uploadFile(multipartFile), HttpStatus.OK);
     }
 
-    @GetMapping("/api/s3/v2/download/{fileName}")
+    @GetMapping("/api/s3/v21/download/{fileName}")
     public ResponseEntity<ByteArrayResource> download(@PathVariable String fileName) {
 
         byte[] data = help4DevsAwsCoreS3Service.downloadFile(fileName);
@@ -39,7 +39,7 @@ public class Help4DevsAwsCoreS3RestController {
                 .body(resource);
     }
 
-    @DeleteMapping("/api/s3/v2/delete/{fileName}")
+    @DeleteMapping("/api/s3/v21/delete/{fileName}")
     public ResponseEntity<Help4DevsAwsCoreS3ResponseDto> delete(@PathVariable String fileName) {
         return new ResponseEntity<>(help4DevsAwsCoreS3Service.deleteFile(fileName), HttpStatus.OK);
     }
