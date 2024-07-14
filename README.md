@@ -3,7 +3,7 @@ Using AWS Credentials
 
 ### Pre Requisites
 
-- Java 17 / JDK17
+- Java 21 / JDK21
 - Spring Boot 3.0.6
 - aws-java-sdk-s3
 - jaxb-api
@@ -12,7 +12,7 @@ Using AWS Credentials
 
 ### How to use
 
-- Download and set up the env to run the JDK/JRE 17
+- Download and set up the env to run the JDK/JRE 21
 - Create one project from https://start.spring.io/
 - Import the dependencies in the pom.xml
 
@@ -30,7 +30,7 @@ Using AWS Credentials
     <dependency>
         <groupId>com.amazonaws</groupId>
         <artifactId>aws-java-sdk-s3</artifactId>
-        <version>1.11.163</version>
+        <version>1.11.792</version>
     </dependency>
 
 </code>
@@ -64,7 +64,7 @@ src/test/java/codexstester/test/unitary/Help4DevsAwsUnitaryTests.java
 ###### REQUEST
 
 <pre>
-POST http://localhost:38500/api/s3/beta/upload {"file": [MULTI-PART-FILE]}
+POST http://localhost:38500/api/s3/v21/upload {"file": [MULTI-PART-FILE]}
 </pre>
 
 ###### RESPONSE
@@ -81,7 +81,7 @@ POST http://localhost:38500/api/s3/beta/upload {"file": [MULTI-PART-FILE]}
 ###### REQUEST
 
 <pre>
-GET http://localhost:38500/api/s3/beta/download/d6ea14b3-d840-4939-b923-dd60ea43a151.png
+GET http://localhost:38500/api/s3/v21/download/d6ea14b3-d840-4939-b923-dd60ea43a151.png
 </pre>
 
 ###### RESPONSE
@@ -95,7 +95,7 @@ GET http://localhost:38500/api/s3/beta/download/d6ea14b3-d840-4939-b923-dd60ea43
 ###### REQUEST
 
 <pre>
-DELETE http://localhost:38500/api/s3/beta/delete/d6ea14b3-d840-4939-b923-dd60ea43a151.png
+DELETE http://localhost:38500/api/s3/v21/delete/d6ea14b3-d840-4939-b923-dd60ea43a151.png
 </pre>
 
 ###### RESPONSE
