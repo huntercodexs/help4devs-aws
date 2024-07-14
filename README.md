@@ -1,14 +1,14 @@
 # HELP4DEVS AWS JAVA S3
 
-> WARNING: Please dont use this branch
+> WARNING: Please don't use this branch
 > - DEPRECATED
 > - DOESN'T WORK
 > - CONTAIN BUG
 
 ### Pre Requisites
 
-- Java 17 / JDK 17
-- Spring Boot 3.0.6
+- Java 21 / JDK 21
+- Spring Boot 3.2.1
 - spring-cloud-starter-aws
 - jaxb-api
 - Properties Details
@@ -16,7 +16,7 @@
 
 ### How to use
 
-- Download and set up the env to run the JDK/JRE 17
+- Download and set up the env to run the JDK/JRE 21
 - Create one project from https://start.spring.io/
 - Import the dependencies in the pom.xml
 
