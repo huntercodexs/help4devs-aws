@@ -4,7 +4,7 @@ Using AWS Credentials
 ### Pre Requisites
 
 - Java 21 / JDK21
-- Spring Boot 3.0.6
+- Spring Boot 3.2.1
 - aws-java-sdk-s3
 - jaxb-api
 - Properties Details
@@ -41,8 +41,14 @@ Using AWS Credentials
 bucket.name=s3-help4devs-files
 cloud.aws.stack.auto=false
 cloud.aws.region.static=us-east-1
-cloud.aws.credentials.accessKey={KEY}
-cloud.aws.credentials.secretKey={KEY}
+</pre>
+
+- Create aws credentials file
+
+<pre>
+[default]
+aws_access_key_id = {KEY}
+aws_secret_access_key = {SECRET}
 </pre>
 
 - Create the bucket in the AWS S3 Service
