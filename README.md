@@ -7,15 +7,15 @@
 
 ### Pre Requisites
 
-- Java 17 / JDK 17
-- Spring Boot 3.1.0
+- Java 21 / JDK 21
+- Spring Boot 3.2.1
 - spring-cloud-starter-aws
 - Properties Details
 - Bucket created in the AWS S3
 
 ### How to use
 
-- Download and set up the env to run the JDK/JRE 17
+- Download and set up the env to run the JDK/JRE 21
 - Create one project from https://start.spring.io/
 - Import the dependencies in the pom.xml
 
@@ -54,7 +54,7 @@ src/test/java/codexstester/test/unitary/Help4DevsAwsUnitaryTests.java
 REQUEST
 
 <pre>
-POST http://localhost:35800/service/api/s3/add {"data": "{CONTENT-FILE-BASE64}", "filename": "filename.ext"}
+POST http://localhost:38500/api/s3/deprecated/upload {"data": "{CONTENT-FILE-BASE64}", "filename": "filename.ext"}
 </pre>
 
 RESPONSE

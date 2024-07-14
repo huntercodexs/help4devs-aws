@@ -16,19 +16,19 @@ public class Help4DevsAwsS3RestController {
 	@Autowired
 	Help4DevsAwsS3Service help4DevsAwsS3Service;
 
-	@PostMapping(path = "${api.endpoint-add:/service/api/s3/add}")
+	@PostMapping(path = "/api/s3/deprecated/upload")
 	@ResponseBody
-	public ResponseEntity<String> add(@RequestBody Help4DevsAwsS3RequestDto help4DevsAwsS3RequestDto) {
-		log.info("Request received to add image");
-		return new ResponseEntity<>(help4DevsAwsS3Service.saveToS3(help4DevsAwsS3RequestDto), HttpStatus.ACCEPTED);
+	public ResponseEntity<String> upload(@RequestBody Help4DevsAwsS3RequestDto help4DevsAwsS3RequestDto) {
+		log.info("Request received to add file");
+		return new ResponseEntity<>(help4DevsAwsS3Service.saveToS3(help4DevsAwsS3RequestDto), HttpStatus.OK);
 	}
 
-	@GetMapping(path = "${api.endpoint-read:/service/api/s3/read}/{guid}")
+	@GetMapping(path = "/api/s3/deprecated/download/{filename}")
 	@ResponseBody
-	public ResponseEntity<Help4DevsAwsS3ResponseDto> read(@PathVariable String guid) {
-		log.info("Request received to read image: {}", guid);
+	public ResponseEntity<Help4DevsAwsS3ResponseDto> download(@PathVariable String filename) {
+		log.info("Request received to read file: {}", filename);
 		Help4DevsAwsS3ResponseDto help4DevsAwsS3ResponseDto = new Help4DevsAwsS3ResponseDto();
-		help4DevsAwsS3ResponseDto.setFile(help4DevsAwsS3Service.readFromS3(guid));
+		help4DevsAwsS3ResponseDto.setFile(help4DevsAwsS3Service.readFromS3(filename));
 		return new ResponseEntity<>(help4DevsAwsS3ResponseDto, HttpStatus.OK);
 	}
 

@@ -14,13 +14,12 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
-import java.util.UUID;
 
 @Slf4j
 @Service
 public class Help4DevsAwsS3Service {
 
-    @Value("${bucket.name}")
+    @Value("${aws.s3.bucket.name}")
     String bucketName;
 
     @Autowired
@@ -29,7 +28,7 @@ public class Help4DevsAwsS3Service {
     public String saveToS3(Help4DevsAwsS3RequestDto help4DevsAwsS3RequestDto) {
 
         if (help4DevsAwsS3RequestDto.getFilename() == null || help4DevsAwsS3RequestDto.getFilename().isEmpty()) {
-            help4DevsAwsS3RequestDto.setFilename(UUID.randomUUID().toString()+".jpg");
+            throw new RuntimeException("Missing filename");
         }
 
         log.info("Starting save in S3");
@@ -56,9 +55,9 @@ public class Help4DevsAwsS3Service {
 
     }
 
-    public String readFromS3(String guid) {
+    public String readFromS3(String filename) {
 
-        String path = "s3://"+bucketName+"/"+guid+".jpg";
+        String path = "s3://"+bucketName+"/"+filename;
 
         log.info("Reading image from S3: {}", path);
 
