@@ -1,4 +1,5 @@
-# HELP4DEVS AWS JAVA S3
+# HELP4DEVS AWS SDK S3 - JAVA
+Legacy
 
 ### Pre Requisites
 
