@@ -1,4 +1,5 @@
-# HELP4DEVS AWS JAVA S3
+# HELP4DEVS AWS S3 - JAVA
+Using AWS Credentials Provider and Endpoint Configuration
 
 ### Pre Requisites
 
@@ -48,7 +49,8 @@ aws_secret_access_key = test
 > is pointing to localstack
 
 - Create the bucket in the AWS S3 Service
-- Run the Unit Tests
+
+### Run the Unit Tests
 
 <pre>
 src/test/java/codexstester/test/unitary/Help4DevsAwsUnitaryTests.java
@@ -113,27 +115,27 @@ src/test/java/codexstester/test/unitary/Help4DevsAwsUnitaryTests.java
 
 </code>
 
-- Run the Request REST tests
+### Run the Request REST tests
 
-UPLOAD REQUEST
+###### UPLOAD REQUEST
 
 <pre>
 POST http://localhost:38500/api/s3/upload {form-data=["file": "{FILE}"]}
 </pre>
 
-DOWNLOAD REQUEST
+###### DOWNLOAD REQUEST
 
 <pre>
 GET http://localhost:38500/api/s3/download/{filename}
 </pre>
 
-DELETE REQUEST
+###### DELETE REQUEST
 
 <pre>
 DELETE http://localhost:38500/api/s3/delete/{filename}
 </pre>
 
-UPLOAD RESPONSE
+###### UPLOAD RESPONSE
 
 <pre>
 200 OK {
@@ -142,14 +144,14 @@ UPLOAD RESPONSE
 }
 </pre>
 
-DOWNLOAD RESPONSE
+###### DOWNLOAD RESPONSE
 
 <pre>
 200 OK 
 [ BINARY FILE CONTENT ]
 </pre>
 
-DELETE RESPONSE
+###### DELETE RESPONSE
 <pre>
 200 OK {
     "filename": "c19944b0-2210-4dde-b0bc-e87586558c2a.pdf",
