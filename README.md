@@ -56,15 +56,30 @@ The content that you will find out in this project are:
 
 #### Java 8
 
+###### STARTER
+
+###### SDK
+
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-sqs-java8-spring-boot-2.0.1-release--demonstration">aws-sdk-sqs-java8-spring-boot-2.0.1-release--demonstration</a>
 
-#### Java 17
+###### CORE
 
+#### Java 17
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/{building}">{building}</a>
+
+###### STARTER
+###### SDK
+###### CORE
 
 #### Java 21
 
+###### STARTER
+
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sqs-java21-spring-boot-3.2.1">aws-sqs-java21-spring-boot-3.2.1</a>
+
+###### SDK
+###### CORE
+
 
 <br />
 <br />
@@ -72,14 +87,26 @@ The content that you will find out in this project are:
 ## AWS LAMBDA
 
 #### Java 8
+
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/{building}">{building}</a>
+
+###### STARTER
+###### SDK
+###### CORE
 
 #### Java 17
 
+###### STARTER
+
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-lambda-java17-spring-boot-2.0.1-release">aws-lambda-java17-spring-boot-2.0.1-release</a>
 
+###### SDK
+###### CORE
+
 #### Java 21
+
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/{building}">{building}</a>
 
-
-
+###### STARTER
+###### SDK
+###### CORE
