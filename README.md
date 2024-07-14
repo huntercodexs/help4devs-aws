@@ -1,4 +1,5 @@
-# HELP4DEVS AWS CODE S3 - JAVA
+# HELP4DEVS AWS CORE S3 - JAVA
+Using AWS Credentials
 
 ### Pre Requisites
 
