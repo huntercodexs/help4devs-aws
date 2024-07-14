@@ -1,4 +1,5 @@
-# HELP4DEVS AWS JAVA S3
+# HELP4DEVS AWS S3 - JAVA
+Legacy
 
 ### Pre Requisites
 
@@ -34,7 +35,8 @@ cloud.aws.credentials.secretKey={SECRET-KEY}
 </pre>
 
 - Create the bucket in the AWS S3 Service
-- Run the Unit Tests
+
+### Run the Unit Tests
 
 <pre>
 src/test/java/codexstester/test/unitary/Help4DevsAwsUnitaryTests.java
@@ -92,15 +94,15 @@ src/test/java/codexstester/test/unitary/Help4DevsAwsUnitaryTests.java
 
 </code>
 
-- Run the Request REST tests
+### Run the Request REST tests
 
-REQUEST
+###### REQUEST
 
 <pre>
 POST http://localhost:35800/service/api/s3/add {"data": "{CONTENT-FILE-BASE64}", "filename": "filename.ext"}
 </pre>
 
-RESPONSE
+###### RESPONSE
 
 <pre>
 202 ACCEPTED {}
