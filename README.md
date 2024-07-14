@@ -55,9 +55,11 @@ The content that you will find out in this project are:
 ## AWS SQS
 
 #### Java 8
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{building}">{building}</a>
+
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-sqs-java8-spring-boot-2.0.1-release--demonstration">aws-sdk-sqs-java8-spring-boot-2.0.1-release--demonstration</a>
 
 #### Java 17
+
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/{building}">{building}</a>
 
 #### Java 21
