@@ -9,6 +9,7 @@ import lombok.*;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class AwsS3ResponseDto {
-    String file;
+public class AwsSqsRequestDto {
+    byte[] data;
+    String filename;
 }

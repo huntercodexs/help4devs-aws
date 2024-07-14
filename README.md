@@ -1,4 +1,4 @@
-# HELP4DEVS AWS JAVA SQS
+# HELP4DEVS AWS SQS JAVA
 
 # How to use
 
