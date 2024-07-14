@@ -5,7 +5,7 @@ import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.model.S3ObjectInputStream;
 import com.amazonaws.util.IOUtils;
-import com.huntercodexs.demo.dto.Help4DevsAwsS3ResponseDto;
+import com.huntercodexs.demo.dto.Help4DevsAwsCoreS3ResponseDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,7 +19,7 @@ import java.util.UUID;
 
 @Slf4j
 @Service
-public class Help4DevsAwsS3Service {
+public class Help4DevsAwsCoreS3Service {
 
     @Value("${aws.s3.bucket.name}")
     String s3BucketName;
@@ -46,7 +46,7 @@ public class Help4DevsAwsS3Service {
         return convertedFile;
     }
 
-    public Help4DevsAwsS3ResponseDto uploadFile(MultipartFile multipartFile) {
+    public Help4DevsAwsCoreS3ResponseDto uploadFile(MultipartFile multipartFile) {
 
         File file = convertMultiPartFileToFile(multipartFile);
         String fileType = multipartFile.getOriginalFilename().split("\\.")[1];
@@ -54,15 +54,15 @@ public class Help4DevsAwsS3Service {
 
         s3Client.putObject(new PutObjectRequest(s3BucketName, fileName, file));
 
-        Help4DevsAwsS3ResponseDto help4DevsAwsS3ResponseDto = new Help4DevsAwsS3ResponseDto();
-        help4DevsAwsS3ResponseDto.setFilename(fileName);
-        help4DevsAwsS3ResponseDto.setMessage("Upload successfully");
+        Help4DevsAwsCoreS3ResponseDto help4DevsAwsCoreS3ResponseDto = new Help4DevsAwsCoreS3ResponseDto();
+        help4DevsAwsCoreS3ResponseDto.setFilename(fileName);
+        help4DevsAwsCoreS3ResponseDto.setMessage("Upload successfully");
 
         if (file.exists() && file.delete()) {
             log.error("File not deleted: {}", file.getAbsolutePath());
         }
 
-        return help4DevsAwsS3ResponseDto;
+        return help4DevsAwsCoreS3ResponseDto;
     }
 
     public byte[] downloadFile(String fileName) {
@@ -79,12 +79,12 @@ public class Help4DevsAwsS3Service {
         return null;
     }
 
-    public Help4DevsAwsS3ResponseDto deleteFile(String fileName) {
+    public Help4DevsAwsCoreS3ResponseDto deleteFile(String fileName) {
         s3Client.deleteObject(s3BucketName, fileName);
-        Help4DevsAwsS3ResponseDto help4DevsAwsS3ResponseDto = new Help4DevsAwsS3ResponseDto();
-        help4DevsAwsS3ResponseDto.setFilename(fileName);
-        help4DevsAwsS3ResponseDto.setMessage("File removed successfully");
-        return help4DevsAwsS3ResponseDto;
+        Help4DevsAwsCoreS3ResponseDto help4DevsAwsCoreS3ResponseDto = new Help4DevsAwsCoreS3ResponseDto();
+        help4DevsAwsCoreS3ResponseDto.setFilename(fileName);
+        help4DevsAwsCoreS3ResponseDto.setMessage("File removed successfully");
+        return help4DevsAwsCoreS3ResponseDto;
     }
 
 }

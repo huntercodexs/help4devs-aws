@@ -1,7 +1,7 @@
 package com.huntercodexs.demo.controller.rest;
 
-import com.huntercodexs.demo.dto.Help4DevsAwsS3ResponseDto;
-import com.huntercodexs.demo.services.Help4DevsAwsS3Service;
+import com.huntercodexs.demo.dto.Help4DevsAwsCoreS3ResponseDto;
+import com.huntercodexs.demo.services.Help4DevsAwsCoreS3Service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
@@ -12,23 +12,23 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Slf4j
 @RestController
-public class Help4DevsAwsS3RestController {
+public class Help4DevsAwsCoreS3RestController {
 
     @Autowired
-    Help4DevsAwsS3Service help4DevsAwsS3Service;
+    Help4DevsAwsCoreS3Service help4DevsAwsCoreS3Service;
 
-    @PostMapping("/api/s3/beta/upload")
-    public ResponseEntity<Help4DevsAwsS3ResponseDto> upload(
+    @PostMapping("/api/s3/v2/upload")
+    public ResponseEntity<Help4DevsAwsCoreS3ResponseDto> upload(
             @RequestParam(value = "file") MultipartFile multipartFile
     ) {
-        return new ResponseEntity<>(help4DevsAwsS3Service.
+        return new ResponseEntity<>(help4DevsAwsCoreS3Service.
                 uploadFile(multipartFile), HttpStatus.OK);
     }
 
-    @GetMapping("/api/s3/beta/download/{fileName}")
+    @GetMapping("/api/s3/v2/download/{fileName}")
     public ResponseEntity<ByteArrayResource> download(@PathVariable String fileName) {
 
-        byte[] data = help4DevsAwsS3Service.downloadFile(fileName);
+        byte[] data = help4DevsAwsCoreS3Service.downloadFile(fileName);
         ByteArrayResource resource = new ByteArrayResource(data);
 
         return ResponseEntity
@@ -39,9 +39,9 @@ public class Help4DevsAwsS3RestController {
                 .body(resource);
     }
 
-    @DeleteMapping("/api/s3/beta/delete/{fileName}")
-    public ResponseEntity<Help4DevsAwsS3ResponseDto> delete(@PathVariable String fileName) {
-        return new ResponseEntity<>(help4DevsAwsS3Service.deleteFile(fileName), HttpStatus.OK);
+    @DeleteMapping("/api/s3/v2/delete/{fileName}")
+    public ResponseEntity<Help4DevsAwsCoreS3ResponseDto> delete(@PathVariable String fileName) {
+        return new ResponseEntity<>(help4DevsAwsCoreS3Service.deleteFile(fileName), HttpStatus.OK);
     }
 
 }

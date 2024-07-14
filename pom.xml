@@ -48,12 +48,6 @@
 			<version>2.3.0</version>
 		</dependency>
 
-		<!--SPRING CLOUD/AWS S3-->
-		<!--<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-aws-s3</artifactId>
-		</dependency>-->
-
 		<!--LOMBOK-->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
