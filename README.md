@@ -1,5 +1,5 @@
 # HELP4DEVS AWS CORE S3 - JAVA
-Using AWS Credentials
+Using AWS Credentials Provider
 
 ### Pre Requisites
 
@@ -39,8 +39,14 @@ Using AWS Credentials
 bucket.name=s3-help4devs-files
 cloud.aws.stack.auto=false
 cloud.aws.region.static=us-east-1
-cloud.aws.credentials.accessKey={KEY}
-cloud.aws.credentials.secretKey={KEY}
+</pre>
+
+- Create aws credentials file
+
+<pre>
+[default]
+aws_access_key_id = {KEY}
+aws_secret_access_key = {SECRET}
 </pre>
 
 - Create the bucket in the AWS S3 Service
