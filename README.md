@@ -1,5 +1,5 @@
 # HELP4DEVS AWS JAVA
-A simple repository to serve various functions and methods made in Java
+A simple repository to show and afford a variety of AWS services and resources using Java
 
 # Summary
 
