@@ -4,7 +4,7 @@ Using AWS Credentials
 ### Pre Requisites
 
 - Java 21 / JDK21
-- Spring Boot 3.0.6
+- Spring Boot 3.2.1
 - aws-java-sdk-s3
 - jaxb-api
 - Properties Details
