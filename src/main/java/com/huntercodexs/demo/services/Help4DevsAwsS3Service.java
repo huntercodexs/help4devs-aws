@@ -1,90 +1,77 @@
 package com.huntercodexs.demo.services;
 
-import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.model.PutObjectRequest;
-import com.amazonaws.services.s3.model.S3Object;
-import com.amazonaws.services.s3.model.S3ObjectInputStream;
 import com.amazonaws.util.IOUtils;
-import com.huntercodexs.demo.dto.Help4DevsAwsS3ResponseDto;
+import com.huntercodexs.demo.dto.Help4DevsAwsS3RequestDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
+import org.springframework.core.io.WritableResource;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.UUID;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 
 @Slf4j
 @Service
 public class Help4DevsAwsS3Service {
 
     @Value("${aws.s3.bucket.name}")
-    String s3BucketName;
+    String bucketName;
 
     @Autowired
-    AmazonS3 s3Client;
+    ResourceLoader resourceLoader;
 
-    private File convertMultiPartFileToFile(MultipartFile file) {
+    public String saveToS3(Help4DevsAwsS3RequestDto help4DevsAwsS3RequestDto) {
 
-        if (file == null || file.getOriginalFilename() == null) {
-            log.error("It is impossible to convert file: {}", file);
-            throw new RuntimeException("It is impossible to convert file: " + file);
+        if (help4DevsAwsS3RequestDto.getFilename() == null || help4DevsAwsS3RequestDto.getFilename().isEmpty()) {
+            throw new RuntimeException("Missing filename");
         }
 
-        File convertedFile = new File(file.getOriginalFilename());
+        log.info("Starting save in S3");
 
-        try (FileOutputStream fos = new FileOutputStream(convertedFile)) {
-            fos.write(file.getBytes());
-        } catch (IOException e) {
-            log.error("Error converting multipartFile to file: {}", e.getMessage());
-            throw new RuntimeException("Error converting multipartFile to file " + e.getMessage());
+        String path = "s3://"+bucketName+"/"+ help4DevsAwsS3RequestDto.getFilename();
+
+        log.info("S3 path: {}", path);
+
+        Resource resource = resourceLoader.getResource(path);
+
+        WritableResource writableResource = (WritableResource) resource;
+
+        try (OutputStream outputStream = writableResource.getOutputStream()) {
+
+            outputStream.write(help4DevsAwsS3RequestDto.getData());
+
+            log.info("Image saved successfully in the S3");
+            return help4DevsAwsS3RequestDto.getFilename().split("\\.")[0];
+
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            return null;
         }
 
-        return convertedFile;
     }
 
-    public Help4DevsAwsS3ResponseDto uploadFile(MultipartFile multipartFile) {
+    public String readFromS3(String filename) {
 
-        File file = convertMultiPartFileToFile(multipartFile);
-        String fileType = multipartFile.getOriginalFilename().split("\\.")[1];
-        String fileName = UUID.randomUUID() + "." + fileType;
+        String path = "s3://"+bucketName+"/"+filename;
 
-        s3Client.putObject(new PutObjectRequest(s3BucketName, fileName, file));
+        log.info("Reading image from S3: {}", path);
 
-        Help4DevsAwsS3ResponseDto help4DevsAwsS3ResponseDto = new Help4DevsAwsS3ResponseDto();
-        help4DevsAwsS3ResponseDto.setFilename(fileName);
-        help4DevsAwsS3ResponseDto.setMessage("Upload successfully");
-
-        if (file.exists() && file.delete()) {
-            log.error("File not deleted: {}", file.getAbsolutePath());
-        }
-
-        return help4DevsAwsS3ResponseDto;
-    }
-
-    public byte[] downloadFile(String fileName) {
-
-        S3Object s3Object = s3Client.getObject(s3BucketName, fileName);
-        S3ObjectInputStream inputStream = s3Object.getObjectContent();
+        Resource resource = resourceLoader.getResource(path);
 
         try {
-            return IOUtils.toByteArray(inputStream);
-        } catch (IOException e) {
-            log.error("Download error: {}", e.getMessage());
+
+            InputStream inputStream = resource.getInputStream();
+            return new String(Base64.getEncoder().encode(IOUtils.toByteArray(inputStream)), StandardCharsets.UTF_8);
+
+        } catch (Exception e) {
+            return null;
         }
 
-        return null;
-    }
-
-    public Help4DevsAwsS3ResponseDto deleteFile(String fileName) {
-        s3Client.deleteObject(s3BucketName, fileName);
-        Help4DevsAwsS3ResponseDto help4DevsAwsS3ResponseDto = new Help4DevsAwsS3ResponseDto();
-        help4DevsAwsS3ResponseDto.setFilename(fileName);
-        help4DevsAwsS3ResponseDto.setMessage("File removed successfully");
-        return help4DevsAwsS3ResponseDto;
     }
 
 }

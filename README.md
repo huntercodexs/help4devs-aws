@@ -1,21 +1,20 @@
 # HELP4DEVS AWS JAVA S3
 
+> WARNING: Please dont use this branch
+> - DEPRECATED
+> - DOESN'T WORK
+> - CONTAIN BUG
+
 ### Pre Requisites
 
-- Java 17 / JDK17
+- Java 17 / JDK 17
 - Spring Boot 3.0.6
-- aws-java-sdk-s3
+- spring-cloud-starter-aws
+- jaxb-api
 - Properties Details
 - Bucket created in the AWS S3
 
 ### How to use
-
-This project uses the "generatePresignedUrl" from AmazonS3 to generate an url before the final request, for example, 
-If you need to send a file for S3 bucket, you must use the HTTP METHOD PUT, if you need to remove the file sent for S3 
-you must use the HTTP METHOD DELETE, and so on.
-
-Also in the generator process URL its required to inform the type of the file that wil be sent in the future 
-HTTP request, for example: jpg, gif, png, pdf, doc, etc...
 
 - Download and set up the env to run the JDK/JRE 17
 - Create one project from https://start.spring.io/
@@ -23,11 +22,16 @@ HTTP request, for example: jpg, gif, png, pdf, doc, etc...
 
 <code>
 
-    <dependency>
-        <groupId>com.amazonaws</groupId>
-        <artifactId>aws-java-sdk-s3</artifactId>
-        <version>1.11.163</version>
-    </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-aws</artifactId>
+        </dependency>
+
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.3.0</version>
+		</dependency>
 
 </code>
 
@@ -57,68 +61,29 @@ src/test/java/codexstester/test/unitary/Help4DevsAwsUnitaryTests.java
 
 #### UPLOAD
 
-###### REQUEST GENERATOR
-
-<pre>
-POST http://localhost:38500/api/s3/v1/generator?fileExtension=doc&operation=upload&filename=
-</pre>
-
 ###### REQUEST
 
 <pre>
-POST http://localhost:38500/api/s3/v1/upload {"file": {MULTI-PART-FILE}, "url": "aHR0cHM6Ly9zMy1oZWxwNGR..."}
+POST http://localhost:38500/api/s3/basic/upload {"data": "{CONTENT-FILE-BASE64}", "filename": "filename.ext"}
 </pre>
 
 ###### RESPONSE
 
 <pre>
-200 OK {
-    "filename": "e764523d-de94-4297-b522-c466a68c98ba.png",
-    "message": "Url Generated successfully",
-    "s3url": "aHR0cHM6Ly9zMy1oZWxwNGR..."
-}
+200 OK {}
 </pre>
 
 #### DOWNLOAD
 
-###### REQUEST GENERATOR
-
-<pre>
-POST http://localhost:38500/api/s3/v1/generator?fileExtension=doc&operation=download&filename=e764523d-de94-4297-b522-c466a68c98ba.doc
-</pre>
-
 ###### REQUEST
 
 <pre>
-POST http://localhost:38500/api/s3/v1/download {"url": "aHR0cHM6Ly9zMy1oZWxwNGR..."}
+GET http://localhost:38500/api/s3/basic/download/{filename}
 </pre>
 
 ###### RESPONSE
 
 <pre>
-200 OK {BINARY-FILE}
-</pre>
-
-#### DELETE
-
-###### REQUEST GENERATOR
-
-<pre>
-POST http://localhost:38500/api/s3/v1/generator?fileExtension=doc&operation=delete&filename=e764523d-de94-4297-b522-c466a68c98ba.doc
-</pre>
-
-###### REQUEST
-
-<pre>
-POST http://localhost:38500/api/s3/v1/delete {"url": "aHR0cHM6Ly9zMy1oZWxwNGR..."}
-</pre>
-
-###### RESPONSE
-
-<pre>
-200 OK {
-    "filename": "e764523d-de94-4297-b522-c466a68c98ba.png",
-    "message": "File deleted successfully"
-}
+200 OK {[BINARY-FILE]}
 </pre>
 

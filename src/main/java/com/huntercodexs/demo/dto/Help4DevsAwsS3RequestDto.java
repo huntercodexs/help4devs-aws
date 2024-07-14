@@ -9,6 +9,7 @@ import lombok.*;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class Help4DevsAwsS3ResponseDto {
-    String file;
+public class Help4DevsAwsS3RequestDto {
+    byte[] data;
+    String filename;
 }

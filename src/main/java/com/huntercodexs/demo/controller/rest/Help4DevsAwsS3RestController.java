@@ -1,14 +1,13 @@
 package com.huntercodexs.demo.controller.rest;
 
+import com.huntercodexs.demo.dto.Help4DevsAwsS3RequestDto;
 import com.huntercodexs.demo.dto.Help4DevsAwsS3ResponseDto;
 import com.huntercodexs.demo.services.Help4DevsAwsS3Service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 @Slf4j
 @RestController
@@ -17,31 +16,20 @@ public class Help4DevsAwsS3RestController {
     @Autowired
     Help4DevsAwsS3Service help4DevsAwsS3Service;
 
-    @PostMapping("/api/s3/beta/upload")
-    public ResponseEntity<Help4DevsAwsS3ResponseDto> upload(
-            @RequestParam(value = "file") MultipartFile multipartFile
-    ) {
-        return new ResponseEntity<>(help4DevsAwsS3Service.
-                uploadFile(multipartFile), HttpStatus.OK);
+    @PostMapping(path = "/api/s3/basic/upload")
+    @ResponseBody
+    public ResponseEntity<String> upload(@RequestBody Help4DevsAwsS3RequestDto help4DevsAwsS3RequestDto) {
+        log.info("Request received to add file");
+        return new ResponseEntity<>(help4DevsAwsS3Service.saveToS3(help4DevsAwsS3RequestDto), HttpStatus.OK);
     }
 
-    @GetMapping("/api/s3/beta/download/{fileName}")
-    public ResponseEntity<ByteArrayResource> download(@PathVariable String fileName) {
-
-        byte[] data = help4DevsAwsS3Service.downloadFile(fileName);
-        ByteArrayResource resource = new ByteArrayResource(data);
-
-        return ResponseEntity
-                .ok()
-                .contentLength(data.length)
-                .header("Content-type", "application/octet-stream")
-                .header("Content-disposition", "attachment; filename=\"" + fileName + "\"")
-                .body(resource);
-    }
-
-    @DeleteMapping("/api/s3/beta/delete/{fileName}")
-    public ResponseEntity<Help4DevsAwsS3ResponseDto> delete(@PathVariable String fileName) {
-        return new ResponseEntity<>(help4DevsAwsS3Service.deleteFile(fileName), HttpStatus.OK);
+    @GetMapping(path = "/api/s3/basic/download/{filename}")
+    @ResponseBody
+    public ResponseEntity<Help4DevsAwsS3ResponseDto> download(@PathVariable String filename) {
+        log.info("Request received to read file: {}", filename);
+        Help4DevsAwsS3ResponseDto help4DevsAwsS3ResponseDto = new Help4DevsAwsS3ResponseDto();
+        help4DevsAwsS3ResponseDto.setFile(help4DevsAwsS3Service.readFromS3(filename));
+        return new ResponseEntity<>(help4DevsAwsS3ResponseDto, HttpStatus.OK);
     }
 
 }
