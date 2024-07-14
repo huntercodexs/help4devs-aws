@@ -1,4 +1,4 @@
-# HELP4DEVS AWS JAVA S3
+# HELP4DEVS AWS S3 - JAVA
 
 > WARNING: Please dont use this branch
 > - DEPRECATED
