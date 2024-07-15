@@ -1,10 +1,10 @@
-# HELP4DEVS AWS SDK SQS - JAVA
+# HELP4DEVS AWS SDK BOM SQS - JAVA
 AWS Credentials
 
 ### Pre Requisites
 
 - Java 8 / JDK 1.8
-- Spring Boot 2.0.1_RELEASE
+- Spring Boot 2.1.6.RELEASE
 - aws-java-sdk
 - Properties Details
 - Bucket created in the AWS SQS
@@ -15,13 +15,51 @@ AWS Credentials
 - Create one project from https://start.spring.io/
 - Import the dependencies in the pom.xml
 
+SDK
+
 <code>
 
     <dependency>
         <groupId>com.amazonaws</groupId>
-        <artifactId>aws-java-sdk</artifactId>
-        <version>1.11.788</version>
+        <artifactId>aws-java-sdk-sqs</artifactId>
     </dependency>
+
+</code>
+
+
+JMS
+
+<code>
+
+    <dependency>
+        <groupId>com.amazonaws</groupId>
+        <artifactId>amazon-sqs-java-messaging-lib</artifactId>
+        <version>1.0.6</version>
+    </dependency>
+
+    <dependency>
+        <groupId>javax.jms</groupId>
+        <artifactId>javax.jms-api</artifactId>
+        <version>2.0</version>
+    </dependency>
+
+</code>
+
+- Create the dependencies management in the pom.xml
+
+<code>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.amazonaws</groupId>
+				<artifactId>aws-java-sdk-bom</artifactId>
+				<version>1.11.379</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 </code>
 
@@ -40,7 +78,7 @@ cloud.aws.credentials.secretKey={SECRET-KEY}
 ### Run the Unit Tests
 
 <pre>
-src/test/java/codexstester/test/unitary/Help4DevsAwsUnitaryTests.java
+src/test/java/codexstester/test/unitary/Help4DevsAwsSdkBomUnitaryTests.java
 </pre>
 
 <code>
@@ -48,52 +86,76 @@ src/test/java/codexstester/test/unitary/Help4DevsAwsUnitaryTests.java
     package codexstester.test.unitary;
     
     import codexstester.setup.bridge.Help4DevsBridgeTests;
-    import com.huntercodexs.demo.service.Help4DevsAwsSdkSqsService;
+    import com.huntercodexs.demo.service.Help4DevsAwsSdkBomSqsService;
     import org.junit.Test;
     import org.springframework.beans.factory.annotation.Autowired;
     
-    import java.io.IOException;
-    
-    public class Help4DevsAwsUnitaryTests extends Help4DevsBridgeTests {
+    public class Help4DevsAwsSdkBomUnitaryTests extends Help4DevsBridgeTests {
     
         @Autowired
-        Help4DevsAwsSdkSqsService help4DevsAwsSdkSqsService;
+        Help4DevsAwsSdkBomSqsService help4DevsAwsSdkBomSqsService;
     
         @Test
-        public void createSqsQueueTest() throws IOException {
-            help4DevsAwsSdkSqsService.createQueue();
+        public void messageProducerTest() {
+            help4DevsAwsSdkBomSqsService.createQueue();
+            help4DevsAwsSdkBomSqsService.messageProducer("test");
         }
     
         @Test
-        public void listSqsQueueTest() throws IOException {
-            help4DevsAwsSdkSqsService.listQueue();
+        public void messageConsumerTest() {
+            help4DevsAwsSdkBomSqsService.messageConsumer("test");
         }
     
         @Test
-        public void deleteSqsQueueTest() throws IOException {
-            help4DevsAwsSdkSqsService.deleteQueue();
+        public void messageEraserTest() {
+            help4DevsAwsSdkBomSqsService.messageEraser("test");
+            help4DevsAwsSdkBomSqsService.deleteQueue();
+        }
+    
+    }
+
+</code>
+
+<pre>
+src/test/java/codexstester/test/unitary/Help4DevsAwsJmsUnitaryTests.java
+</pre>
+
+<code>
+
+    package codexstester.test.unitary;
+    
+    import codexstester.setup.bridge.Help4DevsBridgeTests;
+    import com.huntercodexs.demo.service.Help4DevsAwsJmsSqsService;
+    import org.junit.Test;
+    import org.springframework.beans.factory.annotation.Autowired;
+    
+    import javax.jms.JMSException;
+    
+    public class Help4DevsAwsJmsUnitaryTests extends Help4DevsBridgeTests {
+    
+        @Autowired
+        Help4DevsAwsJmsSqsService help4DevsAwsJmsSqsService;
+    
+        @Test
+        public void messageProducerStandardTest() throws JMSException, InterruptedException {
+            help4DevsAwsJmsSqsService.messageProducerStandard("test");
         }
     
         @Test
-        public void sendMessageTest() {
-            String url = "{URL}";
-            String message = "test";
-            help4DevsAwsSdkSqsService.sendMessage(url, message);
+        public void messageConsumerStandardTest() throws JMSException, InterruptedException {
+            help4DevsAwsJmsSqsService.messageConsumerStandard();
         }
     
         @Test
-        public void readMessageTest() {
-            String url = "{URL}";
-            String message = "test";
-            help4DevsAwsSdkSqsService.readMessage(url, message);
+        public void messageProducerFifoTest() throws JMSException, InterruptedException {
+            help4DevsAwsJmsSqsService.messageProducerFifo("test");
         }
     
         @Test
-        public void cancelMessageTest() {
-            String url = "{URL}";
-            String message = "test";
-            help4DevsAwsSdkSqsService.cancelMessage(url, message);
+        public void messageConsumerFifoTest() throws JMSException, InterruptedException {
+            help4DevsAwsJmsSqsService.messageConsumerFifo();
         }
+    
     }
 
 </code>
