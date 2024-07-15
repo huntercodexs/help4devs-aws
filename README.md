@@ -1,5 +1,5 @@
 # HELP4DEVS AWS SQS - JAVA
-Demonstration
+AWS Credentials
 
 ### Pre Requisites
 
@@ -46,7 +46,7 @@ src/test/java/codexstester/test/unitary/Help4DevsAwsUnitaryTests.java
 <code>
 
     package codexstester.test.unitary;
-
+    
     import codexstester.setup.bridge.Help4DevsBridgeTests;
     import com.huntercodexs.demo.service.Help4DevsAwsSdkSqsService;
     import org.junit.Test;
@@ -61,19 +61,39 @@ src/test/java/codexstester/test/unitary/Help4DevsAwsUnitaryTests.java
     
         @Test
         public void createSqsQueueTest() throws IOException {
-            help4DevsAwsSdkSqsService.create();
+            help4DevsAwsSdkSqsService.createQueue();
         }
     
         @Test
         public void listSqsQueueTest() throws IOException {
-            help4DevsAwsSdkSqsService.list();
+            help4DevsAwsSdkSqsService.listQueue();
         }
     
         @Test
         public void deleteSqsQueueTest() throws IOException {
-            help4DevsAwsSdkSqsService.delete();
+            help4DevsAwsSdkSqsService.deleteQueue();
         }
     
+        @Test
+        public void sendMessageTest() {
+            String url = "https://{URL}";
+            String message = "test";
+            help4DevsAwsSdkSqsService.sendMessage(url, message);
+        }
+    
+        @Test
+        public void readMessageTest() {
+            String url = "https://{URL}";
+            String message = "test";
+            help4DevsAwsSdkSqsService.readMessage(url, message);
+        }
+    
+        @Test
+        public void cancelMessageTest() {
+            String url = "https://{URL}";
+            String message = "test";
+            help4DevsAwsSdkSqsService.cancelMessage(url, message);
+        }
     }
 
 </code>
