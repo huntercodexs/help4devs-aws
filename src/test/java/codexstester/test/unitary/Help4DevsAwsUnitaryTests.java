@@ -29,21 +29,21 @@ public class Help4DevsAwsUnitaryTests extends Help4DevsBridgeTests {
 
     @Test
     public void sendMessageTest() {
-        String url = "{URL-QUEUE}";
+        String url = "https://localhost.localstack.cloud:4566/000000000000/sqs-help4devs-queue-test";
         String message = "test";
         help4DevsAwsSdkSqsService.sendMessage(url, message);
     }
 
     @Test
     public void readMessageTest() {
-        String url = "{URL-QUEUE}";
+        String url = "https://localhost.localstack.cloud:4566/000000000000/sqs-help4devs-queue-test";
         String message = "test";
         help4DevsAwsSdkSqsService.readMessage(url, message);
     }
 
     @Test
     public void cancelMessageTest() {
-        String url = "{URL-QUEUE}";
+        String url = "https://localhost.localstack.cloud:4566/000000000000/sqs-help4devs-queue-test";
         String message = "test";
         help4DevsAwsSdkSqsService.cancelMessage(url, message);
     }
