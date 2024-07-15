@@ -1,11 +1,11 @@
-# HELP4DEVS AWS SQS - JAVA
+# HELP4DEVS AWS SDK SQS - JAVA
 AWS Credentials
 
 ### Pre Requisites
 
 - Java 8 / JDK 1.8
 - Spring Boot 2.0.1_RELEASE
-- spring-cloud-starter-aws
+- aws-java-sdk
 - Properties Details
 - Bucket created in the AWS SQS
 
