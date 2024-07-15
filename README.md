@@ -60,7 +60,9 @@ The content that you will find out in this project are:
 
 ###### SDK
 
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-sqs-java8-spring-boot-2.0.1-release--demonstration">aws-sdk-sqs-java8-spring-boot-2.0.1-release--demonstration</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-sqs-java8-spring-boot-2.0.1-release--aws-credentials">aws-sdk-sqs-java8-spring-boot-2.0.1-release--aws-credentials</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-sqs-java8-spring-boot-2.0.1-release--aws-credentials-provider">aws-sdk-sqs-java8-spring-boot-2.0.1-release--aws-credentials-provider</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-sqs-java8-spring-boot-2.0.1-release--aws-credentials-provider--endpoint-config">aws-sdk-sqs-java8-spring-boot-2.0.1-release--aws-credentials-provider--endpoint-config</a>
 
 ###### CORE
 
