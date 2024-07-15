@@ -1,11 +1,13 @@
-# HELP4DEVS AWS SDK BOM SQS - JAVA
-AWS Credentials
+# HELP4DEVS AWS SDK BOM JMS SQS - JAVA
+AWS Credentials Provider
 
 ### Pre Requisites
 
 - Java 8 / JDK 1.8
 - Spring Boot 2.1.6.RELEASE
-- aws-java-sdk
+- aws-java-sdk-sqs
+- amazon-sqs-java-messaging-lib
+- javax.jms-api
 - Properties Details
 - Bucket created in the AWS SQS
 
@@ -69,8 +71,14 @@ JMS
 bucket.name=s3-help4devs-files
 cloud.aws.stack.auto=false
 cloud.aws.region.static=us-east-1
-cloud.aws.credentials.accessKey={ACCESS-KEY}
-cloud.aws.credentials.secretKey={SECRET-KEY}
+</pre>
+
+- Create aws credentials file
+
+<pre>
+[default]
+aws_access_key_id = {KEY}
+aws_secret_access_key = {SECRET}
 </pre>
 
 - Create the bucket in the AWS Sqs Service
