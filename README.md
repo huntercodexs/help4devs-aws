@@ -1,11 +1,11 @@
-# HELP4DEVS AWS SQS - JAVA
-AWS Credentials
+# HELP4DEVS AWS SDK SQS - JAVA
+AWS Credentials Provider
 
 ### Pre Requisites
 
 - Java 8 / JDK 1.8
 - Spring Boot 2.0.1_RELEASE
-- spring-cloud-starter-aws
+- aws-java-sdk
 - Properties Details
 - Bucket created in the AWS SQS
 
@@ -31,8 +31,18 @@ AWS Credentials
 bucket.name=s3-help4devs-files
 cloud.aws.stack.auto=false
 cloud.aws.region.static=us-east-1
-cloud.aws.credentials.accessKey={ACCESS-KEY}
-cloud.aws.credentials.secretKey={SECRET-KEY}
+</pre>
+
+- Create aws credentials file
+
+<pre>
+vi ~/.aws/credentials
+</pre>
+
+<pre>
+[default]
+aws_access_key_id = {KEY}
+aws_secret_access_key = {SECRET}
 </pre>
 
 - Create the bucket in the AWS Sqs Service
