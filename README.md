@@ -86,21 +86,21 @@ src/test/java/codexstester/test/unitary/Help4DevsAwsUnitaryTests.java
     
         @Test
         public void sendMessageTest() {
-            String url = "{URL}";
+            String url = "{URL-QUEUE}";
             String message = "test";
             help4DevsAwsSdkSqsService.sendMessage(url, message);
         }
     
         @Test
         public void readMessageTest() {
-            String url = "{URL}";
+            String url = "{URL-QUEUE}";
             String message = "test";
             help4DevsAwsSdkSqsService.readMessage(url, message);
         }
     
         @Test
         public void cancelMessageTest() {
-            String url = "{URL}";
+            String url = "{URL-QUEUE}";
             String message = "test";
             help4DevsAwsSdkSqsService.cancelMessage(url, message);
         }
