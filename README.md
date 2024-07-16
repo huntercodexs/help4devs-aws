@@ -1,13 +1,15 @@
-# HELP4DEVS AWS SDK BOM SQS - JAVA
-AWS Credentials
+# HELP4DEVS AWS CORE SQS - JAVA
+AWS Credentials Provider and Endpoint configuration
 
 ### Pre Requisites
 
 - Java 8 / JDK 1.8
-- Spring Boot 2.1.6.RELEASE
-- aws-java-sdk
+- Spring Boot 2.3.1.RELEASE
+- spring-cloud-starter-aws
+- spring-cloud-starter-aws-messaging
 - Properties Details
-- Bucket created in the AWS SQS
+
+> IMPORTANT: Queue created in the AWS SQS before running this project
 
 ### How to use
 
@@ -15,33 +17,17 @@ AWS Credentials
 - Create one project from https://start.spring.io/
 - Import the dependencies in the pom.xml
 
-SDK
-
 <code>
 
-    <dependency>
-        <groupId>com.amazonaws</groupId>
-        <artifactId>aws-java-sdk-sqs</artifactId>
-    </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-aws</artifactId>
+        </dependency>
 
-</code>
-
-
-JMS
-
-<code>
-
-    <dependency>
-        <groupId>com.amazonaws</groupId>
-        <artifactId>amazon-sqs-java-messaging-lib</artifactId>
-        <version>1.0.6</version>
-    </dependency>
-
-    <dependency>
-        <groupId>javax.jms</groupId>
-        <artifactId>javax.jms-api</artifactId>
-        <version>2.0</version>
-    </dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-aws-messaging</artifactId>
+		</dependency>
 
 </code>
 
@@ -52,9 +38,9 @@ JMS
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>com.amazonaws</groupId>
-				<artifactId>aws-java-sdk-bom</artifactId>
-				<version>1.11.379</version>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Hoxton.SR6</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -66,11 +52,11 @@ JMS
 - Create the properties in the application.properties file
 
 <pre>
-bucket.name=s3-help4devs-files
+cloud.aws.account-id={ACCOUNT-ID}
+cloud.aws.queue.name={QUEUE-NAME}
 cloud.aws.stack.auto=false
-cloud.aws.region.static=us-east-1
-cloud.aws.credentials.accessKey={ACCESS-KEY}
-cloud.aws.credentials.secretKey={SECRET-KEY}
+cloud.aws.region.static={REGION}
+cloud.aws.endpoint.uri=https://localhost.localstack.cloud:4566/ or http://localhost:4566
 </pre>
 
 - Create the bucket in the AWS Sqs Service
@@ -78,7 +64,7 @@ cloud.aws.credentials.secretKey={SECRET-KEY}
 ### Run the Unit Tests
 
 <pre>
-src/test/java/codexstester/test/unitary/Help4DevsAwsSdkBomUnitaryTests.java
+src/test/java/codexstester/test/unitary/Help4DevsAwsCoreSqsUnitaryTests.java
 </pre>
 
 <code>
@@ -86,74 +72,18 @@ src/test/java/codexstester/test/unitary/Help4DevsAwsSdkBomUnitaryTests.java
     package codexstester.test.unitary;
     
     import codexstester.setup.bridge.Help4DevsBridgeTests;
-    import com.huntercodexs.demo.service.Help4DevsAwsSdkBomSqsService;
+    import com.huntercodexs.demo.service.Help4DevsAwsCoreSqsService;
     import org.junit.Test;
     import org.springframework.beans.factory.annotation.Autowired;
     
-    public class Help4DevsAwsSdkBomUnitaryTests extends Help4DevsBridgeTests {
+    public class Help4DevsAwsCoreSqsUnitaryTests extends Help4DevsBridgeTests {
     
         @Autowired
-        Help4DevsAwsSdkBomSqsService help4DevsAwsSdkBomSqsService;
+        Help4DevsAwsCoreSqsService help4DevsAwsCoreSqsService;
     
         @Test
-        public void messageProducerTest() {
-            help4DevsAwsSdkBomSqsService.createQueue();
-            help4DevsAwsSdkBomSqsService.messageProducer("test");
-        }
-    
-        @Test
-        public void messageConsumerTest() {
-            help4DevsAwsSdkBomSqsService.messageConsumer("test");
-        }
-    
-        @Test
-        public void messageEraserTest() {
-            help4DevsAwsSdkBomSqsService.messageEraser("test");
-            help4DevsAwsSdkBomSqsService.deleteQueue();
-        }
-    
-    }
-
-</code>
-
-<pre>
-src/test/java/codexstester/test/unitary/Help4DevsAwsJmsUnitaryTests.java
-</pre>
-
-<code>
-
-    package codexstester.test.unitary;
-    
-    import codexstester.setup.bridge.Help4DevsBridgeTests;
-    import com.huntercodexs.demo.service.Help4DevsAwsJmsSqsService;
-    import org.junit.Test;
-    import org.springframework.beans.factory.annotation.Autowired;
-    
-    import javax.jms.JMSException;
-    
-    public class Help4DevsAwsJmsUnitaryTests extends Help4DevsBridgeTests {
-    
-        @Autowired
-        Help4DevsAwsJmsSqsService help4DevsAwsJmsSqsService;
-    
-        @Test
-        public void messageProducerStandardTest() throws JMSException, InterruptedException {
-            help4DevsAwsJmsSqsService.messageProducerStandard("test");
-        }
-    
-        @Test
-        public void messageConsumerStandardTest() throws JMSException, InterruptedException {
-            help4DevsAwsJmsSqsService.messageConsumerStandard();
-        }
-    
-        @Test
-        public void messageProducerFifoTest() throws JMSException, InterruptedException {
-            help4DevsAwsJmsSqsService.messageProducerFifo("test");
-        }
-    
-        @Test
-        public void messageConsumerFifoTest() throws JMSException, InterruptedException {
-            help4DevsAwsJmsSqsService.messageConsumerFifo();
+        public void messagePublisherTest() {
+            help4DevsAwsCoreSqsService.messagePublisher("test");
         }
     
     }
