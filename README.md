@@ -1,4 +1,4 @@
-# HELP4DEVS AWS CORE SQS - JAVA
+# HELP4DEVS AWS SQS - JAVA
 AWS Credentials Provider and Endpoint configuration
 
 ### Pre Requisites
