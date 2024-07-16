@@ -43,16 +43,16 @@ The content that you will find out in this project are:
 
 ###### spring.cloud.aws.starter
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-s3-java21-spring-boot-3.2.1--deprecated">aws-s3-java21-spring-boot-3.2.1--deprecated</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-s3-java21-spring-boot-3.2.1--deprecated">aws-s3-java21-spring-boot-3.2.1--deprecated</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-s3-java21-spring-boot-3.2.1--deprecated--v2">aws-s3-java21-spring-boot-3.2.1--deprecated--v2</a>
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-s3-java21-spring-boot-3.2.1--aws-credentials">aws-s3-java21-spring-boot-3.2.1--aws-credentials</a>
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-s3-java21-spring-boot-3.2.1--aws-credentials-provider">aws-s3-java21-spring-boot-3.2.1--aws-credentials-provider</a>
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-s3-java21-spring-boot-3.2.1--aws-credentials-provider--endpoint-config">aws-s3-java21-spring-boot-3.2.1--aws-credentials-provider--endpoint-config</a>
 
 ###### aws.java.sdk
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-s3-java21-spring-boot-3.2.1--url-generator">aws-sdk-s3-java21-spring-boot-3.2.1--url-generator</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-s3-java21-spring-boot-3.21--aws-credentials">aws-sdk-s3-java21-spring-boot-3.21--aws-credentials</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-s3-java21-spring-boot-3.21--aws-credentials-provider">aws-sdk-s3-java21-spring-boot-3.21--aws-credentials-provider</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-s3-java21-spring-boot-3.21--aws-credentials-provider--endpoint-config">aws-sdk-s3-java21-spring-boot-3.21--aws-credentials-provider--endpoint-config</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-s3-java21-spring-boot-3.2.1--aws-credentials">aws-sdk-s3-java21-spring-boot-3.2.1--aws-credentials</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-s3-java21-spring-boot-3.2.1--aws-credentials-provider">aws-sdk-s3-java21-spring-boot-3.2.1--aws-credentials-provider</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-s3-java21-spring-boot-3.2.1--aws-credentials-provider--endpoint-config">aws-sdk-s3-java21-spring-boot-3.2.1--aws-credentials-provider--endpoint-config</a>
 
 ###### spring.cloud.aws.starter (Core)
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/{unavailable}">{unavailable}</a>
