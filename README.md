@@ -25,10 +25,10 @@ The content that you will find out in this project are:
 
 ###### spring.cloud.aws.starter
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-s3-java17-spring-boot-3.1.0--deprecated">aws-s3-java17-spring-boot-3.1.0--deprecated</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-core-s3-java17-spring-boot-3.0.6--deprecated">aws-core-s3-java17-spring-boot-3.0.6--deprecated</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-core-s3-java17-spring-boot-3.0.6--aws-credentials">aws-core-s3-java17-spring-boot-3.0.6--aws-credentials</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-core-s3-java17-spring-boot-3.0.6--aws-credentials-provider">aws-core-s3-java17-spring-boot-3.0.6--aws-credentials-provider</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-core-s3-java17-spring-boot-3.0.6--aws-credentials-provider--endpoint-config">aws-core-s3-java17-spring-boot-3.0.6--aws-credentials-provider--endpoint-config</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-s3-java17-spring-boot-3.0.6--deprecated">aws-s3-java17-spring-boot-3.0.6--deprecated</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-s3-java17-spring-boot-3.0.6--aws-credentials">aws-s3-java17-spring-boot-3.0.6--aws-credentials</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-s3-java17-spring-boot-3.0.6--aws-credentials-provider">aws-s3-java17-spring-boot-3.0.6--aws-credentials-provider</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-s3-java17-spring-boot-3.0.6--aws-credentials-provider--endpoint-config">aws-s3-java17-spring-boot-3.0.6--aws-credentials-provider--endpoint-config</a>
 
 ###### aws.java.sdk
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-s3-java17-spring-boot-3.0.6--url-generator">aws-sdk-s3-java17-spring-boot-3.0.6--url-generator</a>
