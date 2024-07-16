@@ -1,6 +1,6 @@
 # HELP4DEVS AWS S3 - JAVA
 
-> WARNING: Please dont use this branch
+> WARNING: Please don't use this branch
 > - DEPRECATED
 > - BUG
 > - DOESN'T WORK
