@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
 @Configuration
-public class Help4DevsAwsCoreSqsConfig {
+public class Help4DevsAwsSqsConfig {
 
     @Value("${cloud.aws.account-id}")
     String accountId;
