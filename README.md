@@ -15,6 +15,12 @@ The content that you will find out in this project are:
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-s3-java8-spring-boot-2.3.7-release--aws-credentials-provider">aws-s3-java8-spring-boot-2.3.7-release--aws-credentials-provider</a>
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-s3-java8-spring-boot-2.3.7-release--aws-credentials-provider--endpoint-config">aws-s3-java8-spring-boot-2.3.7-release--aws-credentials-provider--endpoint-config</a>
 
+###### AWS JAVA SDK
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{unavailable}">{unavailable}</a>
+
+###### SPRING CLOUD AWS CORE
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{unavailable}">{unavailable}</a>
+
 ### JAVA 17
 
 ###### SPRING CLOUD STARTER AWS
