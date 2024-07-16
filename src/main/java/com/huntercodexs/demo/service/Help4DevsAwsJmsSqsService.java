@@ -47,6 +47,8 @@ public class Help4DevsAwsJmsSqsService {
         Map<String, String> queueAttributes = new HashMap<>();
         queueAttributes.put(String.valueOf(QueueAttributeName.FifoQueue), "true");
         queueAttributes.put(String.valueOf(QueueAttributeName.ContentBasedDeduplication), "true");
+        queueAttributes.put("DeduplicationScope", "messageGroup");
+        queueAttributes.put("FifoThroughputLimit", "perMessageGroupId");
 
         CreateQueueRequest createQueueRequest = new CreateQueueRequest();
         createQueueRequest
