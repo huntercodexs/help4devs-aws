@@ -59,12 +59,24 @@ cloud.aws.region.static={REGION}
 cloud.aws.endpoint.uri=https://localhost.localstack.cloud:4566/ or http://localhost:4566
 </pre>
 
-- Create the bucket in the AWS Sqs Service
+- Create aws credentials file
+
+<pre>
+vi ~/.aws/credentials
+</pre>
+
+<pre>
+[default]
+aws_access_key_id = test
+aws_secret_access_key = test
+</pre>
+
+> NOTE: The access_key and secret_access_key should be configured as test if the endpoint is pointing to localstack
 
 ### Run the Unit Tests
 
 <pre>
-src/test/java/codexstester/test/unitary/Help4DevsAwsCoreSqsUnitaryTests.java
+src/test/java/codexstester/test/unitary/Help4DevsAwsSqsUnitaryTests.java
 </pre>
 
 <code>
@@ -72,18 +84,18 @@ src/test/java/codexstester/test/unitary/Help4DevsAwsCoreSqsUnitaryTests.java
     package codexstester.test.unitary;
     
     import codexstester.setup.bridge.Help4DevsBridgeTests;
-    import com.huntercodexs.demo.service.Help4DevsAwsCoreSqsService;
+    import com.huntercodexs.demo.service.Help4DevsAwsSqsService;
     import org.junit.Test;
     import org.springframework.beans.factory.annotation.Autowired;
     
-    public class Help4DevsAwsCoreSqsUnitaryTests extends Help4DevsBridgeTests {
+    public class Help4DevsAwsSqsUnitaryTests extends Help4DevsBridgeTests {
     
         @Autowired
-        Help4DevsAwsCoreSqsService help4DevsAwsCoreSqsService;
+        Help4DevsAwsSqsService help4DevsAwsSqsService;
     
         @Test
         public void messagePublisherTest() {
-            help4DevsAwsCoreSqsService.messagePublisher("test");
+            help4DevsAwsSqsService.messagePublisher("test");
         }
     
     }

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-public class Help4DevsAwsCoreSqsService {
+public class Help4DevsAwsSqsService {
 
     @Autowired
     QueueMessagingTemplate queueMessagingTemplate;
