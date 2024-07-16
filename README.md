@@ -3,8 +3,8 @@ AWS Credentials
 
 ### Pre Requisites
 
-- Java 8 / JDK 1.8
-- Spring Boot 2.3.1.RELEASE
+- Java 11 / JDK 11
+- Spring Boot 2.3.4.RELEASE
 - spring-cloud-starter-aws
 - spring-cloud-starter-aws-messaging
 - Properties Details
@@ -13,7 +13,7 @@ AWS Credentials
 
 ### How to use
 
-- Download and set up the env to run the JDK/JRE 1.8
+- Download and set up the env to run the JDK/JRE 11
 - Create one project from https://start.spring.io/
 - Import the dependencies in the pom.xml
 
@@ -59,6 +59,8 @@ cloud.aws.region.static={REGION}
 cloud.aws.credentials.accessKey={ACCESS-KEY}
 cloud.aws.credentials.secretKey={SECRET-KEY}
 </pre>
+
+> IMPORTANT: Inform correctly all information above
 
 ### Run the Unit Tests
 
@@ -153,4 +155,16 @@ To enable high throughput for FIFO queues, do the following:
 If you set these attributes to anything other than the values shown for enabling high throughput, normal throughput is in effect and deduplication occurs as specified. For information on throughput quotas, see Quotas related to messages in the Amazon SQS Developer Guide.
 </pre>
 
+### WARNING
+
+> NOTE: At this moment there is one issue in the project environment that not
+> was fixed yet, maybe in the future it will be fixed
+
+<pre>
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.codehaus.groovy.reflection.CachedClass (file:/home/jereelton/.m2/repository/org/codehaus/groovy/groovy/2.5.13/groovy-2.5.13.jar) to method java.lang.Object.finalize()
+WARNING: Please consider reporting this to the maintainers of org.codehaus.groovy.reflection.CachedClass
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+</pre>
 
