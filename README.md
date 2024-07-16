@@ -57,7 +57,9 @@ The content that you will find out in this project are:
 ### JAVA 8
 
 ###### STARTER
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{unavailable}">{unavailable}</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sqs-java8-spring-boot-2.3.1-release--aws-credentials">aws-sqs-java8-spring-boot-2.3.1-release--aws-credentials</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sqs-java8-spring-boot-2.3.1-release--aws-credentials-provider">aws-sqs-java8-spring-boot-2.3.1-release--aws-credentials-provider</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sqs-java8-spring-boot-2.3.1-release--aws-credentials-provider--endpoint-config">aws-sqs-java8-spring-boot-2.3.1-release--aws-credentials-provider--endpoint-config</a>
 
 ###### SDK
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-sqs-java8-spring-boot-2.0.1-release--aws-credentials">aws-sdk-sqs-java8-spring-boot-2.0.1-release--aws-credentials</a>
