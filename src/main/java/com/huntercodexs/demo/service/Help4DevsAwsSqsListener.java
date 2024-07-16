@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-public class Help4DevsAwsCoreSqsListener {
+public class Help4DevsAwsSqsListener {
 
     @SqsListener("${cloud.aws.queue.name}")
     public void messageConsumer(String message)  {
