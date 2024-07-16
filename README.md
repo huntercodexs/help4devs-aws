@@ -1,5 +1,5 @@
 # HELP4DEVS AWS JAVA
-A simple repository to show and afford a variety of AWS services and resources using Java
+A simple repository to show and afford a variety of AWS services and resources using JAVA
 
 # Summary
 
@@ -7,7 +7,7 @@ The content that you will find out in this project are:
 
 ## AWS S3
 
-#### Java 8
+### JAVA 8
 
 ###### STARTER
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-s3-java8-spring-boot-2.0.1-release">aws-s3-java8-spring-boot-2.0.1-release</a>
@@ -15,7 +15,7 @@ The content that you will find out in this project are:
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-s3-java8-spring-boot-2.3.7-release--aws-credentials-provider">aws-s3-java8-spring-boot-2.3.7-release--aws-credentials-provider</a>
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-s3-java8-spring-boot-2.3.7-release--aws-credentials-provider--endpoint-config">aws-s3-java8-spring-boot-2.3.7-release--aws-credentials-provider--endpoint-config</a>
 
-#### Java 17
+### JAVA 17
 
 ###### STARTER
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-s3-java17-spring-boot-3.1.0--deprecated">aws-s3-java17-spring-boot-3.1.0--deprecated</a>
@@ -32,7 +32,7 @@ The content that you will find out in this project are:
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-core-s3-java17-spring-boot-3.0.6--aws-credentials-provider">aws-core-s3-java17-spring-boot-3.0.6--aws-credentials-provider</a>
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-core-s3-java17-spring-boot-3.0.6--aws-credentials-provider--endpoint-config">aws-core-s3-java17-spring-boot-3.0.6--aws-credentials-provider--endpoint-config</a>
 
-#### Java 21
+### JAVA 21
 
 ###### STARTER
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-s3-java21-spring-boot-3.2.1--deprecated">aws-s3-java21-spring-boot-3.2.1--deprecated</a>
@@ -54,67 +54,80 @@ The content that you will find out in this project are:
 
 ## AWS SQS
 
-#### Java 8
+### JAVA 8
 
 ###### STARTER
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{building}">{building}</a>
 
 ###### SDK
-
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-sqs-java8-spring-boot-2.0.1-release--aws-credentials">aws-sdk-sqs-java8-spring-boot-2.0.1-release--aws-credentials</a>
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-sqs-java8-spring-boot-2.0.1-release--aws-credentials-provider">aws-sdk-sqs-java8-spring-boot-2.0.1-release--aws-credentials-provider</a>
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-sqs-java8-spring-boot-2.0.1-release--aws-credentials-provider--endpoint-config">aws-sdk-sqs-java8-spring-boot-2.0.1-release--aws-credentials-provider--endpoint-config</a>
 
 ###### SDK BOM + JMS
-
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-bom-jms-sqs-java8-spring-boot-2.1.6-release--aws-credentials">aws-sdk-bom-jms-sqs-java8-spring-boot-2.1.6-release--aws-credentials</a>
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-bom-jms-sqs-java8-spring-boot-2.1.6-release--aws-credentials-provider">aws-sdk-bom-jms-sqs-java8-spring-boot-2.1.6-release--aws-credentials-provider</a>
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-bom-jms-sqs-java8-spring-boot-2.1.6-release--aws-credentials-provider--endpoint-config">aws-sdk-bom-jms-sqs-java8-spring-boot-2.1.6-release--aws-credentials-provider--endpoint-config</a>
 
 ###### CORE
-
-#### Java 17
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/{building}">{building}</a>
 
+### JAVA 17
+
 ###### STARTER
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{building}">{building}</a>
+
 ###### SDK
-###### CORE
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{building}">{building}</a>
 
-#### Java 21
+###### CORE
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{building}">{building}</a>
+
+### JAVA 21
 
 ###### STARTER
-
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sqs-java21-spring-boot-3.2.1">aws-sqs-java21-spring-boot-3.2.1</a>
 
 ###### SDK
-###### CORE
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{building}">{building}</a>
 
+###### CORE
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{building}">{building}</a>
 
 <br />
 <br />
 
 ## AWS LAMBDA
 
-#### Java 8
+### JAVA 8
 
+###### STARTER
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/{building}">{building}</a>
 
-###### STARTER
 ###### SDK
-###### CORE
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{building}">{building}</a>
 
-#### Java 17
+###### CORE
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{building}">{building}</a>
+
+### JAVA 17
 
 ###### STARTER
-
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-lambda-java17-spring-boot-2.0.1-release">aws-lambda-java17-spring-boot-2.0.1-release</a>
 
 ###### SDK
-###### CORE
-
-#### Java 21
-
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/{building}">{building}</a>
 
-###### STARTER
-###### SDK
 ###### CORE
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{building}">{building}</a>
+
+### JAVA 21
+
+###### STARTER
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{building}">{building}</a>
+
+###### SDK
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{building}">{building}</a>
+
+###### CORE
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{building}">{building}</a>
