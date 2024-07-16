@@ -2,8 +2,8 @@
 
 > WARNING: Please don't use this branch
 > - DEPRECATED
-> - DOESN'T WORK
 > - CONTAIN BUG
+> - DOESN'T WORK
 
 ### Pre Requisites
 
