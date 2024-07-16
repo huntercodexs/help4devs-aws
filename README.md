@@ -1,5 +1,5 @@
 # HELP4DEVS AWS SQS - JAVA
-AWS Credentials Provider and Endpoint configuration
+AWS Credentials Provider
 
 ### Pre Requisites
 
@@ -56,7 +56,6 @@ cloud.aws.account-id={ACCOUNT-ID}
 cloud.aws.queue.name={QUEUE-NAME}
 cloud.aws.stack.auto=false
 cloud.aws.region.static={REGION}
-cloud.aws.endpoint.uri=https://localhost.localstack.cloud:4566/ or http://localhost:4566
 </pre>
 
 - Create the bucket in the AWS Sqs Service
