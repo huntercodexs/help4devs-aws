@@ -21,6 +21,17 @@ The content that you will find out in this project are:
 ###### spring.cloud.aws.starter (io.awspring.cloud - Core)
 - <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
 
+### JAVA 11
+
+###### spring.cloud.starter.aws
+- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
+
+###### aws.java.sdk
+- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
+
+###### spring.cloud.aws.starter (io.awspring.cloud - Core)
+- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
+
 ### JAVA 17
 
 ###### spring.cloud.starter.aws
@@ -82,6 +93,17 @@ The content that you will find out in this project are:
 ###### spring.cloud.aws.starter (io.awspring.cloud - Core)
 - <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
 
+### JAVA 11
+
+###### spring.cloud.starter.aws
+- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
+
+###### aws.java.sdk
+- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
+
+###### spring.cloud.aws.starter (io.awspring.cloud - Core)
+- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
+
 ### JAVA 17
 
 ###### spring.cloud.starter.aws
@@ -110,6 +132,17 @@ The content that you will find out in this project are:
 ## AWS LAMBDA
 
 ### JAVA 8
+
+###### spring.cloud.starter.aws
+- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
+
+###### aws.java.sdk
+- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
+
+###### spring.cloud.aws.starter (io.awspring.cloud - Core)
+- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
+
+### JAVA 11
 
 ###### spring.cloud.starter.aws
 - <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
