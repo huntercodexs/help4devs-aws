@@ -64,6 +64,12 @@ The content that you will find out in this project are:
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-sqs-java8-spring-boot-2.0.1-release--aws-credentials-provider">aws-sdk-sqs-java8-spring-boot-2.0.1-release--aws-credentials-provider</a>
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-sqs-java8-spring-boot-2.0.1-release--aws-credentials-provider--endpoint-config">aws-sdk-sqs-java8-spring-boot-2.0.1-release--aws-credentials-provider--endpoint-config</a>
 
+###### SDK BOM + JMS
+
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-bom-jms-sqs-java8-spring-boot-2.1.6-release--aws-credentials">aws-sdk-bom-jms-sqs-java8-spring-boot-2.1.6-release--aws-credentials</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-bom-jms-sqs-java8-spring-boot-2.1.6-release--aws-credentials-provider">aws-sdk-bom-jms-sqs-java8-spring-boot-2.1.6-release--aws-credentials-provider</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-bom-jms-sqs-java8-spring-boot-2.1.6-release--aws-credentials-provider--endpoint-config">aws-sdk-bom-jms-sqs-java8-spring-boot-2.1.6-release--aws-credentials-provider--endpoint-config</a>
+
 ###### CORE
 
 #### Java 17
