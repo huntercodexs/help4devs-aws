@@ -88,11 +88,11 @@ src/test/java/codexstester/test/unitary/Help4DevsAwsSqsUnitaryTests.java
     public class Help4DevsAwsSqsUnitaryTests extends Help4DevsBridgeTests {
     
         @Autowired
-        Help4DevsAwsCoreSqsService help4DevsAwsCoreSqsService;
+        Help4DevsAwsSqsService help4DevsAwsSqsService;
     
         @Test
         public void messagePublisherTest() {
-            help4DevsAwsCoreSqsService.messagePublisher("test");
+            help4DevsAwsSqsService.messagePublisher("test");
         }
     
     }
