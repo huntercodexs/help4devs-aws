@@ -16,10 +16,10 @@ The content that you will find out in this project are:
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-s3-java8-spring-boot-2.3.7-release--aws-credentials-provider--endpoint-config">aws-s3-java8-spring-boot-2.3.7-release--aws-credentials-provider--endpoint-config</a>
 
 ###### aws.java.sdk
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{unavailable}">{unavailable}</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
 
 ###### spring.cloud.aws.starter (Core)
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{unavailable}">{unavailable}</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
 
 ### JAVA 17
 
@@ -37,7 +37,7 @@ The content that you will find out in this project are:
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-s3-java17-spring-boot-3.0.6--aws-credentials-provider--endpoint-config">aws-sdk-s3-java17-spring-boot-3.0.6--aws-credentials-provider--endpoint-config</a>
 
 ###### spring.cloud.aws.starter (Core)
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{unavailable}">{unavailable}</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
 
 ### JAVA 21
 
@@ -55,7 +55,7 @@ The content that you will find out in this project are:
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-s3-java21-spring-boot-3.2.1--aws-credentials-provider--endpoint-config">aws-sdk-s3-java21-spring-boot-3.2.1--aws-credentials-provider--endpoint-config</a>
 
 ###### spring.cloud.aws.starter (Core)
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{unavailable}">{unavailable}</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
 
 <br />
 <br />
@@ -80,18 +80,18 @@ The content that you will find out in this project are:
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-bom-jms-sqs-java8-spring-boot-2.1.6-release--aws-credentials-provider--endpoint-config">aws-sdk-bom-jms-sqs-java8-spring-boot-2.1.6-release--aws-credentials-provider--endpoint-config</a>
 
 ###### spring.cloud.aws.starter (Core)
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{unavailable}">{unavailable}</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
 
 ### JAVA 17
 
 ###### spring.cloud.aws.starter
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{unavailable}">{unavailable}</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
 
 ###### aws.java.sdk
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{unavailable}">{unavailable}</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
 
 ###### spring.cloud.aws.starter (Core)
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{unavailable}">{unavailable}</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
 
 ### JAVA 21
 
@@ -99,10 +99,10 @@ The content that you will find out in this project are:
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sqs-java21-spring-boot-3.2.1">aws-sqs-java21-spring-boot-3.2.1</a>
 
 ###### aws.java.sdk
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{unavailable}">{unavailable}</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
 
 ###### spring.cloud.aws.starter (Core)
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{unavailable}">{unavailable}</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
 
 <br />
 <br />
@@ -112,13 +112,13 @@ The content that you will find out in this project are:
 ### JAVA 8
 
 ###### spring.cloud.aws.starter
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{unavailable}">{unavailable}</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
 
 ###### aws.java.sdk
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{unavailable}">{unavailable}</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
 
 ###### spring.cloud.aws.starter (Core)
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{unavailable}">{unavailable}</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
 
 ### JAVA 17
 
@@ -126,18 +126,18 @@ The content that you will find out in this project are:
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-lambda-java17-spring-boot-2.0.1-release">aws-lambda-java17-spring-boot-2.0.1-release</a>
 
 ###### aws.java.sdk
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{unavailable}">{unavailable}</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
 
 ###### spring.cloud.aws.starter (Core)
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{unavailable}">{unavailable}</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
 
 ### JAVA 21
 
 ###### spring.cloud.aws.starter
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{unavailable}">{unavailable}</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
 
 ###### aws.java.sdk
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{unavailable}">{unavailable}</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
 
 ###### spring.cloud.aws.starter (Core)
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{unavailable}">{unavailable}</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
