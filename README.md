@@ -57,7 +57,7 @@ The content that you will find out in this project are:
 ### JAVA 8
 
 ###### STARTER
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{building}">{building}</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{unavailable}">{unavailable}</a>
 
 ###### SDK
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-sqs-java8-spring-boot-2.0.1-release--aws-credentials">aws-sdk-sqs-java8-spring-boot-2.0.1-release--aws-credentials</a>
@@ -70,18 +70,18 @@ The content that you will find out in this project are:
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-bom-jms-sqs-java8-spring-boot-2.1.6-release--aws-credentials-provider--endpoint-config">aws-sdk-bom-jms-sqs-java8-spring-boot-2.1.6-release--aws-credentials-provider--endpoint-config</a>
 
 ###### CORE
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{building}">{building}</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{unavailable}">{unavailable}</a>
 
 ### JAVA 17
 
 ###### STARTER
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{building}">{building}</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{unavailable}">{unavailable}</a>
 
 ###### SDK
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{building}">{building}</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{unavailable}">{unavailable}</a>
 
 ###### CORE
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{building}">{building}</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{unavailable}">{unavailable}</a>
 
 ### JAVA 21
 
@@ -89,10 +89,10 @@ The content that you will find out in this project are:
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sqs-java21-spring-boot-3.2.1">aws-sqs-java21-spring-boot-3.2.1</a>
 
 ###### SDK
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{building}">{building}</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{unavailable}">{unavailable}</a>
 
 ###### CORE
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{building}">{building}</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{unavailable}">{unavailable}</a>
 
 <br />
 <br />
@@ -102,13 +102,13 @@ The content that you will find out in this project are:
 ### JAVA 8
 
 ###### STARTER
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{building}">{building}</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{unavailable}">{unavailable}</a>
 
 ###### SDK
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{building}">{building}</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{unavailable}">{unavailable}</a>
 
 ###### CORE
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{building}">{building}</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{unavailable}">{unavailable}</a>
 
 ### JAVA 17
 
@@ -116,18 +116,18 @@ The content that you will find out in this project are:
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-lambda-java17-spring-boot-2.0.1-release">aws-lambda-java17-spring-boot-2.0.1-release</a>
 
 ###### SDK
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{building}">{building}</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{unavailable}">{unavailable}</a>
 
 ###### CORE
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{building}">{building}</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{unavailable}">{unavailable}</a>
 
 ### JAVA 21
 
 ###### STARTER
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{building}">{building}</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{unavailable}">{unavailable}</a>
 
 ###### SDK
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{building}">{building}</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{unavailable}">{unavailable}</a>
 
 ###### CORE
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{building}">{building}</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/{unavailable}">{unavailable}</a>
