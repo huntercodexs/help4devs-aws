@@ -10,7 +10,7 @@ import lombok.*;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class Help4DevsAwsCoreS3ResponseDto {
+public class Help4DevsAwsS3ResponseDto {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     String filename;
     @JsonInclude(JsonInclude.Include.NON_NULL)

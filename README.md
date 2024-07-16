@@ -1,11 +1,12 @@
-# HELP4DEVS AWS CORE S3 - JAVA
+# HELP4DEVS AWS S3 - JAVA
 Using AWS Credentials Provider
 
 ### Pre Requisites
 
 - Java 17 / JDK17
 - Spring Boot 3.0.6
-- aws-java-sdk-s3
+- spring-cloud-starter-aws
+- jaxb-api
 - Properties Details
 - Bucket created in the AWS S3
 
@@ -17,7 +18,7 @@ Using AWS Credentials Provider
 
 <code>
 
-		<!--SPRING CLOUD/AWS CORE-->
+		<!--SPRING CLOUD/AWS-->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-aws</artifactId>

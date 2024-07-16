@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class Help4DevsAwsCoreS3Config {
+public class Help4DevsAwsS3Config {
 
 
     @Value("${cloud.aws.region.static}")
