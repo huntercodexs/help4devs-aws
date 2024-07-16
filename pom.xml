@@ -31,7 +31,7 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		<!--SPRING CLOUD/AWS CORE-->
+		<!--SPRING CLOUD/AWS-->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-aws</artifactId>
