@@ -1,11 +1,12 @@
-# HELP4DEVS AWS CORE S3 - JAVA
+# HELP4DEVS AWS S3 - JAVA
 Using AWS Credentials Provider
 
 ### Pre Requisites
 
 - Java 21 / JDK21
 - Spring Boot 3.2.1
-- aws-java-sdk-s3
+- spring-cloud-starter-aws
+- jaxb-api
 - Properties Details
 - Bucket created in the AWS S3
 
@@ -17,7 +18,7 @@ Using AWS Credentials Provider
 
 <code>
 
-		<!--SPRING CLOUD/AWS CORE-->
+		<!--SPRING CLOUD/AWS-->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-aws</artifactId>
@@ -53,9 +54,9 @@ aws_secret_access_key = {SECRET}
 
 ### Run the Unit Tests
 
-<pre>
-src/test/java/codexstester/test/unitary/Help4DevsAwsUnitaryTests.java
-</pre>
+[//]: # (<pre>)
+[//]: # (src/test/java/codexstester/test/unitary/Help4DevsAwsUnitaryTests.java)
+[//]: # (</pre>)
 
 <code>
 
