@@ -67,7 +67,7 @@ src/test/java/codexstester/test/unitary/Help4DevsAwsSqsUnitaryTests.java
     package codexstester.test.unitary;
     
     import codexstester.setup.bridge.Help4DevsBridgeTests;
-    import com.huntercodexs.demo.service.Help4DevsAwsSqsService;
+    import com.huntercodexs.demo.service.Help4DevsAwsCoreSqsService;
     import org.junit.Test;
     import org.springframework.beans.factory.annotation.Autowired;
     

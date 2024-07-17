@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-public class Help4DevsAwsSqsService {
+public class Help4DevsAwsCoreSqsService {
 
     @Value("${spring.cloud.aws.queue.name}")
     String queueName;
@@ -17,7 +17,6 @@ public class Help4DevsAwsSqsService {
     SqsTemplate sqsTemplate;
 
     public void messagePublisher(String message) {
-        //sqsTemplate.send(MessageBuilder.withPayload(message).build());
         sqsTemplate.send(to -> to.queue(queueName).payload(message));
     }
 
