@@ -115,7 +115,10 @@ The content that you will find out in this project are:
 - <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
 
 ###### spring.cloud.aws.starter (io.awspring.cloud - Core)
-- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-core-sqs-java17-spring-boot-3.2.2">aws-core-sqs-java17-spring-boot-3.2.2</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-core-sqs-java17-spring-boot-3.2.2--aws-credentials">aws-core-sqs-java17-spring-boot-3.2.2--aws-credentials</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-core-sqs-java17-spring-boot-3.2.2--aws-credentials-provider">aws-core-sqs-java17-spring-boot-3.2.2--aws-credentials-provider</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-core-sqs-java17-spring-boot-3.2.2--aws-credentials-provider--endpoint-config">aws-core-sqs-java17-spring-boot-3.2.2--aws-credentials-provider--endpoint-config</a>
 
 ### JAVA 21
 
