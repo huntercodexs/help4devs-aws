@@ -1,5 +1,4 @@
 # HELP4DEVS AWS CORE SQS - JAVA
-AWS Credentials
 
 ### Pre Requisites
 
@@ -71,14 +70,14 @@ src/test/java/codexstester/test/unitary/Help4DevsAwsSqsUnitaryTests.java
     import org.junit.Test;
     import org.springframework.beans.factory.annotation.Autowired;
     
-    public class Help4DevsAwsSqsUnitaryTests extends Help4DevsBridgeTests {
+    public class Help4DevsAwsCoreSqsUnitaryTests extends Help4DevsBridgeTests {
     
         @Autowired
-        Help4DevsAwsSqsService help4DevsAwsSqsService;
+        Help4DevsAwsCoreSqsService help4DevsAwsCoreSqsService;
     
         @Test
         public void messagePublisherTest() {
-            help4DevsAwsSqsService.messagePublisher("test");
+            help4DevsAwsCoreSqsService.messagePublisher("test localstack 2");
         }
     
     }
