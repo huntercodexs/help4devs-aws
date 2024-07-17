@@ -2,8 +2,6 @@ package codexstester.engine.external;
 
 import codexstester.engine.dto.*;
 import codexstester.engine.internal.InternalHttpHeadersFactoryTests;
-import org.apache.http.client.HttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -17,8 +15,7 @@ public abstract class ExternalHttpHeadersFactoryTests extends InternalHttpHeader
     }
 
     protected HttpComponentsClientHttpRequestFactory externalHttpClientFactory() {
-        HttpClient httpClient = HttpClientBuilder.create().build();
-        return new HttpComponentsClientHttpRequestFactory(httpClient);
+        return new HttpComponentsClientHttpRequestFactory();
     }
 
     protected HttpHeaders externalBuilderHeaders(RequestDto requestDto, HeadersDto headersDto) {

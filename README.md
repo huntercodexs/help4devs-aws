@@ -1,32 +1,24 @@
-# HELP4DEVS AWS SQS - JAVA
+# HELP4DEVS AWS CORE SQS - JAVA
 AWS Credentials
 
 ### Pre Requisites
 
-- Java 11 / JDK 11
-- Spring Boot 2.3.4.RELEASE
-- spring-cloud-starter-aws
-- spring-cloud-starter-aws-messaging
+- Java 17 / JDK 17
+- Spring Boot 3.2.2
+- spring-cloud-aws-starter-sqs
 - Properties Details
-
-> IMPORTANT: Queue created in the AWS SQS before running this project
 
 ### How to use
 
-- Download and set up the env to run the JDK/JRE 11
+- Download and set up the env to run the JDK/JRE 17
 - Create one project from https://start.spring.io/
 - Import the dependencies in the pom.xml
 
 <code>
 
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-aws</artifactId>
-        </dependency>
-
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-aws-messaging</artifactId>
+			<groupId>io.awspring.cloud</groupId>
+			<artifactId>spring-cloud-aws-starter-sqs</artifactId>
 		</dependency>
 
 </code>
@@ -38,9 +30,9 @@ AWS Credentials
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>Hoxton.SR6</version>
+				<groupId>io.awspring.cloud</groupId>
+				<artifactId>spring-cloud-aws-dependencies</artifactId>
+				<version>3.1.0</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -52,12 +44,14 @@ AWS Credentials
 - Create the properties in the application.properties file
 
 <pre>
-cloud.aws.account-id={ACCOUNT-ID}
-cloud.aws.queue.name={QUEUE-NAME}
-cloud.aws.stack.auto=false
-cloud.aws.region.static={REGION}
-cloud.aws.credentials.accessKey={ACCESS-KEY}
-cloud.aws.credentials.secretKey={SECRET-KEY}
+spring.cloud.aws.account-id={ACCOUNT-ID}
+spring.cloud.aws.queue.name={QUEUE-NAME}
+spring.cloud.aws.stack.auto=false
+spring.cloud.aws.region.static={REGION}
+#https://localhost.localstack.cloud:4566/ or http://localhost:4566
+spring.cloud.aws.sqs.endpoint={ENDPOINT}
+spring.cloud.aws.credentials.accessKey={ACCESS-KEY}
+spring.cloud.aws.credentials.secretKey={SECRET-KEY}
 </pre>
 
 > IMPORTANT: Inform correctly all information above

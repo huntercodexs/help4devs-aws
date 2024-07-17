@@ -5,7 +5,7 @@ import com.huntercodexs.demo.service.Help4DevsAwsSqsService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class Help4DevsAwsSqsUnitaryTests extends Help4DevsBridgeTests {
+public class Help4DevsAwsCoreSqsUnitaryTests extends Help4DevsBridgeTests {
 
     @Autowired
     Help4DevsAwsSqsService help4DevsAwsSqsService;
