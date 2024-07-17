@@ -1,10 +1,10 @@
-# HELP4DEVS AWS SQS - JAVA
+# HELP4DEVS AWS SDK SQS - JAVA
 AWS Credentials
 
 ### Pre Requisites
 
-- Java 11 / JDK 11
-- Spring Boot 2.3.4.RELEASE
+- Java 17 / JDK 17
+- Spring Boot 2.7.12
 - spring-cloud-starter-aws
 - spring-cloud-starter-aws-messaging
 - Properties Details
@@ -13,39 +13,17 @@ AWS Credentials
 
 ### How to use
 
-- Download and set up the env to run the JDK/JRE 11
+- Download and set up the env to run the JDK/JRE 17
 - Create one project from https://start.spring.io/
 - Import the dependencies in the pom.xml
 
 <code>
 
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-aws</artifactId>
-        </dependency>
-
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-aws-messaging</artifactId>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk</artifactId>
+			<version>1.11.163</version>
 		</dependency>
-
-</code>
-
-- Create the dependencies management in the pom.xml
-
-<code>
-
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>Hoxton.SR6</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 
 </code>
 
@@ -65,7 +43,7 @@ cloud.aws.credentials.secretKey={SECRET-KEY}
 ### Run the Unit Tests
 
 <pre>
-src/test/java/codexstester/test/unitary/Help4DevsAwsSqsUnitaryTests.java
+src/test/java/codexstester/test/unitary/Help4DevsAwsSdkSqsUnitaryTests.java
 </pre>
 
 <code>
@@ -73,18 +51,48 @@ src/test/java/codexstester/test/unitary/Help4DevsAwsSqsUnitaryTests.java
     package codexstester.test.unitary;
     
     import codexstester.setup.bridge.Help4DevsBridgeTests;
-    import com.huntercodexs.demo.service.Help4DevsAwsSqsService;
+    import com.huntercodexs.demo.service.Help4DevsAwsSdkSqsService;
     import org.junit.Test;
     import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.beans.factory.annotation.Value;
     
-    public class Help4DevsAwsSqsUnitaryTests extends Help4DevsBridgeTests {
+    public class Help4DevsAwsSdkSqsUnitaryTests extends Help4DevsBridgeTests {
+    
+        private static final String queueUrl = "{URL}";
+        private static final String messageId = "1116a622-d9a3-47a4-a406-70fe5af6ab48";
+        private static final String messageFilter = "";
+        private static final String receiptHandle = "{RECEIPT}";
+        private static final String messageBody = "test sdk sqs java17 002";
+    
+        @Value("${cloud.aws.queue.name}")
+        String queueName;
     
         @Autowired
-        Help4DevsAwsSqsService help4DevsAwsSqsService;
+        Help4DevsAwsSdkSqsService help4DevsAwsSdkSqsService;
     
         @Test
-        public void messagePublisherTest() {
-            help4DevsAwsSqsService.messagePublisher("test");
+        public void queueCreatorTest() {
+            help4DevsAwsSdkSqsService.queueCreator(queueName);
+        }
+    
+        @Test
+        public void messageProducerTest() {
+            help4DevsAwsSdkSqsService.messageProducer(messageBody, queueUrl);
+        }
+    
+        @Test
+        public void messageConsumer() {
+            help4DevsAwsSdkSqsService.messageConsumer(messageFilter, queueUrl);
+        }
+    
+        @Test
+        public void messageEraserTest() {
+            help4DevsAwsSdkSqsService.messageEraser(receiptHandle, queueUrl);
+        }
+    
+        @Test
+        public void queueEraserTest() {
+            help4DevsAwsSdkSqsService.queueEraser(queueName);
         }
     
     }
