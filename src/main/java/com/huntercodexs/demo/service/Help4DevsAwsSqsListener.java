@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Help4DevsAwsSqsListener {
 
-    @SqsListener("${spring.cloud.aws.queue.name}")
+    @SqsListener("${cloud.aws.queue.name}")
     public void messageConsumer(String message)  {
         System.out.println("Message Received: " + message);
     }

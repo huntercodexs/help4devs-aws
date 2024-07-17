@@ -12,7 +12,7 @@ public class Help4DevsAwsCoreSqsUnitaryTests extends Help4DevsBridgeTests {
 
     @Test
     public void messagePublisherTest() {
-        help4DevsAwsSqsService.messagePublisher("test");
+        help4DevsAwsSqsService.messagePublisher("test aws sqs 2");
     }
 
 }

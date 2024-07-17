@@ -5,6 +5,7 @@ AWS Credentials
 
 - Java 17 / JDK 17
 - Spring Boot 3.2.2
+- spring-cloud-aws-starter
 - spring-cloud-aws-starter-sqs
 - Properties Details
 
@@ -16,6 +17,10 @@ AWS Credentials
 
 <code>
 
+		<dependency>
+			<groupId>io.awspring.cloud</groupId>
+			<artifactId>spring-cloud-aws-starter</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>io.awspring.cloud</groupId>
 			<artifactId>spring-cloud-aws-starter-sqs</artifactId>
@@ -44,14 +49,11 @@ AWS Credentials
 - Create the properties in the application.properties file
 
 <pre>
-spring.cloud.aws.account-id={ACCOUNT-ID}
-spring.cloud.aws.queue.name={QUEUE-NAME}
-spring.cloud.aws.stack.auto=false
-spring.cloud.aws.region.static={REGION}
-#https://localhost.localstack.cloud:4566/ or http://localhost:4566
-spring.cloud.aws.sqs.endpoint={ENDPOINT}
-spring.cloud.aws.credentials.accessKey={ACCESS-KEY}
-spring.cloud.aws.credentials.secretKey={SECRET-KEY}
+cloud.aws.queue.name={QUEUE}
+cloud.aws.stack.auto=false
+cloud.aws.region.static=us-east-1
+cloud.aws.credentials.accessKey={KEY}
+cloud.aws.credentials.secretKey={KEY}
 </pre>
 
 > IMPORTANT: Inform correctly all information above
@@ -59,7 +61,7 @@ spring.cloud.aws.credentials.secretKey={SECRET-KEY}
 ### Run the Unit Tests
 
 <pre>
-src/test/java/codexstester/test/unitary/Help4DevsAwsSqsUnitaryTests.java
+src/test/java/codexstester/test/unitary/Help4DevsAwsCoreSqsUnitaryTests.java
 </pre>
 
 <code>
@@ -71,17 +73,17 @@ src/test/java/codexstester/test/unitary/Help4DevsAwsSqsUnitaryTests.java
     import org.junit.Test;
     import org.springframework.beans.factory.annotation.Autowired;
     
-    public class Help4DevsAwsSqsUnitaryTests extends Help4DevsBridgeTests {
+    public class Help4DevsAwsCoreSqsUnitaryTests extends Help4DevsBridgeTests {
     
         @Autowired
         Help4DevsAwsSqsService help4DevsAwsSqsService;
     
         @Test
         public void messagePublisherTest() {
-            help4DevsAwsSqsService.messagePublisher("test");
+            help4DevsAwsSqsService.messagePublisher("test aws sqs 2");
         }
-    
-    }
+
+}
 
 </code>
 
