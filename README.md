@@ -56,8 +56,18 @@ cloud.aws.account-id={ACCOUNT-ID}
 cloud.aws.queue.name={QUEUE-NAME}
 cloud.aws.stack.auto=false
 cloud.aws.region.static={REGION}
-cloud.aws.credentials.accessKey={ACCESS-KEY}
-cloud.aws.credentials.secretKey={SECRET-KEY}
+</pre>
+
+- Create aws credentials file
+
+<pre>
+vi ~/.aws/credentials
+</pre>
+
+<pre>
+[default]
+aws_access_key_id = {KEY}
+aws_secret_access_key = {SECRET}
 </pre>
 
 > IMPORTANT: Inform correctly all information above
