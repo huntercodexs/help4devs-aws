@@ -1,5 +1,5 @@
 # HELP4DEVS AWS SQS - JAVA
-AWS Credentials
+AWS Credentials Provider
 
 ### Pre Requisites
 
