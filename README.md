@@ -1,5 +1,5 @@
 # HELP4DEVS AWS CORE SQS - JAVA
-AWS Credentials
+AWS Credentials Provider
 
 ### Pre Requisites
 
@@ -52,8 +52,18 @@ AWS Credentials
 cloud.aws.queue.name={QUEUE}
 cloud.aws.stack.auto=false
 cloud.aws.region.static=us-east-1
-cloud.aws.credentials.accessKey={KEY}
-cloud.aws.credentials.secretKey={KEY}
+</pre>
+
+- Create aws credentials file
+
+<pre>
+vi ~/.aws/credentials
+</pre>
+
+<pre>
+[default]
+aws_access_key_id = {KEY}
+aws_secret_access_key = {SECRET}
 </pre>
 
 > IMPORTANT: Inform correctly all information above
