@@ -12,7 +12,7 @@ public class Help4DevsAwsSdkSqsUnitaryTests extends Help4DevsBridgeTests {
     private static final String messageId = "1116a622-d9a3-47a4-a406-70fe5af6ab48";
     private static final String messageFilter = "";
     private static final String receiptHandle = "{RECEIPT}";
-    private static final String messageBody = "test sdk sqs java17 002";
+    private static final String messageBody = "test sdk sqs java17 00001";
 
     @Value("${cloud.aws.queue.name}")
     String queueName;

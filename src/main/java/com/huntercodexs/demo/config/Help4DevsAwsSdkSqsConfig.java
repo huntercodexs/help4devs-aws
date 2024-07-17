@@ -1,8 +1,7 @@
 package com.huntercodexs.demo.config;
 
-import com.amazonaws.auth.AWSCredentials;
-import com.amazonaws.auth.AWSStaticCredentialsProvider;
-import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.auth.AWSCredentialsProvider;
+import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import com.amazonaws.services.sqs.AmazonSQS;
 import com.amazonaws.services.sqs.AmazonSQSAsyncClientBuilder;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,20 +15,14 @@ public class Help4DevsAwsSdkSqsConfig {
     @Value("${cloud.aws.region.static}")
     String region;
 
-    @Value("${cloud.aws.credentials.accessKey}")
-    String accessKey;
-
-    @Value("${cloud.aws.credentials.secretKey}")
-    String secretKey;
-
     @Primary
     @Bean
     public AmazonSQS amazonSQS() {
 
-        AWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey);
+        AWSCredentialsProvider credentialsProvider = new ProfileCredentialsProvider();
 
         return AmazonSQSAsyncClientBuilder.standard()
-                .withCredentials(new AWSStaticCredentialsProvider(credentials))
+                .withCredentials(credentialsProvider)
                 .withRegion(region)
                 .build();
     }
