@@ -24,9 +24,7 @@ The content that you will find out in this project are:
 ### JAVA 11
 
 ###### spring.cloud.starter.aws
-- <a href="https://github.com/huntercodexs/help4devs-aws/aws-sqs-java11-spring-boot-2.3.4-release--aws-credentials">aws-sqs-java11-spring-boot-2.3.4-release--aws-credentials</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/aws-sqs-java11-spring-boot-2.3.4-release--aws-credentials-provider">aws-sqs-java11-spring-boot-2.3.4-release--aws-credentials-provider</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/aws-sqs-java11-spring-boot-2.3.4-release--aws-credentials-provider--endpoint-config">aws-sqs-java11-spring-boot-2.3.4-release--aws-credentials-provider--endpoint-config</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
 
 ###### aws.java.sdk
 - <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
@@ -98,7 +96,9 @@ The content that you will find out in this project are:
 ### JAVA 11
 
 ###### spring.cloud.starter.aws
-- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/aws-sqs-java11-spring-boot-2.3.4-release--aws-credentials">aws-sqs-java11-spring-boot-2.3.4-release--aws-credentials</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/aws-sqs-java11-spring-boot-2.3.4-release--aws-credentials-provider">aws-sqs-java11-spring-boot-2.3.4-release--aws-credentials-provider</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/aws-sqs-java11-spring-boot-2.3.4-release--aws-credentials-provider--endpoint-config">aws-sqs-java11-spring-boot-2.3.4-release--aws-credentials-provider--endpoint-config</a>
 
 ###### aws.java.sdk
 - <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
