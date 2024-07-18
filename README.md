@@ -112,7 +112,9 @@ The content that you will find out in this project are:
 ### JAVA 17
 
 ###### spring.cloud.starter.aws
-- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sqs-java17-spring-boot-3.2.1--aws-credentials">aws-sqs-java17-spring-boot-3.2.1--aws-credentials</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sqs-java17-spring-boot-3.2.1--aws-credentials-provider">aws-sqs-java17-spring-boot-3.2.1--aws-credentials-provider</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sqs-java17-spring-boot-3.2.1--aws-credentials-provider--endpoint-config">aws-sqs-java17-spring-boot-3.2.1--aws-credentials-provider--endpoint-config</a>
 
 ###### aws.java.sdk
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-sqs-java17-spring-boot-2.7.12--aws-credentials">aws-sdk-sqs-java17-spring-boot-2.7.12--aws-credentials</a>
