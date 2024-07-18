@@ -115,6 +115,9 @@ The content that you will find out in this project are:
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-sqs-java17-spring-boot-2.7.12--aws-credentials">aws-sdk-sqs-java17-spring-boot-2.7.12--aws-credentials</a>
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-sqs-java17-spring-boot-2.7.12--aws-credentials-provider">aws-sdk-sqs-java17-spring-boot-2.7.12--aws-credentials-provider</a>
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-sqs-java17-spring-boot-2.7.12--aws-credentials-provider--endpoint-config">aws-sdk-sqs-java17-spring-boot-2.7.12--aws-credentials-provider--endpoint-config</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-sqs-java17-spring-boot-3.0.4--aws-credentials">aws-sdk-sqs-java17-spring-boot-3.0.4--aws-credentials</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-sqs-java17-spring-boot-3.0.4--aws-credentials-provider">aws-sdk-sqs-java17-spring-boot-3.0.4--aws-credentials-provider</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-sqs-java17-spring-boot-3.0.4--aws-credentials-provider--endpoint-config">aws-sdk-sqs-java17-spring-boot-3.0.4--aws-credentials-provider--endpoint-config</a>
 
 ###### spring.cloud.aws.starter (io.awspring.cloud - Core)
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-core-sqs-java17-spring-boot-3.2.2">aws-core-sqs-java17-spring-boot-3.2.2</a>
