@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Help4DevsAwsCoreSqsListener {
 
-    @SqsListener("${spring.cloud.aws.queue.name}")
+    @SqsListener(value = "${cloud.aws.queue.name}", acknowledgementMode = "true")
     public void messageConsumer(String message)  {
         System.out.println("Message Received: " + message);
     }

@@ -1,9 +1,14 @@
 # HELP4DEVS AWS CORE SQS - JAVA
 
+> WARNING: Please don't use this branch 
+> - DEPRECATED 
+> - BUG 
+> - DOESN'T WORK
+
 ### Pre Requisites
 
 - Java 17 / JDK 17
-- Spring Boot 3.2.2
+- Spring Boot 2.6.4
 - spring-cloud-aws-starter-sqs
 - Properties Details
 
@@ -43,14 +48,11 @@
 - Create the properties in the application.properties file
 
 <pre>
-spring.cloud.aws.account-id={ACCOUNT-ID}
-spring.cloud.aws.queue.name={QUEUE-NAME}
-spring.cloud.aws.stack.auto=false
-spring.cloud.aws.region.static={REGION}
-#https://localhost.localstack.cloud:4566/ or http://localhost:4566
-spring.cloud.aws.sqs.endpoint={ENDPOINT}
-spring.cloud.aws.credentials.accessKey={ACCESS-KEY}
-spring.cloud.aws.credentials.secretKey={SECRET-KEY}
+cloud.aws.queue.name=sqs-help4devs-queue-test
+cloud.aws.stack.auto=false
+cloud.aws.region.static=us-east-1
+cloud.aws.credentials.accessKey=
+cloud.aws.credentials.secretKey=
 </pre>
 
 > IMPORTANT: Inform correctly all information above
@@ -77,7 +79,15 @@ src/test/java/codexstester/test/unitary/Help4DevsAwsSqsUnitaryTests.java
     
         @Test
         public void messagePublisherTest() {
-            help4DevsAwsCoreSqsService.messagePublisher("test localstack 2");
+            help4DevsAwsCoreSqsService.messagePublisher("test 00001");
+            try {
+                Thread.sleep(1000);
+                help4DevsAwsCoreSqsService.messagePublisher("test 00002");
+                Thread.sleep(1000);
+                help4DevsAwsCoreSqsService.messagePublisher("test 00003");
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
     
     }

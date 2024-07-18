@@ -12,7 +12,15 @@ public class Help4DevsAwsCoreSqsUnitaryTests extends Help4DevsBridgeTests {
 
     @Test
     public void messagePublisherTest() {
-        help4DevsAwsCoreSqsService.messagePublisher("test localstack 2");
+        help4DevsAwsCoreSqsService.messagePublisher("test 00001");
+        try {
+            Thread.sleep(1000);
+            help4DevsAwsCoreSqsService.messagePublisher("test 00002");
+            Thread.sleep(1000);
+            help4DevsAwsCoreSqsService.messagePublisher("test 00003");
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

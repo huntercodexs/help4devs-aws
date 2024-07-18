@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class Help4DevsAwsCoreSqsService {
 
-    @Value("${spring.cloud.aws.queue.name}")
+    @Value("${cloud.aws.queue.name}")
     String queueName;
 
     @Autowired
