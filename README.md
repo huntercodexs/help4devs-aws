@@ -5,8 +5,7 @@ AWS Credentials
 
 - Java 17 / JDK 17
 - Spring Boot 2.7.12
-- spring-cloud-starter-aws
-- spring-cloud-starter-aws-messaging
+- aws-java-sdk
 - Properties Details
 
 > IMPORTANT: Queue created in the AWS SQS before running this project
