@@ -62,10 +62,29 @@ cloud.aws.credentials.secretKey={SECRET-KEY}
 ### Run the Unit Tests
 
 <pre>
-
+src/test/java/codexstester/test/unitary/Help4DevsAwsSqsUnitaryTests.java
 </pre>
 
 <code>
+
+    package codexstester.test.unitary;
+    
+    import codexstester.setup.bridge.Help4DevsBridgeTests;
+    import com.huntercodexs.demo.services.Help4DevsAwsSqsService;
+    import org.junit.Test;
+    import org.springframework.beans.factory.annotation.Autowired;
+    
+    public class Help4DevsAwsSqsUnitaryTests extends Help4DevsBridgeTests {
+    
+        @Autowired
+        Help4DevsAwsSqsService help4DevsAwsSqsService;
+    
+        @Test
+        public void messagePublisherTest() {
+            help4DevsAwsSqsService.messagePublisher("test");
+        }
+    
+    }
 
 </code>
 
