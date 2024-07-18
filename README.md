@@ -4,7 +4,7 @@ AWS Credentials Provider and Endpoint configuration
 ### Pre Requisites
 
 - Java 8 / JDK 1.8
-- Spring Boot 2.3.1.RELEASE
+- Spring Boot 2.0.5.RELEASE
 - spring-cloud-starter-aws
 - spring-cloud-starter-aws-messaging
 - Properties Details
@@ -40,7 +40,7 @@ AWS Credentials Provider and Endpoint configuration
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>Hoxton.SR6</version>
+				<version>Finchley.SR1</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
