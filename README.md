@@ -41,6 +41,7 @@ AWS Credentials
 - Create the properties in the application.properties file
 
 <pre>
+cloud.aws.account-id={ACCOUNT-ID}
 cloud.aws.queue.name={QUEUE-NAME}
 cloud.aws.stack.auto=false
 cloud.aws.region.static={REGION}

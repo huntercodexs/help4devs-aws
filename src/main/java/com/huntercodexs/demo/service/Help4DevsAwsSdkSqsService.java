@@ -17,6 +17,11 @@ public class Help4DevsAwsSdkSqsService {
     @Autowired
     QueueMessagingTemplate queueMessagingTemplate;
 
+    public void messagePublisherBuilder(String message) {
+        queueMessagingTemplate.send(MessageBuilder.withPayload(message).build());
+        System.out.println("Message Publisher Builder: " + message);
+    }
+
     public void messagePublisherStaticQueue(String message) {
         queueMessagingTemplate.convertAndSend(staticQueueName, message);
         System.out.println("Message publisher to queue: " + message);
@@ -25,10 +30,6 @@ public class Help4DevsAwsSdkSqsService {
     public void messagePublisherConvert(String message, String sqsQueueName) {
         queueMessagingTemplate.convertAndSend(sqsQueueName, message);
         System.out.println("Message publisher to queue: " + message);
-    }
-
-    public void messagePublisherBuilder(String message) {
-        queueMessagingTemplate.send(MessageBuilder.withPayload(message).build());
     }
 
 }

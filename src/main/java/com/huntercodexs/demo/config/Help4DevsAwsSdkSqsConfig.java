@@ -56,9 +56,9 @@ public class Help4DevsAwsSdkSqsConfig {
 
     @Bean
     public SimpleMessageListenerContainerFactory simpleMessageListenerContainerFactory() {
-        SimpleMessageListenerContainerFactory factor = new SimpleMessageListenerContainerFactory();
-        factor.setAmazonSqs(amazonSQSAsync());
-        factor.setAutoStartup(true);
-        return factor;
+        SimpleMessageListenerContainerFactory factory = new SimpleMessageListenerContainerFactory();
+        factory.setAmazonSqs(amazonSQSAsync());
+        factory.setAutoStartup(true);
+        return factory;
     }
 }

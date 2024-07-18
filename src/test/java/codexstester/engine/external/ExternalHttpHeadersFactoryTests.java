@@ -18,7 +18,7 @@ public abstract class ExternalHttpHeadersFactoryTests extends InternalHttpHeader
 
     protected HttpComponentsClientHttpRequestFactory externalHttpClientFactory() {
         HttpClient httpClient = HttpClientBuilder.create().build();
-        return new HttpComponentsClientHttpRequestFactory(httpClient);
+        return new HttpComponentsClientHttpRequestFactory();
     }
 
     protected HttpHeaders externalBuilderHeaders(RequestDto requestDto, HeadersDto headersDto) {
