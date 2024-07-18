@@ -23,7 +23,17 @@ AWS Credentials
 		<dependency>
 			<groupId>com.amazonaws</groupId>
 			<artifactId>aws-java-sdk</artifactId>
-			<version>1.11.163</version>
+			<version>RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-aws-messaging</artifactId>
+			<version>RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-messaging</artifactId>
+			<version>5.3.23</version>
 		</dependency>
 
 </code>
@@ -31,7 +41,6 @@ AWS Credentials
 - Create the properties in the application.properties file
 
 <pre>
-cloud.aws.account-id={ACCOUNT-ID}
 cloud.aws.queue.name={QUEUE-NAME}
 cloud.aws.stack.auto=false
 cloud.aws.region.static={REGION}

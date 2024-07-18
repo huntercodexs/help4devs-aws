@@ -3,15 +3,24 @@ package com.huntercodexs.demo.config;
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
-import com.amazonaws.services.sqs.AmazonSQS;
+import com.amazonaws.services.sqs.AmazonSQSAsync;
 import com.amazonaws.services.sqs.AmazonSQSAsyncClientBuilder;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.aws.messaging.config.SimpleMessageListenerContainerFactory;
+import org.springframework.cloud.aws.messaging.core.QueueMessageChannel;
+import org.springframework.cloud.aws.messaging.core.QueueMessagingTemplate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
 @Configuration
 public class Help4DevsAwsSdkSqsConfig {
+
+    @Value("${cloud.aws.account-id}")
+    String accountId;
+
+    @Value("${cloud.aws.queue.name}")
+    String queueName;
 
     @Value("${cloud.aws.region.static}")
     String region;
@@ -24,7 +33,7 @@ public class Help4DevsAwsSdkSqsConfig {
 
     @Primary
     @Bean
-    public AmazonSQS amazonSQS() {
+    public AmazonSQSAsync amazonSQSAsync() {
 
         AWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey);
 
@@ -32,5 +41,24 @@ public class Help4DevsAwsSdkSqsConfig {
                 .withCredentials(new AWSStaticCredentialsProvider(credentials))
                 .withRegion(region)
                 .build();
+    }
+
+    @Bean
+    public QueueMessagingTemplate queueMessagingTemplate() {
+
+        String destination = "https://sqs."+region+".amazonaws.com/"+accountId+"/"+queueName;
+
+        QueueMessagingTemplate template = new QueueMessagingTemplate(amazonSQSAsync());
+        template.setDefaultDestination(new QueueMessageChannel(amazonSQSAsync(), destination));
+        template.setDefaultDestinationName(destination);
+        return template;
+    }
+
+    @Bean
+    public SimpleMessageListenerContainerFactory simpleMessageListenerContainerFactory() {
+        SimpleMessageListenerContainerFactory factor = new SimpleMessageListenerContainerFactory();
+        factor.setAmazonSqs(amazonSQSAsync());
+        factor.setAutoStartup(true);
+        return factor;
     }
 }

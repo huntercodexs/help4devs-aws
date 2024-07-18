@@ -1,57 +1,34 @@
 package com.huntercodexs.demo.service;
 
-import com.amazonaws.services.sqs.AmazonSQS;
-import com.amazonaws.services.sqs.model.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.aws.messaging.core.QueueMessagingTemplate;
+import org.springframework.messaging.support.MessageBuilder;
+import org.springframework.stereotype.Component;
 
 @Slf4j
-@Service
+@Component
 public class Help4DevsAwsSdkSqsService {
 
+    @Value("${cloud.aws.queue.name}")
+    String staticQueueName;
+
     @Autowired
-    AmazonSQS amazonSQS;
+    QueueMessagingTemplate queueMessagingTemplate;
 
-    public void queueCreator(String queueName) {
-        CreateQueueRequest createQueueRequest = new CreateQueueRequest(queueName);
-        String queueUrl = amazonSQS.createQueue(createQueueRequest).getQueueUrl();
-        System.out.println("Queue created: " + queueUrl);
+    public void messagePublisherStaticQueue(String message) {
+        queueMessagingTemplate.convertAndSend(staticQueueName, message);
+        System.out.println("Message publisher to queue: " + message);
     }
 
-    public void messageProducer(String message, String queueUrl) {
-        SendMessageRequest request = new SendMessageRequest().withQueueUrl(queueUrl).withMessageBody(message);
-        String messageId = amazonSQS.sendMessage(request).getMessageId();
-        System.out.println("Message created: " + messageId);
+    public void messagePublisherConvert(String message, String sqsQueueName) {
+        queueMessagingTemplate.convertAndSend(sqsQueueName, message);
+        System.out.println("Message publisher to queue: " + message);
     }
 
-    public void messageConsumer(String filter, String queueUrl) {
-        ReceiveMessageRequest request = new ReceiveMessageRequest(queueUrl)
-                .withWaitTimeSeconds(10)
-                .withMaxNumberOfMessages(10);
-
-        List<Message> messageList = amazonSQS.receiveMessage(request).getMessages();
-
-        for (Message message : messageList) {
-            if (filter.isEmpty() || filter.equals(message.getMessageId()) || filter.equals(message.getBody())) {
-                System.out.println("Message Received:");
-                System.out.println(message.getMessageId());
-                System.out.println(message.getBody());
-                System.out.println(message.getReceiptHandle());
-            }
-        }
-    }
-
-    public void messageEraser(String receiptHandle, String queueUrl) {
-        amazonSQS.deleteMessage(new DeleteMessageRequest()
-                .withQueueUrl(queueUrl)
-                .withReceiptHandle(receiptHandle));
-    }
-
-    public void queueEraser(String queueName) {
-        amazonSQS.deleteQueue(queueName);
+    public void messagePublisherBuilder(String message) {
+        queueMessagingTemplate.send(MessageBuilder.withPayload(message).build());
     }
 
 }
