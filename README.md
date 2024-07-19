@@ -3,8 +3,8 @@ AWS Credentials Provider
 
 ### Pre Requisites
 
-- Java 17 / JDK 17
-- Spring Boot 3.2.1
+- Java 21 / JDK 21
+- Spring Boot 3.3.2
 - spring-cloud-starter-aws
 - Properties Details
 
@@ -12,7 +12,7 @@ AWS Credentials Provider
 
 ### How to use
 
-- Download and set up the env to run the JDK/JRE 17
+- Download and set up the env to run the JDK/JRE 21
 - Create one project from https://start.spring.io/
 - Import the dependencies in the pom.xml
 
@@ -92,7 +92,15 @@ src/test/java/codexstester/test/unitary/Help4DevsAwsSqsUnitaryTests.java
     
         @Test
         public void messagePublisherTest() {
-            help4DevsAwsSqsService.messagePublisher("test");
+            help4DevsAwsSqsService.messagePublisher("test 00001");
+            try {
+                Thread.sleep(1000);
+                help4DevsAwsSqsService.messagePublisher("test 00002");
+                Thread.sleep(1000);
+                help4DevsAwsSqsService.messagePublisher("test 00003");
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
     
     }
