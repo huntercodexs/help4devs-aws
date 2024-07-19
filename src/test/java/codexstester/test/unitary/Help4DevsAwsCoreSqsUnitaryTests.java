@@ -14,7 +14,7 @@ public class Help4DevsAwsCoreSqsUnitaryTests extends Help4DevsBridgeTests {
     public void messagePublisherTest() {
         help4DevsAwsCoreSqsService.messagePublisher(
                 "{ENDPOINT-NAME-URL}",
-                "test sqs 00006");
+                "test sqs 00003");
     }
 
 }
