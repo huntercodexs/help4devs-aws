@@ -1,5 +1,5 @@
 # HELP4DEVS AWS CORE SQS - JAVA
-Default
+AWS Credentials
 
 ### Pre Requisites
 
@@ -46,13 +46,12 @@ Default
 - Create the properties in the application.properties file
 
 <pre>
-cloud.aws.account-id=000000000000
+cloud.aws.account-id={ACCOUNT-ID}
 cloud.aws.queue.name=sqs-help4devs-queue-test
 cloud.aws.stack.auto=false
 cloud.aws.region.static=us-east-1
-cloud.aws.credentials.accessKey=test
-cloud.aws.credentials.secretKey=test
-cloud.aws.endpoint.uri=https://localhost.localstack.cloud:4566/
+cloud.aws.credentials.accessKey={KEY}
+cloud.aws.credentials.secretKey={KEY}
 </pre>
 
 > IMPORTANT: Inform correctly all information above
@@ -60,13 +59,13 @@ cloud.aws.endpoint.uri=https://localhost.localstack.cloud:4566/
 ### Run the Unit Tests
 
 <pre>
-src/test/java/codexstester/test/unitary/Help4DevsAwsSqsUnitaryTests.java
+src/test/java/codexstester/test/unitary/Help4DevsAwsCoreSqsUnitaryTests.java
 </pre>
 
 <code>
 
     package codexstester.test.unitary;
-
+    
     import codexstester.setup.bridge.Help4DevsBridgeTests;
     import com.huntercodexs.demo.services.Help4DevsAwsCoreSqsService;
     import org.junit.Test;
@@ -80,8 +79,8 @@ src/test/java/codexstester/test/unitary/Help4DevsAwsSqsUnitaryTests.java
         @Test
         public void messagePublisherTest() {
             help4DevsAwsCoreSqsService.messagePublisher(
-                    "https://localhost.localstack.cloud:4566/000000000000/sqs-help4devs-queue-test",
-                    "test sqs 00004");
+                    "{ENDPOINT-NAME-URL}",
+                    "test sqs 00005");
         }
     
     }

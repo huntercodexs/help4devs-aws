@@ -13,8 +13,8 @@ public class Help4DevsAwsCoreSqsUnitaryTests extends Help4DevsBridgeTests {
     @Test
     public void messagePublisherTest() {
         help4DevsAwsCoreSqsService.messagePublisher(
-                "https://localhost.localstack.cloud:4566/000000000000/sqs-help4devs-queue-test",
-                "test sqs 00004");
+                "{ENDPOINT-NAME-URL}",
+                "test sqs 00005");
     }
 
 }
