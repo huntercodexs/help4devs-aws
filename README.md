@@ -1,4 +1,5 @@
 # HELP4DEVS AWS CORE SQS - JAVA
+Default
 
 ### Pre Requisites
 
