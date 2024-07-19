@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
-import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
+import software.amazon.awssdk.auth.credentials.AwsCredentialsProvider;
+import software.amazon.awssdk.auth.credentials.ProfileCredentialsProvider;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.sqs.SqsAsyncClient;
 
@@ -19,12 +19,6 @@ public class Help4DevsAwsCoreSqsConfig {
     @Value("${cloud.aws.region.static}")
     String region;
 
-    @Value("${cloud.aws.credentials.accessKey}")
-    String accessKey;
-
-    @Value("${cloud.aws.credentials.secretKey}")
-    String secretKey;
-
     @Bean
     public SqsTemplate sqsTemplate() {
         return SqsTemplate.builder().sqsAsyncClient(sqsAsyncClient()).build();
@@ -34,11 +28,10 @@ public class Help4DevsAwsCoreSqsConfig {
     @Primary
     public SqsAsyncClient sqsAsyncClient() {
 
-        StaticCredentialsProvider credentials = StaticCredentialsProvider
-                .create(AwsBasicCredentials.create(accessKey, secretKey));
+        AwsCredentialsProvider credentialsProvider = ProfileCredentialsProvider.create();
 
         return SqsAsyncClient.builder()
-                .credentialsProvider(credentials)
+                .credentialsProvider(credentialsProvider)
                 .region(Region.of(region))
                 .build();
     }
