@@ -1,5 +1,5 @@
 # HELP4DEVS AWS SDK SQS - JAVA
-AWS Credentials Provider
+AWS Credentials Provider and Endpoint configuration
 
 ### Pre Requisites
 
@@ -45,6 +45,7 @@ cloud.aws.account-id={ACCOUNT-ID}
 cloud.aws.queue.name={QUEUE-NAME}
 cloud.aws.stack.auto=false
 cloud.aws.region.static={REGION}
+cloud.aws.endpoint.uri=https://localhost.localstack.cloud:4566/
 </pre>
 
 - Create aws credentials file
@@ -55,9 +56,11 @@ vi ~/.aws/credentials
 
 <pre>
 [default]
-aws_access_key_id = {KEY}
-aws_secret_access_key = {SECRET}
+aws_access_key_id = test
+aws_secret_access_key = test
 </pre>
+
+> NOTE: The access_key and secret_access_key should be configured as test if the endpoint is pointing to localstack
 
 > IMPORTANT: Inform correctly all information above
 
