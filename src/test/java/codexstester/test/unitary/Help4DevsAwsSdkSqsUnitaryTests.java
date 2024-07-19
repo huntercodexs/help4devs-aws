@@ -1,7 +1,6 @@
 package codexstester.test.unitary;
 
 import codexstester.setup.bridge.Help4DevsBridgeTests;
-import com.huntercodexs.demo.service.Help4DevsAwsSdkSqsListener;
 import com.huntercodexs.demo.service.Help4DevsAwsSdkSqsService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,22 +14,19 @@ public class Help4DevsAwsSdkSqsUnitaryTests extends Help4DevsBridgeTests {
     @Autowired
     Help4DevsAwsSdkSqsService help4DevsAwsSdkSqsService;
 
-    @Autowired
-    Help4DevsAwsSdkSqsListener help4DevsAwsSdkSqsListener;
-
     @Test
     public void messagePublisherBuilderTest() {
-        help4DevsAwsSdkSqsService.messagePublisherBuilder("test aws sdk sqs java17 00001");
+        help4DevsAwsSdkSqsService.messagePublisherBuilder("test aws sdk sqs java17 00010");
     }
 
     @Test
     public void messagePublisherStaticQueueTest() {
-        help4DevsAwsSdkSqsService.messagePublisherStaticQueue("test aws sdk java17 00002");
+        help4DevsAwsSdkSqsService.messagePublisherStaticQueue("test aws sdk java17 00011");
     }
 
     @Test
     public void messagePublisherConvertTest() {
-        help4DevsAwsSdkSqsService.messagePublisherConvert("test aws sdk java17 00003", queueName);
+        help4DevsAwsSdkSqsService.messagePublisherConvert("test aws sdk java17 00012", queueName);
     }
 
 }

@@ -3,8 +3,8 @@ AWS Credentials
 
 ### Pre Requisites
 
-- Java 17 / JDK 17
-- Spring Boot 3.0.4
+- Java 21 / JDK 21
+- Spring Boot 3.3.2
 - aws-java-sdk
 - spring-cloud-starter-aws-messaging
 - spring-messaging
@@ -14,7 +14,7 @@ AWS Credentials
 
 ### How to use
 
-- Download and set up the env to run the JDK/JRE 17
+- Download and set up the env to run the JDK/JRE 21
 - Create one project from https://start.spring.io/
 - Import the dependencies in the pom.xml
 
@@ -62,7 +62,6 @@ src/test/java/codexstester/test/unitary/Help4DevsAwsSdkSqsUnitaryTests.java
     package codexstester.test.unitary;
     
     import codexstester.setup.bridge.Help4DevsBridgeTests;
-    import com.huntercodexs.demo.service.Help4DevsAwsSdkSqsListener;
     import com.huntercodexs.demo.service.Help4DevsAwsSdkSqsService;
     import org.junit.Test;
     import org.springframework.beans.factory.annotation.Autowired;
@@ -76,22 +75,19 @@ src/test/java/codexstester/test/unitary/Help4DevsAwsSdkSqsUnitaryTests.java
         @Autowired
         Help4DevsAwsSdkSqsService help4DevsAwsSdkSqsService;
     
-        @Autowired
-        Help4DevsAwsSdkSqsListener help4DevsAwsSdkSqsListener;
-    
         @Test
         public void messagePublisherBuilderTest() {
-            help4DevsAwsSdkSqsService.messagePublisherBuilder("test aws sdk sqs java17 00001");
+            help4DevsAwsSdkSqsService.messagePublisherBuilder("test aws sdk sqs java17 00010");
         }
     
         @Test
         public void messagePublisherStaticQueueTest() {
-            help4DevsAwsSdkSqsService.messagePublisherStaticQueue("test aws sdk java17 00002");
+            help4DevsAwsSdkSqsService.messagePublisherStaticQueue("test aws sdk java17 00011");
         }
     
         @Test
         public void messagePublisherConvertTest() {
-            help4DevsAwsSdkSqsService.messagePublisherConvert("test aws sdk java17 00003", queueName);
+            help4DevsAwsSdkSqsService.messagePublisherConvert("test aws sdk java17 00012", queueName);
         }
     
     }
