@@ -12,7 +12,15 @@ public class Help4DevsAwsSqsUnitaryTests extends Help4DevsBridgeTests {
 
     @Test
     public void messagePublisherTest() {
-        help4DevsAwsSqsService.messagePublisher("test aws sqs java 17 00005");
+        help4DevsAwsSqsService.messagePublisher("test 00001");
+        try {
+            Thread.sleep(1000);
+            help4DevsAwsSqsService.messagePublisher("test 00002");
+            Thread.sleep(1000);
+            help4DevsAwsSqsService.messagePublisher("test 00003");
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
