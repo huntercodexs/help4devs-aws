@@ -1,13 +1,13 @@
-# HELP4DEVS AWS JAVA LAMBDA
+# HELP4DEVS AWS LAMBDA JAVA
 Sample
 
-### Topic
+> WARNING: This sample project don't use the spring-boot-starter-web, just spring-boot-starter,
+> it means that it will never keep the service or process running up, in other words it just will
+> running at the moment it will be called by any request.
+
+### About
 
 Read books details
-
-> WARNING: This sample project don't use the spring-boot-starter-web, just spring-boot-starter, 
-> it means that it will never keep the service or process running up, in other words it just will 
-> running at the moment it will be called by any request.
 
 ### Pre Requisites
 
