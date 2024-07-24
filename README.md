@@ -190,6 +190,9 @@ The content that you will find out in this project are:
 ###### aws-lambda-java-core (com.amazonaws - Core)
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-core-lambda-java17--request-handler--demo">aws-core-lambda-java17--request-handler--demo</a>
 
+###### org.springframework.cloud
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-lambda-function-java17-spring-boot-3.0.7">aws-lambda-function-java17-spring-boot-3.0.7</a>
+
 ###### spring.cloud.starter.aws
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-lambda-java17-spring-boot-2.0.1-release">aws-lambda-java17-spring-boot-2.0.1-release</a>
 
