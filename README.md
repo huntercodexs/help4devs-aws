@@ -1,202 +1,142 @@
-# HELP4DEVS AWS JAVA
-A simple repository to show and afford a variety of AWS services and resources using JAVA
+# HELP4DEVS AWS LAMBDA JAVA
+Demo
 
-# Summary
+### Pre Requisites
 
-The content that you will find out in this project are:
+- Java 11 / JDK 11
 
-## AWS S3 STORAGE
+### How to use
 
-### JAVA 8
+- Download and set up the env to run the JDK/JRE 11
+- Import the dependencies in the pom.xml
+- Build a jar file with maven
 
-###### spring.cloud.starter.aws
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-s3-java8-spring-boot-2.0.1-release">aws-s3-java8-spring-boot-2.0.1-release</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-s3-java8-spring-boot-2.3.7-release--aws-credentials">aws-s3-java8-spring-boot-2.3.7-release--aws-credentials</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-s3-java8-spring-boot-2.3.7-release--aws-credentials-provider">aws-s3-java8-spring-boot-2.3.7-release--aws-credentials-provider</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-s3-java8-spring-boot-2.3.7-release--aws-credentials-provider--endpoint-config">aws-s3-java8-spring-boot-2.3.7-release--aws-credentials-provider--endpoint-config</a>
+<pre>
+Maven > mvn clean package
+</pre>
 
-###### aws.java.sdk
-- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
+- Get access to your AWS Account.
+- Goto to lambda function dashboard
+- Click on "Create function" button on the top right at the screen
+- Choose "Author from scratch - Start with a simple Hello World example"
+- Give a "Function name", for example: awsLambdaDemoTest
+- Choose the Runtime environment: Java 8 (in this case)
+- In advanced settings choose "Enable function URL"
+    - Auth type: NONE
 
-###### spring.cloud.aws.starter (io.awspring.cloud - Core)
-- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
+The policy must be something like below
 
-### JAVA 11
+<pre>
 
-###### spring.cloud.starter.aws
-- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
+</pre>
 
-###### aws.java.sdk
-- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
+- Click on "Create function" button
+- Now goto Code tab and scroll down until "Runtime settings"
+- Click on "Edit" button
+- Inform the correct package path to the current java lambda function, for example
+    - com.huntercodexs.demo.lambda.handler.BookHandler
+- Click on save button
+- Now, goto Configuration tab and lookup for "Environment variables"
+- Click on Edit button
+- Click on "Add environment variable"
+- Give the follow information
+    - Key: FUNCTION_NAME
+    - Value: books
+- Click on Save button
+- Go back to the Code tab in the current lambda functions
+- Seek for "Upload from" button on the right side of the screen
+- Choose "Upload a .zip or .jar file"
+- Choose the correct jar file and click on Save
+- Now goto Test tab and create a new event to test the lambda function
+    - Use hello-world template for first tests
+    - Give a name for the event test, for example: booksEventTest
+    - Remove the content from Event JSON
+    - Finally, Click on Test button on the Top of currently form
 
-###### spring.cloud.aws.starter (io.awspring.cloud - Core)
-- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
+The result must be
 
-### JAVA 17
+<pre>
+[
+  {
+    "id": 100,
+    "name": "Java 8 for all",
+    "year": 1990
+  },
+  {
+    "id": 101,
+    "name": "Java 17 for all",
+    "year": 2000
+  },
+  {
+    "id": 102,
+    "name": "Java 21 for all",
+    "year": 2018
+  }
+]
+</pre>
 
-###### spring.cloud.starter.aws
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-s3-java17-spring-boot-3.0.6--deprecated">aws-s3-java17-spring-boot-3.0.6--deprecated</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-s3-java17-spring-boot-3.0.6--aws-credentials">aws-s3-java17-spring-boot-3.0.6--aws-credentials</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-s3-java17-spring-boot-3.0.6--aws-credentials-provider">aws-s3-java17-spring-boot-3.0.6--aws-credentials-provider</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-s3-java17-spring-boot-3.0.6--aws-credentials-provider--endpoint-config">aws-s3-java17-spring-boot-3.0.6--aws-credentials-provider--endpoint-config</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-s3-java17-spring-boot-3.1.0--deprecated">aws-s3-java17-spring-boot-3.1.0--deprecated</a>
+- Now, repeat this steps for the booksByName method.
+    - Key: FUNCTION_NAME
+    - Value: booksByName
+    - Use hello-world template for first tests
+    - Give a name for the event test, for example: booksEventTest
+    - Put the content from Event JSON, for example: "Java 8 for all"
+    - Finally, Click on Test button on the Top of currently form
 
-###### aws.java.sdk
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-s3-java17-spring-boot-3.0.6--url-generator">aws-sdk-s3-java17-spring-boot-3.0.6--url-generator</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-s3-java17-spring-boot-3.0.6--aws-credentials">aws-sdk-s3-java17-spring-boot-3.0.6--aws-credentials</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-s3-java17-spring-boot-3.0.6--aws-credentials-provider">aws-sdk-s3-java17-spring-boot-3.0.6--aws-credentials-provider</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-s3-java17-spring-boot-3.0.6--aws-credentials-provider--endpoint-config">aws-sdk-s3-java17-spring-boot-3.0.6--aws-credentials-provider--endpoint-config</a>
+The result must be
 
-###### spring.cloud.aws.starter (io.awspring.cloud - Core)
-- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
+<pre>
+[
+  {
+    "id": 100,
+    "name": "Java 8 for all",
+    "year": 1990
+  }
+]
+</pre>
 
-### JAVA 21
+### Run the Unit Tests
 
-###### spring.cloud.starter.aws
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-s3-java21-spring-boot-3.2.1--deprecated">aws-s3-java21-spring-boot-3.2.1--deprecated</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-s3-java21-spring-boot-3.2.1--deprecated--v2">aws-s3-java21-spring-boot-3.2.1--deprecated--v2</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-s3-java21-spring-boot-3.2.1--aws-credentials">aws-s3-java21-spring-boot-3.2.1--aws-credentials</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-s3-java21-spring-boot-3.2.1--aws-credentials-provider">aws-s3-java21-spring-boot-3.2.1--aws-credentials-provider</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-s3-java21-spring-boot-3.2.1--aws-credentials-provider--endpoint-config">aws-s3-java21-spring-boot-3.2.1--aws-credentials-provider--endpoint-config</a>
+<pre>
+src/test/java/codexstester/test/unitary/Help4DevsAwsSqsUnitaryTests.java
+</pre>
 
-###### aws.java.sdk
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-s3-java21-spring-boot-3.2.1--url-generator">aws-sdk-s3-java21-spring-boot-3.2.1--url-generator</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-s3-java21-spring-boot-3.2.1--aws-credentials">aws-sdk-s3-java21-spring-boot-3.2.1--aws-credentials</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-s3-java21-spring-boot-3.2.1--aws-credentials-provider">aws-sdk-s3-java21-spring-boot-3.2.1--aws-credentials-provider</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-s3-java21-spring-boot-3.2.1--aws-credentials-provider--endpoint-config">aws-sdk-s3-java21-spring-boot-3.2.1--aws-credentials-provider--endpoint-config</a>
+<code>
 
-###### spring.cloud.aws.starter (io.awspring.cloud - Core)
-- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
+    package com.huntercodexs.demo.lambda;
+    
+    import org.junit.jupiter.api.Test;
+    
+    import static org.junit.jupiter.api.Assertions.*;
+    
+    class Help4DevsAwsLambdaDemoTest {
+    
+        @Test
+        void handleRequestTest() {
+            Help4DevsAwsLambdaDemo help4DevsAwsLambdaDemo = new Help4DevsAwsLambdaDemo();
+            assertEquals("Hello, Im an AWS LAMBDA Demo", help4DevsAwsLambdaDemo.handleRequest());
+        }
+    
+        @Test
+        void handlerRequestNameTest() {
+            Help4DevsAwsLambdaDemo help4DevsAwsLambdaDemo = new Help4DevsAwsLambdaDemo();
+            assertEquals("Hello, Jereelton", help4DevsAwsLambdaDemo.handleRequestName("Jereelton"));
+        }
+    }
 
-<br />
-<br />
+</code>
 
-## AWS SQS
+### Run the Request REST tests
 
-### JAVA 8
+###### REQUEST
 
-###### spring.cloud.starter.aws
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sqs-java8-spring-boot-2.0.5-release--aws-credentials">aws-sqs-java8-spring-boot-2.0.5-release--aws-credentials</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sqs-java8-spring-boot-2.0.5-release--aws-credentials-provider">aws-sqs-java8-spring-boot-2.0.5-release--aws-credentials-provider</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sqs-java8-spring-boot-2.0.5-release--aws-credentials-provider--endpoint-config">aws-sqs-java8-spring-boot-2.0.5-release--aws-credentials-provider--endpoint-config</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sqs-java8-spring-boot-2.3.1-release--aws-credentials">aws-sqs-java8-spring-boot-2.3.1-release--aws-credentials</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sqs-java8-spring-boot-2.3.1-release--aws-credentials-provider">aws-sqs-java8-spring-boot-2.3.1-release--aws-credentials-provider</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sqs-java8-spring-boot-2.3.1-release--aws-credentials-provider--endpoint-config">aws-sqs-java8-spring-boot-2.3.1-release--aws-credentials-provider--endpoint-config</a>
+<pre>
+Unavailable
+</pre>
 
-###### aws.java.sdk
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-sqs-java8-spring-boot-2.0.1-release--aws-credentials">aws-sdk-sqs-java8-spring-boot-2.0.1-release--aws-credentials</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-sqs-java8-spring-boot-2.0.1-release--aws-credentials-provider">aws-sdk-sqs-java8-spring-boot-2.0.1-release--aws-credentials-provider</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-sqs-java8-spring-boot-2.0.1-release--aws-credentials-provider--endpoint-config">aws-sdk-sqs-java8-spring-boot-2.0.1-release--aws-credentials-provider--endpoint-config</a>
+###### RESPONSE
 
-###### aws.java.sdk BOM + JMS
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-bom-jms-sqs-java8-spring-boot-2.1.6-release--aws-credentials">aws-sdk-bom-jms-sqs-java8-spring-boot-2.1.6-release--aws-credentials</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-bom-jms-sqs-java8-spring-boot-2.1.6-release--aws-credentials-provider">aws-sdk-bom-jms-sqs-java8-spring-boot-2.1.6-release--aws-credentials-provider</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-bom-jms-sqs-java8-spring-boot-2.1.6-release--aws-credentials-provider--endpoint-config">aws-sdk-bom-jms-sqs-java8-spring-boot-2.1.6-release--aws-credentials-provider--endpoint-config</a>
+<pre>
+Unavailable
+</pre>
 
-###### spring.cloud.aws.starter (io.awspring.cloud - Core)
-- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
-
-### JAVA 11
-
-###### spring.cloud.starter.aws
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sqs-java11-spring-boot-2.3.4-release--aws-credentials">aws-sqs-java11-spring-boot-2.3.4-release--aws-credentials</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sqs-java11-spring-boot-2.3.4-release--aws-credentials-provider">aws-sqs-java11-spring-boot-2.3.4-release--aws-credentials-provider</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sqs-java11-spring-boot-2.3.4-release--aws-credentials-provider--endpoint-config">aws-sqs-java11-spring-boot-2.3.4-release--aws-credentials-provider--endpoint-config</a>
-
-###### aws.java.sdk
-- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
-
-###### spring.cloud.aws.starter (io.awspring.cloud - Core)
-- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
-
-### JAVA 17
-
-###### spring.cloud.starter.aws
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sqs-java17-spring-boot-3.2.1--aws-credentials">aws-sqs-java17-spring-boot-3.2.1--aws-credentials</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sqs-java17-spring-boot-3.2.1--aws-credentials-provider">aws-sqs-java17-spring-boot-3.2.1--aws-credentials-provider</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sqs-java17-spring-boot-3.2.1--aws-credentials-provider--endpoint-config">aws-sqs-java17-spring-boot-3.2.1--aws-credentials-provider--endpoint-config</a>
-
-###### aws.java.sdk
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-sqs-java17-spring-boot-2.7.12--aws-credentials">aws-sdk-sqs-java17-spring-boot-2.7.12--aws-credentials</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-sqs-java17-spring-boot-2.7.12--aws-credentials-provider">aws-sdk-sqs-java17-spring-boot-2.7.12--aws-credentials-provider</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-sqs-java17-spring-boot-2.7.12--aws-credentials-provider--endpoint-config">aws-sdk-sqs-java17-spring-boot-2.7.12--aws-credentials-provider--endpoint-config</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-sqs-java17-spring-boot-3.0.4--aws-credentials">aws-sdk-sqs-java17-spring-boot-3.0.4--aws-credentials</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-sqs-java17-spring-boot-3.0.4--aws-credentials-provider">aws-sdk-sqs-java17-spring-boot-3.0.4--aws-credentials-provider</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-sqs-java17-spring-boot-3.0.4--aws-credentials-provider--endpoint-config">aws-sdk-sqs-java17-spring-boot-3.0.4--aws-credentials-provider--endpoint-config</a>
-
-###### spring.cloud.aws.starter (io.awspring.cloud - Core)
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-core-sqs-java17-spring-boot-2.6.4--deprecated">aws-core-sqs-java17-spring-boot-2.6.4--deprecated</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-core-sqs-java17-spring-boot-3.2.2">aws-core-sqs-java17-spring-boot-3.2.2</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-core-sqs-java17-spring-boot-3.2.2--aws-credentials">aws-core-sqs-java17-spring-boot-3.2.2--aws-credentials</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-core-sqs-java17-spring-boot-3.2.2--aws-credentials-provider">aws-core-sqs-java17-spring-boot-3.2.2--aws-credentials-provider</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-core-sqs-java17-spring-boot-3.2.2--aws-credentials-provider--endpoint-config">aws-core-sqs-java17-spring-boot-3.2.2--aws-credentials-provider--endpoint-config</a>
-
-### JAVA 21
-
-###### spring.cloud.starter.aws
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sqs-java21-spring-boot-3.3.2--aws-credentials">aws-sqs-java21-spring-boot-3.3.2--aws-credentials</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sqs-java21-spring-boot-3.3.2--aws-credentials-provider">aws-sqs-java21-spring-boot-3.3.2--aws-credentials-provider</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sqs-java21-spring-boot-3.3.2--aws-credentials-provider--endpoint-config">aws-sqs-java21-spring-boot-3.3.2--aws-credentials-provider--endpoint-config</a>
-
-###### aws.java.sdk
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-sqs-java21-spring-boot-3.3.2--aws-credentials">aws-sdk-sqs-java21-spring-boot-3.3.2--aws-credentials</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-sqs-java21-spring-boot-3.3.2--aws-credentials-provider">aws-sdk-sqs-java21-spring-boot-3.3.2--aws-credentials-provider</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-sdk-sqs-java21-spring-boot-3.3.2--aws-credentials-provider--endpoint-config">aws-sdk-sqs-java21-spring-boot-3.3.2--aws-credentials-provider--endpoint-config</a>
-
-###### spring.cloud.aws.starter (io.awspring.cloud - Core)
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-core-sqs-java21-spring-boot-3.2.1">aws-core-sqs-java21-spring-boot-3.2.1</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-core-sqs-java21-spring-boot-3.2.1--aws-credentials">aws-core-sqs-java21-spring-boot-3.2.1--aws-credentials</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-core-sqs-java21-spring-boot-3.2.1--aws-credentials-provider">aws-core-sqs-java21-spring-boot-3.2.1--aws-credentials-provider</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-core-sqs-java21-spring-boot-3.2.1--aws-credentials-provider--endpoint-config">aws-core-sqs-java21-spring-boot-3.2.1--aws-credentials-provider--endpoint-config</a>
-
-<br />
-<br />
-
-## AWS LAMBDA
-
-### JAVA 8
-
-###### aws-lambda-java-core (com.amazonaws - Core)
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-core-lambda-java8-spring-boot-2.3.1-release--spring-cloud-Hoxton.SR6">aws-core-lambda-java8-spring-boot-2.3.1-release--spring-cloud-Hoxton.SR6</a>
-
-###### spring.cloud.starter.aws
-- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
-
-###### aws.java.sdk
-- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
-
-###### spring.cloud.aws.starter (io.awspring.cloud - Core)
-- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
-
-### JAVA 11
-
-###### spring.cloud.starter.aws
-- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
-
-###### aws.java.sdk
-- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
-
-###### spring.cloud.aws.starter (io.awspring.cloud - Core)
-- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
-
-### JAVA 17
-
-###### spring.cloud.starter.aws
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-lambda-java17-spring-boot-2.0.1-release">aws-lambda-java17-spring-boot-2.0.1-release</a>
-
-###### aws.java.sdk
-- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
-
-###### spring.cloud.aws.starter (io.awspring.cloud - Core)
-- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
-
-### JAVA 21
-
-###### spring.cloud.starter.aws
-- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
-
-###### aws.java.sdk
-- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
-
-###### spring.cloud.aws.starter (io.awspring.cloud - Core)
-- <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
