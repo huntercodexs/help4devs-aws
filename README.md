@@ -170,6 +170,9 @@ The content that you will find out in this project are:
 
 ### JAVA 11
 
+###### maven project
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-lambda-java11--demo">aws-lambda-java11--demo</a>
+
 ###### spring.cloud.starter.aws
 - <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
 
