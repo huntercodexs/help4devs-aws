@@ -158,7 +158,6 @@ The content that you will find out in this project are:
 
 ###### aws-lambda-java-core (com.amazonaws - Core)
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-core-lambda-java8-spring-boot-2.3.1-release--spring-cloud-Hoxton.SR6">aws-core-lambda-java8-spring-boot-2.3.1-release--spring-cloud-Hoxton.SR6</a>
-- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-core-lambda-java11--request-handler--demo">aws-core-lambda-java11--request-handler--demo</a>
 
 ###### spring.cloud.starter.aws
 - <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
@@ -171,7 +170,10 @@ The content that you will find out in this project are:
 
 ### JAVA 11
 
-###### maven project
+###### aws-lambda-java-core (com.amazonaws - Core)
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-core-lambda-java11--request-handler--demo">aws-core-lambda-java11--request-handler--demo</a>
+
+###### maven archetype project
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-lambda-java11--demo">aws-lambda-java11--demo</a>
 
 ###### spring.cloud.starter.aws
@@ -184,6 +186,9 @@ The content that you will find out in this project are:
 - <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
 
 ### JAVA 17
+
+###### aws-lambda-java-core (com.amazonaws - Core)
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-core-lambda-java17--request-handler--demo">aws-core-lambda-java17--request-handler--demo</a>
 
 ###### spring.cloud.starter.aws
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-lambda-java17-spring-boot-2.0.1-release">aws-lambda-java17-spring-boot-2.0.1-release</a>
