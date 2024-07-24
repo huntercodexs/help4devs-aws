@@ -158,6 +158,7 @@ The content that you will find out in this project are:
 
 ###### aws-lambda-java-core (com.amazonaws - Core)
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-core-lambda-java8-spring-boot-2.3.1-release--spring-cloud-Hoxton.SR6">aws-core-lambda-java8-spring-boot-2.3.1-release--spring-cloud-Hoxton.SR6</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-core-lambda-java11--request-handler--demo">aws-core-lambda-java11--request-handler--demo</a>
 
 ###### spring.cloud.starter.aws
 - <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
