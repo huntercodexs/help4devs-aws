@@ -10,7 +10,7 @@ public class Help4DevsAwsCoreLambdaHandlerDemo implements RequestHandler<String,
     public Object handleRequest(String input, Context context) {
         if (context == null) return input.toLowerCase();
         LambdaLogger logger = context.getLogger();
-        logger.log("Function ["+context.getFunctionName()+"] called");
+        logger.log("JDK Version check: " + System.getProperty("java.version"));
         return input.toUpperCase();
     }
 

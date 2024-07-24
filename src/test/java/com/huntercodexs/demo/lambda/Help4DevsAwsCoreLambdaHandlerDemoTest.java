@@ -19,7 +19,7 @@ import static org.mockito.Mockito.when;
 @MockitoSettings(strictness = Strictness.LENIENT)
 class Help4DevsAwsCoreLambdaHandlerDemoTest {
 
-    Help4DevsAwsCoreLambdaHandlerDemo handle;
+    Help4DevsAwsCoreLambdaHandlerDemo handler;
 
     @Mock
     Context context;
@@ -37,19 +37,20 @@ class Help4DevsAwsCoreLambdaHandlerDemoTest {
             return null;
         }).when(lambdaLogger).log(anyString());
 
-        handle = new Help4DevsAwsCoreLambdaHandlerDemo();
+        handler = new Help4DevsAwsCoreLambdaHandlerDemo();
     }
 
     @Test
-    public void handleRequestContextNullTest() {
-        handle = new Help4DevsAwsCoreLambdaHandlerDemo();
-        Assertions.assertEquals("hello world", handle.handleRequest("Hello World", null));
+    public void handleRequestTest() {
+        handler = new Help4DevsAwsCoreLambdaHandlerDemo();
+        Assertions.assertEquals("java17 for all", handler.handleRequest("Java17 For All", null));
     }
+
 
     @Test
     public void handleRequestContextNotNullTest() {
         when(context.getFunctionName()).thenReturn("handleRequest");
-        Assertions.assertEquals("HELLO WORLD", handle.handleRequest("Hello World", context));
+        Assertions.assertEquals("HELLO WORLD JAVA17", handler.handleRequest("Hello World java17", context));
     }
 
 }

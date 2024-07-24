@@ -3,14 +3,14 @@ Core
 
 ### Pre Requisites
 
-- Java 11 / JDK 11
+- Java 17 / JDK 17
 - aws-lambda-java-core
 - junit-jupiter
 - mockito-junit-jupiter
 
 ### How to use
 
-- Download and set up the env to run the JDK/JRE 11
+- Download and set up the env to run the JDK/JRE 17
 - Import the dependencies in the pom.xml
 
 <code>
@@ -75,7 +75,7 @@ Maven > mvn clean package
 - Click on "Create function" button on the top right at the screen
 - Choose "Author from scratch - Start with a simple Hello World example"
 - Give a "Function name", for example: awsCoreLambdaDemoTest
-- Choose the Runtime environment: Java 11 (in this case)
+- Choose the Runtime environment: Java 17 (in this case)
 - In Architecture select arm64 to save a little bit of money
 - Click on "Create function" button
 - Now goto Code tab and scroll down until "Runtime settings"
@@ -101,7 +101,7 @@ The result must be
 ### Run the Unit Tests
 
 <pre>
-src/test/java/com/huntercodexs/demo/lambda/Help4DevsAwsLambdaDemoTest.java
+src/test/java/com/huntercodexs/demo/lambda/Help4DevsAwsCoreLambdaHandlerDemoTest.java
 </pre>
 
 <code>
@@ -127,7 +127,7 @@ src/test/java/com/huntercodexs/demo/lambda/Help4DevsAwsLambdaDemoTest.java
     @MockitoSettings(strictness = Strictness.LENIENT)
     class Help4DevsAwsCoreLambdaHandlerDemoTest {
     
-        Help4DevsAwsCoreLambdaHandlerDemo handle;
+        Help4DevsAwsCoreLambdaHandlerDemo handler;
     
         @Mock
         Context context;
@@ -145,19 +145,20 @@ src/test/java/com/huntercodexs/demo/lambda/Help4DevsAwsLambdaDemoTest.java
                 return null;
             }).when(lambdaLogger).log(anyString());
     
-            handle = new Help4DevsAwsCoreLambdaHandlerDemo();
+            handler = new Help4DevsAwsCoreLambdaHandlerDemo();
         }
     
         @Test
-        public void handleRequestContextNullTest() {
-            handle = new Help4DevsAwsCoreLambdaHandlerDemo();
-            Assertions.assertEquals("hello world", handle.handleRequest("Hello World", null));
+        public void handleRequestTest() {
+            handler = new Help4DevsAwsCoreLambdaHandlerDemo();
+            Assertions.assertEquals("java17 for all", handler.handleRequest("Java17 For All", null));
         }
+    
     
         @Test
         public void handleRequestContextNotNullTest() {
             when(context.getFunctionName()).thenReturn("handleRequest");
-            Assertions.assertEquals("HELLO WORLD", handle.handleRequest("Hello World", context));
+            Assertions.assertEquals("HELLO WORLD JAVA17", handler.handleRequest("Hello World java17", context));
         }
     
     }
