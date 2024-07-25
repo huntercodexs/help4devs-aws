@@ -4,6 +4,7 @@ Api Gateway Proxy Request Event
 ### Pre Requisites
 
 - Java 17 / JDK 17
+- Spring Boot 2.6.4
 - aws-lambda-java-core
 - aws-lambda-java-events
 
