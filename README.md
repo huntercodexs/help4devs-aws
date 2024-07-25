@@ -204,6 +204,10 @@ The content that you will find out in this project are:
 
 ### JAVA 21
 
+###### aws-lambda-java-core (com.amazonaws - Core)
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-core-lambda-java21--api-gateway-proxy">aws-core-lambda-java21--api-gateway-proxy</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-core-lambda-java21--api-gateway-proxy--login-validate">aws-core-lambda-java21--api-gateway-proxy--login-validate</a>
+
 ###### spring.cloud.starter.aws
 - <a href="https://github.com/huntercodexs/help4devs-aws/#">unavailable</a>
 
