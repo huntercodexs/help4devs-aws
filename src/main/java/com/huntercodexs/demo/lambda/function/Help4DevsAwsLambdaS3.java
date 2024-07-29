@@ -10,6 +10,8 @@ import com.amazonaws.services.s3.model.S3ObjectInputStream;
 import com.huntercodexs.demo.lambda.client.Help4DevsAwsS3Client;
 import com.huntercodexs.demo.lambda.processor.Help4DevsAwsS3FileProcessor;
 
+import static com.huntercodexs.demo.lambda.processor.Help4DevsAwsS3FileProcessor.fileExtension;
+
 public class Help4DevsAwsLambdaS3 implements RequestHandler<S3Event, Boolean> {
 
     Help4DevsAwsS3Client client = new Help4DevsAwsS3Client();
@@ -46,7 +48,28 @@ public class Help4DevsAwsLambdaS3 implements RequestHandler<S3Event, Boolean> {
             S3Object s3Object = amazonS3.getObject(bucketName, objectKey);
             S3ObjectInputStream inputStream = s3Object.getObjectContent();
 
-            processor.csv(logger, inputStream);
+            switch (fileExtension(objectKey)) {
+                case "csv":
+                    processor.csv(logger, inputStream);
+                    break;
+
+                case "pdf":
+                    processor.pdf(logger, inputStream, "metadata");
+                    break;
+
+                case "png":
+                    processor.png(logger, inputStream);
+                    break;
+
+                case "jpg":
+                case "jpeg":
+                    processor.jpg(logger, inputStream);
+                    break;
+
+                default:
+                    processor.txt(logger, inputStream);
+
+            }
         });
 
         return true;
@@ -54,3 +77,6 @@ public class Help4DevsAwsLambdaS3 implements RequestHandler<S3Event, Boolean> {
     }
 
 }
+
+// continuar integração com s3 na aws (trigger) video ajay
+// testar
