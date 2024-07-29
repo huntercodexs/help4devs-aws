@@ -1,10 +1,10 @@
 # HELP4DEVS AWS CORE LAMBDA JAVA
-Lambda with SNS Integration
+Lambda with S3 Integration - File Processor
 
 ### Aws resources related
 
 - LAMBDA
-- SNS
+- S3
 - Cloud Watch
 
 ### Pre Requisites
@@ -12,6 +12,7 @@ Lambda with SNS Integration
 - Java 11 / JDK 11
 - aws-lambda-java-core
 - aws-lambda-java-events
+- aws-java-sdk-s3
 
 ### How to use
 
@@ -20,6 +21,7 @@ Lambda with SNS Integration
 
 <code>
 
+        <!--AWS LAMBDA-->
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-lambda-java-core</artifactId>
@@ -29,6 +31,13 @@ Lambda with SNS Integration
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-lambda-java-events</artifactId>
             <version>3.11.0</version>
+        </dependency>
+
+        <!--AWS S3 SDK-->
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-s3</artifactId>
+            <version>1.12.153</version>
         </dependency>
 
 </code>
@@ -104,8 +113,8 @@ com.huntercodexs.demo.lambda.function.Help4DevsAwsCoreLambdaSnsIntegrationDemo::
 - Go back to SNS topic, and lookup for "Publish message" button and click on it
 - Fill the form and click on "Publish message"
 - Finally, goto Cloud Watch
-  - Log Groups
-    - lookup for the message that you have been published
+    - Log Groups
+        - lookup for the message that you have been published
 
 For example
 
@@ -126,9 +135,160 @@ The result should be something like below
 
 ### Run the Unit Tests
 
+> IMPORTANT: To make units tests you need to configure the s3-event-test.json file placed 
+> in the folder resources at this repository, see the example below:
+
 <pre>
-src/test/java/com/huntercodexs/demo/lambda/Help4DevsAwsCoreLambdaSnsIntegrationDemoTest.java
+{
+  "Records": [
+    {
+      "eventVersion": "2.0",
+      "eventSource": "aws:s3",
+      "awsRegion": "{AWS-REGION-HERE}",
+      "eventTime": "1970-01-01T00:00:00.000Z",
+      "eventName": "ObjectCreated:Put",
+      "userIdentity": {
+        "principalId": "{SAMPLE-ID-HERE}"
+      },
+      "requestParameters": {
+        "sourceIPAddress": "127.0.0.1"
+      },
+      "responseElements": {
+        "x-amz-request-id": "79104EXAMPLEB723",
+        "x-amz-id-2": "IOWQ4fDEXAMPLEQM+ey7N9WgVhSnQ6JEXAMPLEZb7hSQDASK+Jd1vEXAMPLEa3Km"
+      },
+      "s3": {
+        "s3SchemaVersion": "1.0",
+        "configurationId": "testConfigRule",
+        "bucket": {
+          "name": "{BUCKET-NAME-HERE}",
+          "ownerIdentity": {
+            "principalId": "EXAMPLE"
+          },
+          "arn": "arn:aws:s3:::bucket_name"
+        },
+        "object": {
+          "key": "{FILENAME-HERE.EXTENSION}",
+          "size": 5065717,
+          "eTag": "c2d226b2e97bec9265eb7e59d2dfac41"
+        }
+      }
+    }
+  ]
+}
 </pre>
+
+Other point to discuss is about credentials, you can use four kind of authentication in the Amazon S3, 
+and for that see the examples below:
+
+- Example 1: Default
+
+<code>
+
+      public AmazonS3 amazonS3Default() {
+  
+          return AmazonS3Client.builder()
+                  .withCredentials(new DefaultAWSCredentialsProviderChain())
+                  .build();
+  
+      }
+
+</code>
+
+- Example 2: Basic
+
+<code>
+
+      public AmazonS3 amazonS3Basic(String accessKey, String secretKey, String region) {
+  
+          if (region == null || region.isEmpty()) {
+              region = "us-east-1";
+          }
+  
+          AWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey);
+  
+          return AmazonS3ClientBuilder.standard()
+                  .withCredentials(new AWSStaticCredentialsProvider(credentials))
+                  .withRegion(region)
+                  .build();
+      }
+
+</code>
+
+- Example 3: Provider
+
+<code>
+
+      public AmazonS3 amazonS3Provider(String region) {
+  
+          if (region == null || region.isEmpty()) {
+              region = "us-east-1";
+          }
+  
+          AWSCredentialsProvider credentialsProvider = new ProfileCredentialsProvider();
+  
+          return AmazonS3ClientBuilder.standard()
+                  .withCredentials(credentialsProvider)
+                  .withRegion(region)
+                  .build();
+  
+      }
+
+</code>
+
+- Example 4: Provider + Endpoint Configuration
+
+<code>
+
+      public AmazonS3 amazonS3EndpointConfig(String endpointUri, String region) {
+  
+          if (region == null || region.isEmpty()) {
+              region = "us-east-1";
+          }
+  
+          if (endpointUri == null || endpointUri.isEmpty()) {
+              endpointUri = "s3.amazonaws.com";
+          }
+  
+          AwsClientBuilder.EndpointConfiguration endpointConfig = new AwsClientBuilder.EndpointConfiguration(
+                  endpointUri,
+                  region
+          );
+  
+          AWSCredentialsProvider credentialsProvider = new ProfileCredentialsProvider();
+  
+          return AmazonS3ClientBuilder.standard()
+                  .withCredentials(credentialsProvider)
+                  .withEndpointConfiguration(endpointConfig)
+                  .build();
+  
+      }
+
+</code>
+
+In the last case, you can use the endpoint configuration to use localstack as development environment, for example:
+
+<pre>
+http://s3.localhost.localstack.cloud:4566/
+</pre>
+
+Examples to get connection
+
+<pre>
+    Help4DevsAwsS3Client client = new Help4DevsAwsS3Client();
+    AmazonS3 amazonS3;
+    
+    amazonS3 = client.amazonS3Default();
+    amazonS3 = client.amazonS3Basic("{KEY}", "{SECRET}", "us-east-1");
+    amazonS3 = client.amazonS3Provider("us-east-1");
+    amazonS3 = client.amazonS3EndpointConfig("http://s3.localhost.localstack.cloud:4566/", "us-east-1");
+</pre>
+
+Now you can move on the tests file according to information below
+
+<code>
+src/test/java/com/huntercodexs/demo/lambda/Help4DevsAwsCoreLambdaSnsIntegrationDemoTest.java
+</code>
 
 <code>
 
@@ -136,9 +296,11 @@ src/test/java/com/huntercodexs/demo/lambda/Help4DevsAwsCoreLambdaSnsIntegrationD
     
     import com.amazonaws.services.lambda.runtime.Context;
     import com.amazonaws.services.lambda.runtime.LambdaLogger;
-    import com.amazonaws.services.lambda.runtime.events.SNSEvent;
-    import com.huntercodexs.demo.lambda.function.Help4DevsAwsCoreLambdaSnsIntegrationDemo;
-    import com.huntercodexs.demo.lambda.model.Response;
+    import com.amazonaws.services.lambda.runtime.events.S3Event;
+    import com.amazonaws.services.lambda.runtime.events.models.s3.S3EventNotification.S3EventNotificationRecord;
+    import com.amazonaws.services.s3.event.S3EventNotification;
+    import com.fasterxml.jackson.databind.ObjectMapper;
+    import com.huntercodexs.demo.lambda.function.Help4DevsAwsLambdaS3;
     import org.junit.jupiter.api.Assertions;
     import org.junit.jupiter.api.BeforeEach;
     import org.junit.jupiter.api.Test;
@@ -148,6 +310,7 @@ src/test/java/com/huntercodexs/demo/lambda/Help4DevsAwsCoreLambdaSnsIntegrationD
     import org.mockito.junit.jupiter.MockitoSettings;
     import org.mockito.quality.Strictness;
     
+    import java.io.IOException;
     import java.util.ArrayList;
     import java.util.List;
     
@@ -157,65 +320,109 @@ src/test/java/com/huntercodexs/demo/lambda/Help4DevsAwsCoreLambdaSnsIntegrationD
     
     @ExtendWith(MockitoExtension.class)
     @MockitoSettings(strictness = Strictness.LENIENT)
-    class Help4DevsAwsCoreLambdaSnsIntegrationDemoTest {
+    class Help4DevsAwsLambdaS3Test {
     
-          Help4DevsAwsCoreLambdaSnsIntegrationDemo handler;
-      
-          @Mock
-          Context context;
-      
-          @Mock
-          LambdaLogger lambdaLogger;
-      
-          @BeforeEach
-          public void setup() {
-      
-              when(context.getLogger()).thenReturn(lambdaLogger);
-      
-              doAnswer(call -> {
-                  System.out.println((String) call.getArgument(0));
-                  return null;
-              }).when(lambdaLogger).log(anyString());
-      
-              handler = new Help4DevsAwsCoreLambdaSnsIntegrationDemo();
-          }
-      
-          @Test
-          public void fakerTest() {
-              System.out.println("Application is ok");
-          }
-      
-          @Test
-          public void handleRequestContextNullTest() {
-              handler = new Help4DevsAwsCoreLambdaSnsIntegrationDemo();
-              Response result = handler.handleRequest(new SNSEvent(), null);
-      
-              Assertions.assertEquals(result.getHttpCode(), 400);
-              Assertions.assertEquals(result.getMessage(), "Context is null");
-          }
-      
-          @Test
-          public void handleRequestContextNotNullTest() {
-              handler = new Help4DevsAwsCoreLambdaSnsIntegrationDemo();
-      
-              List<SNSEvent.SNSRecord> snsRecords = new ArrayList<>();
-              SNSEvent snsEvent = new SNSEvent();
-              snsEvent.setRecords(snsRecords);
-      
-              Response result = handler.handleRequest(snsEvent, context);
-      
-              Assertions.assertEquals(result.getHttpCode(), 200);
-              Assertions.assertEquals(result.getMessage(), "OK");
-          }
-      
-          @Test
-          public void handleRequestContextNotNullAndSNSEventNullTest() {
-              handler = new Help4DevsAwsCoreLambdaSnsIntegrationDemo();
-              Response result = handler.handleRequest(new SNSEvent(), context);
-      
-              Assertions.assertEquals(result.getHttpCode(), 500);
-              Assertions.assertEquals(result.getMessage(), "Internal Error");
-          }
+        Help4DevsAwsLambdaS3 handler;
+    
+        @Mock
+        Context context;
+    
+        @Mock
+        S3Event s3Event;
+    
+        @Mock
+        LambdaLogger lambdaLogger;
+    
+        @BeforeEach
+        public void setup() {
+    
+            when(context.getLogger()).thenReturn(lambdaLogger);
+    
+            doAnswer(call -> {
+                System.out.println((String) call.getArgument(0));
+                return null;
+            }).when(lambdaLogger).log(anyString());
+    
+            handler = new Help4DevsAwsLambdaS3();
+        }
+    
+        private static List<S3EventNotificationRecord> getS3EventNotificationRecords(
+                S3EventNotification s3EventNotification
+        ) {
+            List<S3EventNotificationRecord> recordList = new ArrayList<>();
+    
+            S3EventNotificationRecord records = new S3EventNotificationRecord(
+                    s3EventNotification.getRecords().get(0).getAwsRegion(),
+                    s3EventNotification.getRecords().get(0).getEventName(),
+                    s3EventNotification.getRecords().get(0).getEventSource(),
+                    String.valueOf(s3EventNotification.getRecords().get(0).getEventTime()),
+                    s3EventNotification.getRecords().get(0).getEventVersion(),
+                    new com.amazonaws.services.lambda.runtime.events.models.s3.S3EventNotification.RequestParametersEntity(String.valueOf(s3EventNotification.getRecords().get(0).getRequestParameters())),
+                    new com.amazonaws.services.lambda.runtime.events.models.s3.S3EventNotification.ResponseElementsEntity(String.valueOf(s3EventNotification.getRecords().get(0).getResponseElements().getxAmzId2()), String.valueOf(s3EventNotification.getRecords().get(0).getResponseElements().getxAmzRequestId())),
+                    new com.amazonaws.services.lambda.runtime.events.models.s3.S3EventNotification.S3Entity(
+                            String.valueOf(s3EventNotification.getRecords().get(0).getS3().getConfigurationId()),
+                            new com.amazonaws.services.lambda.runtime.events.models.s3.S3EventNotification.S3BucketEntity(
+                                    s3EventNotification.getRecords().get(0).getS3().getBucket().getName(),
+                                    new com.amazonaws.services.lambda.runtime.events.models.s3.S3EventNotification.UserIdentityEntity(String.valueOf(s3EventNotification.getRecords().get(0).getS3().getBucket().getOwnerIdentity().getPrincipalId())),
+                                    s3EventNotification.getRecords().get(0).getS3().getBucket().getArn()),
+                            new com.amazonaws.services.lambda.runtime.events.models.s3.S3EventNotification.S3ObjectEntity(
+                                    String.valueOf(s3EventNotification.getRecords().get(0).getS3().getObject().getKey()),
+                                    s3EventNotification.getRecords().get(0).getS3().getObject().getSizeAsLong(),
+                                    s3EventNotification.getRecords().get(0).getS3().getObject().geteTag(),
+                                    s3EventNotification.getRecords().get(0).getS3().getObject().getVersionId(),
+                                    s3EventNotification.getRecords().get(0).getS3().getObject().getSequencer()),
+                            ""
+                    ),
+                    new com.amazonaws.services.lambda.runtime.events.models.s3.S3EventNotification.UserIdentityEntity(
+                            String.valueOf(s3EventNotification.getRecords().get(0).getS3().getBucket().getOwnerIdentity().getPrincipalId())
+                    )
+            );
+    
+            recordList.add(records);
+            return recordList;
+        }
+    
+        @Test
+        public void fakerTest() {
+            System.out.println("Application is ok");
+        }
+    
+        @Test
+        public void handleRequestContextNullTest() {
+            handler = new Help4DevsAwsLambdaS3();
+            Boolean result = handler.handleRequest(s3Event, null);
+            Assertions.assertFalse(result);
+        }
+    
+        @Test
+        public void handleRequestContextNotNullAndS3EventNullTest() {
+            handler = new Help4DevsAwsLambdaS3();
+            Boolean result = handler.handleRequest(null, context);
+            Assertions.assertFalse(result);
+        }
+    
+        @Test
+        public void handleRequestS3RecordsIsEmptyTest() {
+            handler = new Help4DevsAwsLambdaS3();
+            Boolean result = handler.handleRequest(new S3Event(), context);
+            Assertions.assertFalse(result);
+        }
+    
+        @Test
+        public void handleRequestContextNotNullAndS3EventNotNullTest() throws IOException {
+            handler = new Help4DevsAwsLambdaS3();
+    
+            ObjectMapper mapper = new ObjectMapper();
+    
+            S3EventNotification s3EventNotification = mapper.readValue(
+                    Help4DevsAwsLambdaS3Test.class.getResource("/s3-event-test.json"),
+                    S3EventNotification.class);
+    
+            List<S3EventNotificationRecord> recordList = getS3EventNotificationRecords(s3EventNotification);
+            s3Event = new S3Event(recordList);
+            Boolean result = handler.handleRequest(s3Event, context);
+            Assertions.assertTrue(result);
+        }
     
     }
 
