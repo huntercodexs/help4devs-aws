@@ -173,6 +173,7 @@ The content that you will find out in this project are:
 ###### aws-lambda-java-core (com.amazonaws - Core)
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-core-lambda-java11--request-handler--demo">aws-core-lambda-java11--request-handler--demo</a>
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-core-lambda-java11--sns-integration">aws-core-lambda-java11--sns-integration</a>
+- <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-core-lambda-aws-sdk-s3-java11--s3-integration--file-process">aws-core-lambda-aws-sdk-s3-java11--s3-integration--file-process</a>
 
 ###### maven archetype project
 - <a href="https://github.com/huntercodexs/help4devs-aws/tree/aws-lambda-java11--demo">aws-lambda-java11--demo</a>
