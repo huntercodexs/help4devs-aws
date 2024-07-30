@@ -3,8 +3,9 @@ Lambda with S3 Integration - File Processor
 
 ### Aws resources related
 
-- LAMBDA
 - S3
+- IAM
+- LAMBDA
 - Cloud Watch
 
 ### Pre Requisites
@@ -76,17 +77,34 @@ Maven > mvn clean package
 </pre>
 
 - Get access to your AWS Account.
-- Goto to SNS dashboard
-- Click on "Create topic" button on the top right at the screen
-- Choose "Standard"
-- Give a "Topic name", for example: aws-sns-topic-java11-test
-- Let as is the rest of the form
-- Click on "Create Topic" button
-- Now, goto Lambda function dashboard and click on "Create function"
-- Give a "Function name", for example: aws-lambda-function-java11-test
+- Goto S3 bucket dashboard and click on "Create bucket" button
+- Give a "Bucket name", for example: s3-aws-lambda-function-java11-test
+- Let as is the rest of the form information
+- Click on "Create bucket" button
+- Goto IAM dashboard manager and lookup for "Roles", click on it
+- Click on "Create role" button at the right top of the screen
+  - Choose "AWS service"
+  - Service or use case: Lambda
+  - Click on Next button
+  - Search for AWSLambdaBasicExecutionRole and check it
+  - Search for AmazonS3ReadOnlyAccess and check it
+  - Click on Next button
+  - Give a "Role name", for example: role-s3-aws-lambda-java11-test
+  - Click on "Create role" button
+- Goto Lambda function dashboard and click on "Create function"
+- Give a "Function name", for example: function-aws-lambda-java11-test
 - Choose the Runtime environment: Java 11 (in this case)
-- Let as is the rest of information in the form
+- In Permissions, select "Use an existing role"
+  - Existing role: role-s3-aws-lambda-java11-test
 - click on "Create function" button
+- Now, click on "Add trigger" on the lambda function just created
+  - It will be open one form to configure the trigger
+  - Select the target service: S3
+  - Choose the bucket: s3/s3-aws-lambda-function-java11-test
+  - Select the Event types: PUT
+  - Mark the checkbox to accept the acknowledgment
+  - Click on Add
+  - You must be able to see the S3 Trigger created and linked in the current Lambda Function
 - Go back to the Code tab in the current lambda functions
 - Seek for "Upload from" button on the right side of the screen
 - Choose "Upload a .zip or .jar file"
@@ -96,41 +114,55 @@ Maven > mvn clean package
 - Inform the correct package path to the current java lambda function, for example
 
 <pre>
-com.huntercodexs.demo.lambda.function.Help4DevsAwsCoreLambdaSnsIntegrationDemo::handleRequest
+com.huntercodexs.demo.lambda.function.Help4DevsAwsLambdaS3::handleRequest
 </pre>
 
 - Click on save button
-- The next step is to create a subscription in the SNS topic created previously
-- So, goto SNS topic and click on "Create subscription"
-    - Select the target "Topic ARN"
-    - Select the Protocol: AWS Lambda
-    - Select the target "Endpoint" for the current subscription
-    - Click on "Create subscription"
-    - The subscription is done
-- Now, refresh the page (press Ctrl+F5) where the target Lambda function is open
-    - You must be able to see one trigger called SNS
-    - If you click in the SNS trigger, the "Configuration" tab will be open automatically with all information about it
-- Go back to SNS topic, and lookup for "Publish message" button and click on it
-- Fill the form and click on "Publish message"
-- Finally, goto Cloud Watch
-    - Log Groups
-        - lookup for the message that you have been published
-
-For example
+- Now, you can make some tests to prove that everything is ok
+  - Goto the S3 bucket created in this tutorial: s3-aws-lambda-function-java11-test
+  - Click on Upload file
+  - Select one specific file that should: csv, pdf, txt, jpg, png or gif
+  - Click on Upload button
+  - Now, check if the S3 Trigger was executed correctly seen the Cloud Watch
+    - Log > Log groups
+    
+If everything was ok, you must be able to the csv details processed by the lambda function 
+execute by the S3Event, for example:
 
 <pre>
-{
-    "id": 1,
-    "name": "Production name here",
-    "description": "Production description here"
-}
-</pre>
-
-The result should be something like below
-
-<pre>
+2024-07-30T01:33:39.303Z  INIT_START Runtime Version: java:11.v43 Runtime Version ARN: arn:aws:lambda:us-east-1::runtime:098eacbe27876b86d184f51eb9aa42ac53a782e06caab1cdc77ec0410ad64de0
 	
-2024-07-27T21:04:21.577Z  Product Object: Product(id=1, name=Production name here, description=Production description here) 
+2024-07-30T01:33:42.472Z  START RequestId: dda7c607-0836-41d4-8f5c-d47194e76e89 Version: $LATEST
+	
+2024-07-30T01:33:46.527Z  CSV
+	
+2024-07-30T01:33:46.527Z  File processor STARTED
+	
+2024-07-30T01:33:46.549Z  Processing File: 1,Jonathan,Winterscale,lwinterscale0@omniture.com,Male,7.188.229.13
+	
+2024-07-30T01:33:46.549Z  Processing File: 2,Melli,Montford,mmontford1@sogou.com,Female,249.156.87.245
+	
+2024-07-30T01:33:46.549Z  Processing File: 3,Buck,Dayne,bdayne2@amazon.co.jp,Male,2.237.72.219
+	
+2024-07-30T01:33:46.549Z  Processing File: 4,Van,Masey,vmasey3@reverbnation.com,Female,237.168.84.87
+	
+2024-07-30T01:33:46.549Z  Processing File: 5,Karlie,Aldis,kaldis4@discuz.net,Female,119.33.174.40
+	
+2024-07-30T01:33:46.549Z  Processing File: 6,Neel,Lunge,nlunge5@smh.com.au,Male,112.181.149.217
+	
+2024-07-30T01:33:46.549Z  Processing File: 7,Haslett,Reddell,hreddell6@mac.com,Male,154.98.29.182
+	
+2024-07-30T01:33:46.549Z  Processing File: 8,Hank,Growcott,hgrowcott7@latimes.com,Male,16.143.70.62
+	
+2024-07-30T01:33:46.549Z  Processing File: 9,Birgitta,Rait,brait8@slashdot.org,Genderfluid,39.177.192.162
+	
+2024-07-30T01:33:46.549Z  Processing File: 10,Adah,Janous,ajanous9@cam.ac.uk,Genderqueer,53.113.14.210
+	
+2024-07-30T01:33:46.549Z  File processor FINISHED
+	
+2024-07-30T01:33:46.589Z  END RequestId: dda7c607-0836-41d4-8f5c-d47194e76e89
+	
+2024-07-30T01:33:46.589Z  REPORT RequestId: dda7c607-0836-41d4-8f5c-d47194e76e89 Duration: 4117.05 ms Billed Duration: 4118 ms Memory Size: 512 MB Max Memory Used: 152 MB Init Duration: 3168.11 
 </pre>
 
 ### Run the Unit Tests
@@ -180,6 +212,10 @@ The result should be something like below
 
 Other point to discuss is about credentials, you can use four kind of authentication in the Amazon S3, 
 and for that see the examples below:
+
+> IMPORTANT: When you talk about run the lambda in the aws production, we need keep in our mind that 
+> the AWS Credentials should be DefaultAWSCredentialsProviderChain() to use the credentials from the 
+> current user and the credentials configured in the IAM 
 
 - Example 1: Default
 
@@ -278,16 +314,20 @@ Examples to get connection
     Help4DevsAwsS3Client client = new Help4DevsAwsS3Client();
     AmazonS3 amazonS3;
     
+    //Example 1
     amazonS3 = client.amazonS3Default();
+    //Example 2
     amazonS3 = client.amazonS3Basic("{KEY}", "{SECRET}", "us-east-1");
+    //Example 3
     amazonS3 = client.amazonS3Provider("us-east-1");
+    //Example 4
     amazonS3 = client.amazonS3EndpointConfig("http://s3.localhost.localstack.cloud:4566/", "us-east-1");
 </pre>
 
 Now you can move on the tests file according to information below
 
 <code>
-src/test/java/com/huntercodexs/demo/lambda/Help4DevsAwsCoreLambdaSnsIntegrationDemoTest.java
+src/test/java/com/huntercodexs/demo/lambda/Help4DevsAwsLambdaS3Test.java
 </code>
 
 <code>
@@ -311,9 +351,9 @@ src/test/java/com/huntercodexs/demo/lambda/Help4DevsAwsCoreLambdaSnsIntegrationD
     import org.mockito.quality.Strictness;
     
     import java.io.IOException;
-    import java.util.ArrayList;
     import java.util.List;
     
+    import static com.huntercodexs.demo.lambda.Help4DevsAwsLambdaS3Event.eventRecords;
     import static org.mockito.ArgumentMatchers.anyString;
     import static org.mockito.Mockito.doAnswer;
     import static org.mockito.Mockito.when;
@@ -344,42 +384,6 @@ src/test/java/com/huntercodexs/demo/lambda/Help4DevsAwsCoreLambdaSnsIntegrationD
             }).when(lambdaLogger).log(anyString());
     
             handler = new Help4DevsAwsLambdaS3();
-        }
-    
-        private static List<S3EventNotificationRecord> getS3EventNotificationRecords(
-                S3EventNotification s3EventNotification
-        ) {
-            List<S3EventNotificationRecord> recordList = new ArrayList<>();
-    
-            S3EventNotificationRecord records = new S3EventNotificationRecord(
-                    s3EventNotification.getRecords().get(0).getAwsRegion(),
-                    s3EventNotification.getRecords().get(0).getEventName(),
-                    s3EventNotification.getRecords().get(0).getEventSource(),
-                    String.valueOf(s3EventNotification.getRecords().get(0).getEventTime()),
-                    s3EventNotification.getRecords().get(0).getEventVersion(),
-                    new com.amazonaws.services.lambda.runtime.events.models.s3.S3EventNotification.RequestParametersEntity(String.valueOf(s3EventNotification.getRecords().get(0).getRequestParameters())),
-                    new com.amazonaws.services.lambda.runtime.events.models.s3.S3EventNotification.ResponseElementsEntity(String.valueOf(s3EventNotification.getRecords().get(0).getResponseElements().getxAmzId2()), String.valueOf(s3EventNotification.getRecords().get(0).getResponseElements().getxAmzRequestId())),
-                    new com.amazonaws.services.lambda.runtime.events.models.s3.S3EventNotification.S3Entity(
-                            String.valueOf(s3EventNotification.getRecords().get(0).getS3().getConfigurationId()),
-                            new com.amazonaws.services.lambda.runtime.events.models.s3.S3EventNotification.S3BucketEntity(
-                                    s3EventNotification.getRecords().get(0).getS3().getBucket().getName(),
-                                    new com.amazonaws.services.lambda.runtime.events.models.s3.S3EventNotification.UserIdentityEntity(String.valueOf(s3EventNotification.getRecords().get(0).getS3().getBucket().getOwnerIdentity().getPrincipalId())),
-                                    s3EventNotification.getRecords().get(0).getS3().getBucket().getArn()),
-                            new com.amazonaws.services.lambda.runtime.events.models.s3.S3EventNotification.S3ObjectEntity(
-                                    String.valueOf(s3EventNotification.getRecords().get(0).getS3().getObject().getKey()),
-                                    s3EventNotification.getRecords().get(0).getS3().getObject().getSizeAsLong(),
-                                    s3EventNotification.getRecords().get(0).getS3().getObject().geteTag(),
-                                    s3EventNotification.getRecords().get(0).getS3().getObject().getVersionId(),
-                                    s3EventNotification.getRecords().get(0).getS3().getObject().getSequencer()),
-                            ""
-                    ),
-                    new com.amazonaws.services.lambda.runtime.events.models.s3.S3EventNotification.UserIdentityEntity(
-                            String.valueOf(s3EventNotification.getRecords().get(0).getS3().getBucket().getOwnerIdentity().getPrincipalId())
-                    )
-            );
-    
-            recordList.add(records);
-            return recordList;
         }
     
         @Test
@@ -418,7 +422,7 @@ src/test/java/com/huntercodexs/demo/lambda/Help4DevsAwsCoreLambdaSnsIntegrationD
                     Help4DevsAwsLambdaS3Test.class.getResource("/s3-event-test.json"),
                     S3EventNotification.class);
     
-            List<S3EventNotificationRecord> recordList = getS3EventNotificationRecords(s3EventNotification);
+            List<S3EventNotificationRecord> recordList = eventRecords(s3EventNotification);
             s3Event = new S3Event(recordList);
             Boolean result = handler.handleRequest(s3Event, context);
             Assertions.assertTrue(result);

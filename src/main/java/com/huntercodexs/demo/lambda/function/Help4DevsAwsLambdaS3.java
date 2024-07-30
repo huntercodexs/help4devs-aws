@@ -15,9 +15,8 @@ import static com.huntercodexs.demo.lambda.processor.Help4DevsAwsS3FileProcessor
 public class Help4DevsAwsLambdaS3 implements RequestHandler<S3Event, Boolean> {
 
     Help4DevsAwsS3Client client = new Help4DevsAwsS3Client();
-    AmazonS3 amazonS3 = client.amazonS3EndpointConfig(
-            "http://s3.localhost.localstack.cloud:4566/",
-            "us-east-1");
+
+    AmazonS3 amazonS3 = client.amazonS3Default();
 
     @Override
     public Boolean handleRequest(S3Event eventInput, Context context) {
@@ -77,6 +76,3 @@ public class Help4DevsAwsLambdaS3 implements RequestHandler<S3Event, Boolean> {
     }
 
 }
-
-// continuar integração com s3 na aws (trigger) video ajay
-// testar
