@@ -5,10 +5,91 @@ AWS Credentials
 
 - Java 21 / JDK 21
 - Spring Boot 3.2.1
-- spring-cloud-starter-aws
-- Properties Details
+- aws-java-sdk-sts
+- spring-cloud-starter-aws-messaging<
 
 > IMPORTANT: Queue created in the AWS SQS before running this project
+
+### Overview
+
+This approach does not need to use the aws credentials just configurations in the aws console, see below:
+
+##### SQS
+
+- QueueName: {MY-QUEUE-NAME}
+- QueueType: FIFO
+- QueueURL: https://sqs.us-east-1.amazonaws.com/{ACCOUNT-NUMBER}/{MY-QUEUE-NAME}
+- QueueARN: arn:aws:sqs:us-east-1:{ACCOUNT-NUMBER}:{MY-QUEUE-NAME}
+- QueueDetails: [Content-based deduplication,High throughput FIFO queue (recommended)]
+- QueuePolicy:
+<pre>
+{
+  "Version": "2012-10-17",
+  "Id": "__default_policy_ID",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::{ACCOUNT-NUMBER}:role/{MY-IAM-ROLE-NAME}"
+      },
+      "Action": "SQS:*",
+      "Resource": "arn:aws:sqs:us-east-1:{ACCOUNT-NUMBER}:{MY-QUEUE-NAME}"
+    }
+  ]
+}
+</pre>
+
+##### IAM
+
+- RoleName: {MY-IAM-ROLE-NAME}
+- RoleTrustRelationships:
+<pre>
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "Statement1",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "*"
+            },
+            "Action": "sts:AssumeRole"
+        }
+    ]
+}
+</pre>
+
+- RolePermissions: [AmazonSQSFullAccess (AWS managed), SqsTestPolicy (Custom)]
+- AmazonSQSFullAccess:
+
+<pre>
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "sqs:*"
+            ],
+            "Effect": "Allow",
+            "Resource": "*"
+        }
+    ]
+}
+</pre>
+
+- SqsTestPolicy:
+<pre>
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "sqs:SendMessage",
+            "Resource": "arn:aws:sqs:us-east-1:{ACCOUNT-NUMBER}:{MY-QUEUE-NAME}"
+        }
+    ]
+}
+</pre>
 
 ### How to use
 
@@ -19,8 +100,14 @@ AWS Credentials
 <code>
 
 		<dependency>
-			<groupId>io.awspring.cloud</groupId>
-			<artifactId>spring-cloud-aws-starter-sqs</artifactId>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk-sts</artifactId>
+			<version>1.12.750</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-aws-messaging</artifactId>
+			<version>2.2.6.RELEASE</version>
 		</dependency>
 
 </code>
@@ -43,19 +130,6 @@ AWS Credentials
 
 </code>
 
-- Create the properties in the application.properties file
-
-<pre>
-cloud.aws.account-id={ACCOUNT-ID}
-cloud.aws.queue.name=sqs-help4devs-queue-test
-cloud.aws.stack.auto=false
-cloud.aws.region.static=us-east-1
-cloud.aws.credentials.accessKey={KEY}
-cloud.aws.credentials.secretKey={KEY}
-</pre>
-
-> IMPORTANT: Inform correctly all information above
-
 ### Run the Unit Tests
 
 <pre>
@@ -65,22 +139,20 @@ src/test/java/codexstester/test/unitary/Help4DevsAwsCoreSqsUnitaryTests.java
 <code>
 
     package codexstester.test.unitary;
-    
+
     import codexstester.setup.bridge.Help4DevsBridgeTests;
-    import com.huntercodexs.demo.services.Help4DevsAwsCoreSqsService;
+    import com.huntercodexs.demo.services.Help4DevsAwsSdkSqsService;
     import org.junit.Test;
     import org.springframework.beans.factory.annotation.Autowired;
     
     public class Help4DevsAwsCoreSqsUnitaryTests extends Help4DevsBridgeTests {
     
         @Autowired
-        Help4DevsAwsCoreSqsService help4DevsAwsCoreSqsService;
-    
+        Help4DevsAwsSdkSqsService help4DevsAwsSdkSqsService;
+        
         @Test
         public void messagePublisherTest() {
-            help4DevsAwsCoreSqsService.messagePublisher(
-                    "{ENDPOINT-NAME-URL}",
-                    "test sqs 00005");
+            help4DevsAwsSdkSqsService.sendMessage("{\"message\":\"testing\"}");
         }
     
     }
