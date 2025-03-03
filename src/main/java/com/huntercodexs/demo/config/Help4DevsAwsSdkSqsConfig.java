@@ -19,7 +19,7 @@ public class Help4DevsAwsSdkSqsConfig {
     public AmazonSQSAsync amazonSQSAsync() {
         AWSSecurityTokenService stsClient = AWSSecurityTokenServiceClientBuilder.standard().build();
         AssumeRoleRequest assumeRoleRequest = new AssumeRoleRequest()
-                .withRoleArn("arn:aws:iam::{ACCOUNT-NUMBER}:role/SQSMessageSenderRole")
+                .withRoleArn("arn:aws:iam::{ACOUNT-NUMBER}:role/{MY-IAM-ROLE-NAME}")
                 .withRoleSessionName("sessionName");
         AssumeRoleResult assumeRoleResult = stsClient.assumeRole(assumeRoleRequest);
 
