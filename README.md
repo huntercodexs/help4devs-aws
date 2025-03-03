@@ -1,5 +1,5 @@
-# HELP4DEVS AWS CORE SQS - JAVA
-AWS Credentials
+# HELP4DEVS AWS SDK SQS - JAVA
+STS::AssumeRole
 
 ### Pre Requisites
 
